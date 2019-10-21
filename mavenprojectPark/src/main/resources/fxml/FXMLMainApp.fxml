@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!--<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>-->
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1080.0" stylesheets="@../styles/darkMain.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenprojectpark.FXMLMainAppController">
+    <children>
+        <VBox layoutY="-5.0" prefHeight="711.0" prefWidth="300.0" style="-fx-background-color: #5749d1;">
+            <children>
+            <Pane prefHeight="250.0" prefWidth="262.0">
+               <children>
+                      <Button fx:id="BtnLaporan" layoutX="14.0" layoutY="213.0" mnemonicParsing="false" text="Lihat Laporan" textFill="WHITE">
+                          <graphic>
+                              <FontAwesomeIcon fill="WHITE" glyphName="FOLDER_OPEN" />
+                          </graphic>
+                      </Button>
+                      <Button fx:id="BtnHarga" layoutX="162.0" layoutY="214.0" mnemonicParsing="false" text="Lihat Daftar Harga" textFill="WHITE">
+                          <graphic>
+                              <FontAwesomeIcon fill="WHITE" glyphName="USD" />
+                          </graphic>
+                      </Button>
+               </children>
+            </Pane>
+                <Button fx:id="BtnParkIn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="70.0" prefWidth="300.0" style="-fx-font-size: 15;" text="PARK IN" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="FORWARD" size="20" />
+                    </graphic>
+                    <VBox.margin>
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="BtnParked" mnemonicParsing="false" onAction="#handleClicks" prefHeight="70.0" prefWidth="300.0" style="-fx-font-size: 15;" text="PARKED" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CAR" size="20" wrappingWidth="24.45711898803711" />
+                    </graphic>
+                </Button>
+                <Button fx:id="BtnParkOut" mnemonicParsing="false" onAction="#handleClicks" prefHeight="70.0" prefWidth="300.0" style="-fx-font-size: 15;" text="PARK OUT" textFill="WHITE">
+                    <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="REPLY" size="20" />
+                    </graphic>
+                </Button>
+            </children>
+        </VBox>
+      <StackPane layoutX="300.0" layoutY="215.0" prefHeight="490.0" prefWidth="780.0">
+         <children>
+              <Pane fx:id="pnlParkOut" prefHeight="285.0" prefWidth="620.0" />
+              <Pane fx:id="pnlParked" prefHeight="486.0" prefWidth="680.0">
+                  <children>
+                      <TableView layoutX="73.0" layoutY="65.0" prefHeight="361.0" prefWidth="634.0">
+                          <columns>
+                              <TableColumn prefWidth="164.0" text="PLAT NOMOR" />
+                              <TableColumn prefWidth="146.0" text="JENIS KENDARAAN" />
+                              <TableColumn prefWidth="133.0" text="TANGGAL MASUK" />
+                              <TableColumn prefWidth="88.0" text="JAM MASUK" />
+                              <TableColumn prefWidth="102.0" text="HARGA" />
+                          </columns>
+                      </TableView>
+                      <Button fx:id="BtnSearch" layoutX="596.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="SEARCH" textFill="WHITE" />
+                      <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" layoutX="83.0" layoutY="46.0" />
+                  <TextField fx:id="txtSearch" layoutX="107.0" layoutY="30.0" prefHeight="25.0" prefWidth="475.0" promptText="Search" />
+                  </children>
+              </Pane>
+            <Pane fx:id="pnlParkIn" prefHeight="285.0" prefWidth="620.0">
+               <children>
+                  <Button fx:id="BtnInsert" layoutX="323.0" layoutY="307.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" text="INSERT" textFill="WHITE" />
+                  <TextField fx:id="txtPlat" layoutX="15.0" layoutY="60.0" prefHeight="75.0" prefWidth="750.0" promptText="PLAT NOMOR">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
+                  <ComboBox fx:id="cmbJenis" layoutX="15.0" layoutY="170.0" prefHeight="75.0" prefWidth="750.0" promptText="JENIS KENDARAAN" />
+               </children></Pane>
+            <Pane fx:id="pnlStart" prefHeight="486.0" prefWidth="680.0" />
+         </children>
+      </StackPane>
+      <HBox layoutX="369.0" prefHeight="140.0" prefWidth="712.0" style="-fx-background-color: #5749d1;">
+         <children>
+            <Pane prefHeight="115.0" prefWidth="712.0">
+               <children>
+                  <Label layoutX="155.0" layoutY="14.0" prefHeight="33.0" prefWidth="103.0" text="NIK" textFill="WHITE" />
+                  <Label layoutX="155.0" layoutY="54.0" prefHeight="33.0" prefWidth="103.0" text="USERNAME" textFill="WHITE" />
+                  <Label layoutX="155.0" layoutY="93.0" prefHeight="33.0" prefWidth="103.0" text="NAMA" textFill="WHITE" />
+                  <Label fx:id="Nik" layoutX="271.0" layoutY="14.0" prefHeight="33.0" prefWidth="200.0" />
+                  <Label fx:id="Username" layoutX="271.0" layoutY="54.0" prefHeight="33.0" prefWidth="200.0" />
+                  <Label fx:id="Nama" layoutX="271.0" layoutY="93.0" prefHeight="33.0" prefWidth="200.0" />
+                  <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="500.0" layoutY="80.0" size="75" text="" wrappingWidth="81.99999999999989" />
+                  <Button fx:id="BtnEdit" layoutX="496.0" layoutY="100.0" mnemonicParsing="false" onAction="#EditProfile" prefHeight="25.0" prefWidth="90.0" text="Edit Profil" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="EDIT" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="BtnLogout" layoutX="608.0" layoutY="18.0" mnemonicParsing="false" onAction="#OnLogout" prefHeight="100.0" prefWidth="90.0" text="LOGOUT" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="POWER_OFF" />
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+         </children></HBox>
+    </children>
+</AnchorPane>

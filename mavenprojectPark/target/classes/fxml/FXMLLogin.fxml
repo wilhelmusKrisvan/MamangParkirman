@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="450.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenprojectpark.FXMLLogController">
+    <stylesheets>
+        <URL value="@/styles/dark.css"/>
+    </stylesheets>
+    <children>
+      <Label layoutX="58.0" layoutY="87.0" prefHeight="36.0" prefWidth="88.0" style="-fx-font-size: 15;" text="USERNAME">
+      </Label>
+      <Label layoutX="58.0" layoutY="132.0" prefHeight="36.0" prefWidth="88.0" style="-fx-font-size: 15;" text="PASSWORD">
+      </Label>
+      <TextField id="Uname" fx:id="Uname" layoutX="162.0" layoutY="93.0" prefHeight="26.0" prefWidth="185.0" />
+      <PasswordField id="Pass" fx:id="Pass" layoutX="162.0" layoutY="138.0" prefHeight="26.0" prefWidth="186.0" />
+      <Button fx:id="LogButton" layoutX="162.0" layoutY="187.0" mnemonicParsing="false" onAction="#LogButton" prefHeight="36.0" prefWidth="88.0" style="-fx-font-size: 15;" text="LOGIN">
+      </Button>
+   </children>
+</AnchorPane>
