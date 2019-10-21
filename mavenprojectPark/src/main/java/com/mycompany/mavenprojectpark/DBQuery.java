@@ -36,7 +36,7 @@ public class DBQuery extends DBConnect{
         }
     }
     
-    public void queryUp(String query){
+    public void queryUpdate(String query){
         try {
             ps=con.prepareStatement(query);
             ps.executeUpdate();

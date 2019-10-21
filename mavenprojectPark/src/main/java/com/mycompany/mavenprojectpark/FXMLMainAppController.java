@@ -47,6 +47,11 @@ public class FXMLMainAppController implements Initializable {
     @FXML
     private ComboBox<?> cmbJenis;
     
+     @FXML
+     private void InsertPark(ActionEvent event){
+         
+     } 
+    
     @FXML
     private void EditProfile(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
