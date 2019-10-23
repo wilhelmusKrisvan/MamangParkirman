@@ -1,4 +1,4 @@
-package com.mycompany.mavenprojectpark;
+package id.ac.ukdw.mamangparking;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;

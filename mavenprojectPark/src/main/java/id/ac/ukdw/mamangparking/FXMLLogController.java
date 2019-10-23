@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mavenprojectpark;
+package id.ac.ukdw.mamangparking;
 
+import id.ac.ukdw.mamangparking.db.DBQuery;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -55,7 +56,7 @@ public class FXMLLogController implements Initializable {
                     FXMLMainAppController control = loader.getController();
                     control.SetDataFront(user, pass);
                     Scene scene = new Scene(Main);
-                    scene.getStylesheets().add(getClass().getResource("/styles/darkMain.css").toExternalForm());
+                    //scene.getStylesheets().add(getClass().getResource("/styles/darkMain.css").toExternalForm());
                     Stage Primarystage = (Stage) ((Node)event.getSource()).getScene().getWindow();                    
                     Primarystage.setScene(scene);
                     Primarystage.show();

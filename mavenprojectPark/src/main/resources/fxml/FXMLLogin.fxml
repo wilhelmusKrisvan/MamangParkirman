@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="450.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenprojectpark.FXMLLogController">
+<AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="450.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id.ac.ukdw.mamangparking.FXMLLogController">
     <stylesheets>
         <URL value="@/styles/dark.css"/>
     </stylesheets>

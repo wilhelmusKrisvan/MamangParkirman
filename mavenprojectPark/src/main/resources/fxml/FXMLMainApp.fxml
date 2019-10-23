@@ -17,11 +17,11 @@
 <!--<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>-->
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1080.0" stylesheets="@../styles/darkMain.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenprojectpark.FXMLMainAppController">
+<AnchorPane id="AnchorPane" prefHeight="710.0" prefWidth="1080.0" stylesheets="@../styles/darkMain.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id.ac.ukdw.mamangparking.FXMLMainAppController">
     <children>
-        <VBox layoutY="-5.0" prefHeight="711.0" prefWidth="300.0" style="-fx-background-color: #5749d1;">
+        <VBox prefHeight="710.0" prefWidth="300.0" style="-fx-background-color: #5749d1;">
             <children>
-            <Pane prefHeight="250.0" prefWidth="262.0">
+            <Pane>
                <children>
                       <Button fx:id="BtnLaporan" layoutX="14.0" layoutY="213.0" mnemonicParsing="false" text="Lihat Laporan" textFill="WHITE">
                           <graphic>
@@ -86,9 +86,9 @@
             <Pane fx:id="pnlStart" prefHeight="486.0" prefWidth="680.0" />
          </children>
       </StackPane>
-      <HBox layoutX="369.0" prefHeight="140.0" prefWidth="712.0" style="-fx-background-color: #5749d1;">
+      <HBox layoutX="369.0" prefHeight="140.0" prefWidth="715.0" style="-fx-background-color: #5749d1;">
          <children>
-            <Pane prefHeight="115.0" prefWidth="712.0">
+            <Pane prefHeight="126.0" prefWidth="719.0">
                <children>
                   <Label layoutX="155.0" layoutY="14.0" prefHeight="33.0" prefWidth="103.0" text="NIK" textFill="WHITE" />
                   <Label layoutX="155.0" layoutY="54.0" prefHeight="33.0" prefWidth="103.0" text="USERNAME" textFill="WHITE" />
