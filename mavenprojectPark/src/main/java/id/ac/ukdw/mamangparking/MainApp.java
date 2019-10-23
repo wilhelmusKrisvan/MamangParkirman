@@ -16,6 +16,7 @@ public class MainApp extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/FXMLLogin.fxml"));
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/styles/dark.css").toExternalForm());
+            stage.setTitle("Mamang Parkirman");
             stage.setScene(scene);
             stage.show();
         }catch(Exception e){

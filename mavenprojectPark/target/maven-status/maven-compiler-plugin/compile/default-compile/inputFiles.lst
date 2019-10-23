@@ -1,17 +1,7 @@
-<<<<<<< HEAD
-D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\FXMLLogController.java
-D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\Karyawan.java
-D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\MainApp.java
-D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\DBQuery.java
-D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\DBConnect.java
-D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\FXMLMainAppController.java
-D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\FXMLEditProfileController.java
-=======
-D:\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\FXMLEditProfileController.java
-D:\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\FXMLMainAppController.java
-D:\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\MainApp.java
-D:\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\DBConnect.java
-D:\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\FXMLLogController.java
-D:\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\Karyawan.java
-D:\RPL\MamangParkirman\mavenprojectPark\src\main\java\com\mycompany\mavenprojectpark\DBQuery.java
->>>>>>> master
+D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\id\ac\ukdw\mamangparking\FXMLEditProfileController.java
+D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\id\ac\ukdw\mamangparking\FXMLMainAppController.java
+D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\id\ac\ukdw\mamangparking\model\Karyawan.java
+D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\id\ac\ukdw\mamangparking\db\DBQuery.java
+D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\id\ac\ukdw\mamangparking\db\DBConnect.java
+D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\id\ac\ukdw\mamangparking\FXMLLogController.java
+D:\KULIAH\SM 5\RPL\MamangParkirman\mavenprojectPark\src\main\java\id\ac\ukdw\mamangparking\MainApp.java

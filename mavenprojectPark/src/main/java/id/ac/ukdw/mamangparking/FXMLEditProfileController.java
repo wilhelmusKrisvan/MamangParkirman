@@ -5,6 +5,7 @@
  */
 package id.ac.ukdw.mamangparking;
 
+import id.ac.ukdw.mamangparking.model.Karyawan;
 import id.ac.ukdw.mamangparking.db.DBQuery;
 import java.net.URL;
 import java.time.LocalDate;

@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mycompany</groupId>
+    <groupId>id.ac.ukdw.mamangparking</groupId>
     <artifactId>mavenprojectPark</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -11,7 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mainClass>com.mycompany.mavenprojectpark.MainApp</mainClass>
+        <mainClass>id.ac.ukdw.mamangparking.MainApp</mainClass>
     </properties>
 
     <organization>
@@ -59,7 +59,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
+                <version>1.2</version>
                 <executions>
                     <execution>
                         <id>unpack-dependencies</id>

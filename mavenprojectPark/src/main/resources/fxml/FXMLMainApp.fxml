@@ -17,7 +17,7 @@
 <!--<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>-->
 
-<AnchorPane id="AnchorPane" prefHeight="710.0" prefWidth="1080.0" stylesheets="@../styles/darkMain.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id.ac.ukdw.mamangparking.FXMLMainAppController">
+<AnchorPane id="AnchorPane" stylesheets="@../styles/darkMain.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id.ac.ukdw.mamangparking.FXMLMainAppController">
     <children>
         <VBox prefHeight="710.0" prefWidth="300.0" style="-fx-background-color: #5749d1;">
             <children>
