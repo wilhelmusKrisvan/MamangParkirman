@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mavenprojectpark;
+package id.ac.ukdw.mamangparking;
 
+import id.ac.ukdw.mamangparking.db.DBQuery;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
