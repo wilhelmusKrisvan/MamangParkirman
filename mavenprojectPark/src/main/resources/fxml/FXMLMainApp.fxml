@@ -1,114 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <!--<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>-->
 
-<AnchorPane id="AnchorPane" stylesheets="@../styles/darkMain.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id.ac.ukdw.mamangparking.FXMLMainAppController">
-    <children>
-        <VBox prefHeight="710.0" prefWidth="300.0" style="-fx-background-color: #5749d1;">
-            <children>
-            <Pane>
+<AnchorPane prefHeight="446.0" prefWidth="663.0" style="-fx-background-color: #030307;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="663.0" AnchorPane.bottomAnchor="0.0">
+         <left>
+            <VBox prefHeight="290.0" prefWidth="80.0" style="-fx-background-color: #131022;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
                <children>
-                      <Button fx:id="BtnLaporan" layoutX="14.0" layoutY="213.0" mnemonicParsing="false" text="Lihat Laporan" textFill="WHITE">
-                          <graphic>
-                              <FontAwesomeIcon fill="WHITE" glyphName="FOLDER_OPEN" />
-                          </graphic>
-                      </Button>
-                      <Button fx:id="BtnHarga" layoutX="162.0" layoutY="214.0" mnemonicParsing="false" text="Lihat Daftar Harga" textFill="WHITE">
-                          <graphic>
-                              <FontAwesomeIcon fill="WHITE" glyphName="USD" />
-                          </graphic>
-                      </Button>
+                  <Button id="BtnParkIn" fx:id="BtnParkIn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PARK IN" textAlignment="CENTER" textFill="#ffa239">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../parkin.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button id="BtnParked" fx:id="BtnParked" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="85.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PARKED" textAlignment="CENTER" textFill="#ffa239">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../parked.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="BtnParkOut" fx:id="BtnParkOut" contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PARK OUT" textAlignment="CENTER" textFill="#ffa239">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../parkout.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="BtnHarga" contentDisplay="TOP" layoutX="10.0" layoutY="228.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PRICE" textAlignment="CENTER" textFill="#ffa239">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../tarif.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
+            </VBox>
+         </left>
+         <top>
+            <VBox prefHeight="99.0" prefWidth="663.0" style="-fx-background-color: #131022;" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="Nik" layoutX="104.0" layoutY="23.0" text="NIK" textFill="#ffa239" />
+                        <Label fx:id="Username" layoutX="104.0" layoutY="59.0" text="USERNAME" textFill="#ffa239" />
+                        <Label fx:id="Nama" layoutX="104.0" layoutY="41.0" text="NAME" textFill="#ffa239" />
+                        <ImageView fitHeight="77.0" fitWidth="70.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../logo.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="BtnEdit" contentDisplay="TOP" layoutX="545.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Edit Profile" textAlignment="CENTER" textFill="#ffa239">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../profile.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children></VBox>
+         </top>
+         <bottom>
+            <Pane id="pnlParkIn" prefHeight="18.0" prefWidth="647.0" style="-fx-background-color: #131022;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="8.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets left="2.0" right="2.0" />
+               </padding>
             </Pane>
-                <Button fx:id="BtnParkIn" mnemonicParsing="false" onAction="#handleClicks" prefHeight="70.0" prefWidth="300.0" style="-fx-font-size: 15;" text="PARK IN" textFill="WHITE">
-                    <graphic>
-                        <FontAwesomeIcon fill="WHITE" glyphName="FORWARD" size="20" />
-                    </graphic>
-                    <VBox.margin>
-                    </VBox.margin>
-                </Button>
-                <Button fx:id="BtnParked" mnemonicParsing="false" onAction="#handleClicks" prefHeight="70.0" prefWidth="300.0" style="-fx-font-size: 15;" text="PARKED" textFill="WHITE">
-                    <graphic>
-                        <FontAwesomeIcon fill="WHITE" glyphName="CAR" size="20" wrappingWidth="24.45711898803711" />
-                    </graphic>
-                </Button>
-                <Button fx:id="BtnParkOut" mnemonicParsing="false" onAction="#handleClicks" prefHeight="70.0" prefWidth="300.0" style="-fx-font-size: 15;" text="PARK OUT" textFill="WHITE">
-                    <graphic>
-                        <FontAwesomeIcon fill="WHITE" glyphName="REPLY" size="20" />
-                    </graphic>
-                </Button>
-            </children>
-        </VBox>
-      <StackPane layoutX="300.0" layoutY="215.0" prefHeight="490.0" prefWidth="780.0">
-         <children>
-              <Pane fx:id="pnlParkOut" prefHeight="285.0" prefWidth="620.0" />
-              <Pane fx:id="pnlParked" prefHeight="486.0" prefWidth="680.0">
-                  <children>
-                      <TableView layoutX="73.0" layoutY="65.0" prefHeight="361.0" prefWidth="634.0">
+         </bottom>
+         <center>
+            <Pane prefHeight="292.0" prefWidth="577.0" style="-fx-background-color: #131022; -fx-border-radius: 0;" visible="false" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </BorderPane.margin>
+               <children>
+                  <Pane fx:id="pnlParked" layoutY="8.0" prefHeight="297.0" prefWidth="577.0" style="-fx-background-color: #131022;">
+                     <children>
+                        <TextField id="txtSearch" layoutX="77.0" layoutY="39.0" prefHeight="25.0" prefWidth="372.0" promptText="Masukkan Pencarian.." />
+                        <Button id="BtnSearch" fx:id="BtnSearch" layoutX="449.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="CARI" textFill="#ffa239" />
+                        <TableView fx:id="tableKendaraan" layoutX="78.0" layoutY="78.0" prefHeight="176.0" prefWidth="417.0">
                           <columns>
-                              <TableColumn prefWidth="164.0" text="PLAT NOMOR" />
-                              <TableColumn prefWidth="146.0" text="JENIS KENDARAAN" />
-                              <TableColumn prefWidth="133.0" text="TANGGAL MASUK" />
-                              <TableColumn prefWidth="88.0" text="JAM MASUK" />
-                              <TableColumn prefWidth="102.0" text="HARGA" />
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
                           </columns>
-                      </TableView>
-                      <Button fx:id="BtnSearch" layoutX="596.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="SEARCH" textFill="WHITE" />
-                      <FontAwesomeIcon fill="WHITE" glyphName="SEARCH" layoutX="83.0" layoutY="46.0" />
-                  <TextField fx:id="txtSearch" layoutX="107.0" layoutY="30.0" prefHeight="25.0" prefWidth="475.0" promptText="Search" />
-                  </children>
-              </Pane>
-            <Pane fx:id="pnlParkIn" prefHeight="285.0" prefWidth="620.0">
-               <children>
-                  <Button fx:id="BtnInsert" layoutX="323.0" layoutY="307.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="135.0" text="INSERT" textFill="WHITE" />
-                  <TextField fx:id="txtPlat" layoutX="15.0" layoutY="60.0" prefHeight="75.0" prefWidth="750.0" promptText="PLAT NOMOR">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </TextField>
-                  <ComboBox fx:id="cmbJenis" layoutX="15.0" layoutY="170.0" prefHeight="75.0" prefWidth="750.0" promptText="JENIS KENDARAAN" />
-               </children></Pane>
-            <Pane fx:id="pnlStart" prefHeight="486.0" prefWidth="680.0" />
-         </children>
-      </StackPane>
-      <HBox layoutX="369.0" prefHeight="140.0" prefWidth="715.0" style="-fx-background-color: #5749d1;">
-         <children>
-            <Pane prefHeight="126.0" prefWidth="719.0">
-               <children>
-                  <Label layoutX="155.0" layoutY="14.0" prefHeight="33.0" prefWidth="103.0" text="NIK" textFill="WHITE" />
-                  <Label layoutX="155.0" layoutY="54.0" prefHeight="33.0" prefWidth="103.0" text="USERNAME" textFill="WHITE" />
-                  <Label layoutX="155.0" layoutY="93.0" prefHeight="33.0" prefWidth="103.0" text="NAMA" textFill="WHITE" />
-                  <Label fx:id="Nik" layoutX="271.0" layoutY="14.0" prefHeight="33.0" prefWidth="200.0" />
-                  <Label fx:id="Username" layoutX="271.0" layoutY="54.0" prefHeight="33.0" prefWidth="200.0" />
-                  <Label fx:id="Nama" layoutX="271.0" layoutY="93.0" prefHeight="33.0" prefWidth="200.0" />
-                  <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="500.0" layoutY="80.0" size="75" text="" wrappingWidth="81.99999999999989" />
-                  <Button fx:id="BtnEdit" layoutX="496.0" layoutY="100.0" mnemonicParsing="false" onAction="#EditProfile" prefHeight="25.0" prefWidth="90.0" text="Edit Profil" textFill="WHITE">
-                     <graphic>
-                        <FontAwesomeIcon fill="WHITE" glyphName="EDIT" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="BtnLogout" layoutX="608.0" layoutY="18.0" mnemonicParsing="false" onAction="#OnLogout" prefHeight="100.0" prefWidth="90.0" text="LOGOUT" textFill="WHITE">
-                     <graphic>
-                        <FontAwesomeIcon fill="WHITE" glyphName="POWER_OFF" />
-                     </graphic>
-                  </Button>
+                        </TableView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pnlParkOut" prefHeight="292.0" prefWidth="577.0" style="-fx-background-color: #131022;" />
+                  <Pane fx:id="pnlParkIn" prefHeight="292.0" prefWidth="577.0" style="-fx-background-color: #131022;">
+                     <children>
+                        <ComboBox fx:id="cmbJenis" layoutX="81.0" layoutY="158.0" prefHeight="30.0" prefWidth="411.0" promptText="JENIS KENDARAAN" />
+                        <TextArea fx:id="txtPlat" layoutX="83.0" layoutY="116.0" minHeight="-Infinity" prefHeight="30.0" prefWidth="411.0" promptText="PLAT NOMOR">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextArea>
+                        <Button id="btnSearch" fx:id="BtnInsert" layoutX="259.0" layoutY="205.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="MASUK" textFill="#ffa239" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="292.0" prefWidth="577.0" style="-fx-background-color: #131022;" />
                </children>
             </Pane>
-         </children></HBox>
-    </children>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>
