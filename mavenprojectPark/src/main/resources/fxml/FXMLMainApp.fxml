@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,7 +18,7 @@
 <!--<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>-->
 
-<AnchorPane prefHeight="446.0" prefWidth="663.0" style="-fx-background-color: #030307;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="446.0" prefWidth="663.0" style="-fx-background-color: #030307;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id.ac.ukdw.mamangparking.FXMLMainAppController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="663.0" AnchorPane.bottomAnchor="0.0">
          <left>
@@ -28,7 +27,7 @@
                   <Insets />
                </BorderPane.margin>
                <children>
-                  <Button id="BtnParkIn" fx:id="BtnParkIn" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PARK IN" textAlignment="CENTER" textFill="#ffa239">
+                  <Button id="BtnParkIn" fx:id="BtnParkIn" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PARK IN" textAlignment="CENTER" textFill="#ffa239">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -40,7 +39,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
-                  <Button id="BtnParked" fx:id="BtnParked" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="85.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PARKED" textAlignment="CENTER" textFill="#ffa239">
+                  <Button id="BtnParked" fx:id="BtnParked" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="85.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PARKED" textAlignment="CENTER" textFill="#ffa239">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -49,7 +48,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button id="BtnParkOut" fx:id="BtnParkOut" contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PARK OUT" textAlignment="CENTER" textFill="#ffa239">
+                  <Button id="BtnParkOut" fx:id="BtnParkOut" contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PARK OUT" textAlignment="CENTER" textFill="#ffa239">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -78,15 +77,15 @@
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="Nik" layoutX="104.0" layoutY="23.0" text="NIK" textFill="#ffa239" />
-                        <Label fx:id="Username" layoutX="104.0" layoutY="59.0" text="USERNAME" textFill="#ffa239" />
-                        <Label fx:id="Nama" layoutX="104.0" layoutY="41.0" text="NAME" textFill="#ffa239" />
+                        <Label layoutX="104.0" layoutY="23.0" text="NIK" textFill="#ffa239" />
+                        <Label layoutX="104.0" layoutY="59.0" text="USERNAME" textFill="#ffa239" />
+                        <Label layoutX="104.0" layoutY="41.0" text="NAME" textFill="#ffa239" />
                         <ImageView fitHeight="77.0" fitWidth="70.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../logo.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="BtnEdit" contentDisplay="TOP" layoutX="545.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Edit Profile" textAlignment="CENTER" textFill="#ffa239">
+                        <Button fx:id="BtnEdit" contentDisplay="TOP" layoutX="545.0" mnemonicParsing="false" onAction="#EditProfile" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Edit Profile" textAlignment="CENTER" textFill="#ffa239">
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -95,6 +94,9 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Label fx:id="Username" layoutX="191.0" layoutY="59.0" prefHeight="17.0" prefWidth="99.0" textFill="#ffa239" />
+                        <Label fx:id="Nama" layoutX="191.0" layoutY="41.0" prefHeight="17.0" prefWidth="99.0" textFill="#ffa239" />
+                        <Label fx:id="Nik" layoutX="191.0" layoutY="23.0" prefHeight="17.0" prefWidth="99.0" textFill="#ffa239" />
                      </children>
                   </Pane>
                </children></VBox>
@@ -110,7 +112,7 @@
             </Pane>
          </bottom>
          <center>
-            <Pane prefHeight="292.0" prefWidth="577.0" style="-fx-background-color: #131022; -fx-border-radius: 0;" visible="false" BorderPane.alignment="CENTER">
+            <Pane prefHeight="236.0" prefWidth="574.0" style="-fx-background-color: #131022; -fx-border-radius: 0;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </BorderPane.margin>
@@ -131,15 +133,15 @@
                   <Pane fx:id="pnlParkIn" prefHeight="292.0" prefWidth="577.0" style="-fx-background-color: #131022;">
                      <children>
                         <ComboBox fx:id="cmbJenis" layoutX="81.0" layoutY="158.0" prefHeight="30.0" prefWidth="411.0" promptText="JENIS KENDARAAN" />
-                        <TextArea fx:id="txtPlat" layoutX="83.0" layoutY="116.0" minHeight="-Infinity" prefHeight="30.0" prefWidth="411.0" promptText="PLAT NOMOR">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </TextArea>
                         <Button id="btnSearch" fx:id="BtnInsert" layoutX="259.0" layoutY="205.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="MASUK" textFill="#ffa239" />
+                        <TextField layoutX="81.0" layoutY="106.0" prefHeight="32.0" prefWidth="409.0" promptText="PLAT NOMOR">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
                      </children>
                   </Pane>
-                  <Pane prefHeight="292.0" prefWidth="577.0" style="-fx-background-color: #131022;" />
+                  <Pane fx:id="pnlStart" prefHeight="292.0" prefWidth="577.0" style="-fx-background-color: #131022;" />
                </children>
             </Pane>
          </center>
