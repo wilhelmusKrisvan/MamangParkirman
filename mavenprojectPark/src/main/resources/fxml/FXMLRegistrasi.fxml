@@ -20,7 +20,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="63.0" layoutY="84.0" prefHeight="20.0" prefWidth="112.0" stylesheets="@../styles/darkMain.css" text="Nama Lengkap" textFill="WHITE">
+            <Label layoutX="63.0" layoutY="84.0" prefHeight="20.0" prefWidth="112.0" text="Nama Lengkap" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -44,7 +44,7 @@
                </font>
             </Label>
             <TextField fx:id="NewPass" layoutX="208.0" layoutY="192.0" prefHeight="25.0" prefWidth="245.0" />
-            <Label layoutX="63.0" layoutY="231.0" prefHeight="20.0" prefWidth="145.0" text="Retype New Password" textFill="WHITE">
+            <Label layoutX="63.0" layoutY="231.0" prefHeight="20.0" prefWidth="145.0" stylesheets="@../styles/darkMain.css" text="Retype New Password" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

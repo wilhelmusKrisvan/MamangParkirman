@@ -54,7 +54,7 @@ public class FXMLLogController implements Initializable {
                     loader.setLocation(getClass().getResource("/fxml/FXMLMainApp.fxml"));
                     Parent Main = loader.load();
                     FXMLMainAppController control = loader.getController();
-                    control.SetDataFront(user, pass);
+                  //  control.SetDataFront(user, pass);
                     Scene scene = new Scene(Main);
                     //scene.getStylesheets().add(getClass().getResource("/styles/darkMain.css").toExternalForm());
                     Stage Primarystage = (Stage) ((Node)event.getSource()).getScene().getWindow();                    
