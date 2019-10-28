@@ -62,8 +62,17 @@ public class FXMLLogController implements Initializable {
                     Primarystage.show();
                     rs.close();
                 }
-                else{
-                    
+                 if(level.equals("admin")){
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/fxml/FXMLAdmin.fxml"));
+                    Parent Main = loader.load();
+                    FXMLAdminController control = loader.getController();
+                    control.SetDataFront(NIK);
+                    Scene scene = new Scene(Main);
+                    Stage Primarystage = (Stage) ((Node)event.getSource()).getScene().getWindow();                    
+                    Primarystage.setScene(scene);
+                    Primarystage.show();
+                    rs.close();
                 }
             }else{
                 Alert alert = new Alert(AlertType.ERROR);

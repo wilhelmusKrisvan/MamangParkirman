@@ -83,8 +83,8 @@
             </Label>
             <ComboBox fx:id="Gender" layoutX="209.0" layoutY="263.0" prefHeight="25.0" prefWidth="245.0" />
             <Separator layoutX="63.0" layoutY="29.0" prefHeight="9.0" prefWidth="392.0" />
-            <Button fx:id="BtnSave" layoutX="290.0" layoutY="518.0" mnemonicParsing="false" onAction="#OnSave" prefHeight="35.0" prefWidth="81.0" text="SAVE" textFill="WHITE" />
-            <Button fx:id="BtnCancel" layoutX="135.0" layoutY="518.0" mnemonicParsing="false" onAction="#OnCancel" prefHeight="35.0" prefWidth="81.0" text="CANCEL" textFill="WHITE" />
+            <Button fx:id="BtnSave" layoutX="290.0" layoutY="518.0" mnemonicParsing="false"  prefHeight="35.0" prefWidth="81.0" text="SAVE" textFill="WHITE" />
+            <Button fx:id="BtnCancel" layoutX="135.0" layoutY="518.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" text="CANCEL" textFill="WHITE" />
             <PasswordField fx:id="NewPass" layoutX="208.0" layoutY="154.0" prefHeight="25.0" prefWidth="245.0" />
             <PasswordField fx:id="NewRepass" layoutX="209.0" layoutY="189.0" prefHeight="25.0" prefWidth="245.0" />
          </children>
