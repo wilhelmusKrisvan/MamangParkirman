@@ -36,16 +36,19 @@ public class DBQuery extends DBConnect{
         }
     }
     
-    public void queryUpdate(String query){
+    public void queryUpdate(String query) throws SQLException{
         try {
             ps=con.prepareStatement(query);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(DBQuery.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            rs.close();
+            ps.close();
         }
     }
     
-    public ResultSet queryResult(String query){
+    public ResultSet queryResult(String query) throws SQLException{
         try{
             ps = con.prepareStatement(query);
             rs = ps.executeQuery();
@@ -55,7 +58,7 @@ public class DBQuery extends DBConnect{
         return rs;
     }
     
-    public ResultSet logquery(String User, String pass){
+    public ResultSet logquery(String User, String pass) throws SQLException{
         try{
             String query = "SELECT * from Karyawan WHERE Username=? AND Password=?";
             ps=con.prepareStatement(query);
@@ -68,7 +71,7 @@ public class DBQuery extends DBConnect{
         return rs;
     }
     
-    public ResultSet Profilequery(String NIK){
+    public ResultSet Profilequery(String NIK) throws SQLException{
         try{
             String query = "SELECT * from Karyawan WHERE NIK=?";
             ps=con.prepareStatement(query);
@@ -78,5 +81,53 @@ public class DBQuery extends DBConnect{
             JOptionPane.showMessageDialog(null, "FAILED");
         }
         return rs;
+    }
+    
+    public void UpdateProfile(String User, String pass, String notelp, String alamat, String NamaLeng, String tgl, String gender, int nik) throws SQLException{
+        try{
+              String queryAdmin = "UPDATE `Karyawan` SET `Username`=?,`Password`=?,`Telepon`=?,`Alamat`=?,`Nama`=?,`Tanggal Lahir`=?, `Jenis Kelamin`=? WHERE `NIK`="+nik+"";
+                ps=con.prepareStatement(queryAdmin);
+                ps.setString(1, User);
+                ps.setString(2, pass);
+                ps.setString(3, notelp);
+                ps.setString(4, alamat);
+                ps.setString(5, NamaLeng);
+                ps.setString(6, tgl);
+                ps.setString(7, gender);
+                boolean x =ps.execute();
+                if(x==true){
+                    JOptionPane.showMessageDialog(null, "Admin Updated");
+                }
+          }
+          catch(SQLException e){
+              e.printStackTrace();
+          }finally{
+                ps.close();
+          }       
+    }
+    
+    public void InsertKaryawan(String User, String pass, String notelp, String alamat, String NamaLeng, String tgl, String gender, String lvl, int nik) throws SQLException{
+        try{
+              String queryAdmin = "INSERT INTO `Karyawan` (`Username`,`Password`,`Telepon`,`Alamat`,`Nama`,`Tanggal Lahir`, `Jenis Kelamin`, `Level`, `NIK`) VALUES (?,?,?,?,?,?,?,?,?)";
+                ps=con.prepareStatement(queryAdmin);
+                ps.setString(1, User);
+                ps.setString(2, pass);
+                ps.setString(3, notelp);
+                ps.setString(4, alamat);
+                ps.setString(5, NamaLeng);
+                ps.setString(6, tgl);
+                ps.setString(7, gender);
+                ps.setString(8, lvl);
+                ps.setInt(9, nik);
+                boolean x =ps.execute();
+                if(x==true){
+                    JOptionPane.showMessageDialog(null, "Admin Updated");
+                }
+          }
+          catch(SQLException e){
+              e.printStackTrace();
+          }finally{
+                ps.close();
+          }       
     }
 }

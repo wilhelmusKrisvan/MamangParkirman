@@ -48,18 +48,19 @@ public class FXMLLogController implements Initializable {
         String pass = Pass.getText();
         ResultSet rs = db.logquery(user, pass);
             if(rs.next()){
+                String NIK = rs.getString(1);
                 String level = rs.getString(9);
                 if(level.equals("staff")){
                     FXMLLoader loader = new FXMLLoader();
                     loader.setLocation(getClass().getResource("/fxml/FXMLMainApp.fxml"));
                     Parent Main = loader.load();
                     FXMLMainAppController control = loader.getController();
-                  //  control.SetDataFront(user, pass);
+                    control.SetDataFront(NIK);
                     Scene scene = new Scene(Main);
-                    //scene.getStylesheets().add(getClass().getResource("/styles/darkMain.css").toExternalForm());
                     Stage Primarystage = (Stage) ((Node)event.getSource()).getScene().getWindow();                    
                     Primarystage.setScene(scene);
                     Primarystage.show();
+                    rs.close();
                 }
                 else{
                     

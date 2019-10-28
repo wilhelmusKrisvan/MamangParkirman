@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package id.ac.ukdw.mamangparking.model;
+import id.ac.ukdw.mamangparking.db.DBQuery;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 /**
  *
  * @author Wilhelmus Krisvan
  */
 public class Karyawan {
-    private String NIK;
+    DBQuery db = new DBQuery();
+    private int NIK;
     private String NamaLengkap;
     private String Username;
     private String Password;
@@ -21,10 +24,10 @@ public class Karyawan {
     private String Level;
 
     
-    public void getDBKaryawan(ResultSet rs){
+    public void getDBKaryawan(ResultSet rs) throws SQLException{
         try{
             rs.next();
-            this.NIK = rs.getString(1);
+            this.NIK = rs.getInt(1);
             this.NamaLengkap=rs.getString(2);
             this.Username = rs.getString(3);
             this.Password = rs.getString(4);
@@ -36,10 +39,24 @@ public class Karyawan {
             
         }catch(Exception e){
             e.printStackTrace();
+        }finally{
+            rs.close();
         }
     }
     
-    public void setNIK(String NIK) {
+    public void UpdateDBKaryawan() throws SQLException{
+        db.UpdateProfile(this.Username, this.Password, this.NoTelp, this.Alamat, this.NamaLengkap, this.TglLahir, this.Gender, this.NIK);
+    }
+    
+    public void InsertDBKaryawan() throws SQLException{
+        db.InsertKaryawan(this.Username, this.Password, this.NoTelp, this.Alamat, this.NamaLengkap, this.TglLahir, this.Gender, this.Level, this.NIK);
+    }
+    
+    public void setGender(String Gender) {
+        this.Gender = Gender;
+    }
+    
+    public void setNIK(int NIK) {
         this.NIK = NIK;
     }
 
@@ -71,10 +88,14 @@ public class Karyawan {
         this.Level = Level;
     }
 
-    public String getNIK() {
+    public String getGender() {
+        return Gender;
+    }
+    
+    public int getNIK() {
         return NIK;
     }
-
+    
     public String getNamaLengkap() {
         return NamaLengkap;
     }

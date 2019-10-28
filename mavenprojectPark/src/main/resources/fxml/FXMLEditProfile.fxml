@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -32,66 +33,60 @@
                </font>
             </Label>
             <TextField fx:id="User" layoutX="208.0" layoutY="118.0" prefHeight="25.0" prefWidth="245.0" />
-            <Label layoutX="63.0" layoutY="158.0" prefHeight="20.0" prefWidth="112.0" text="Password" textFill="WHITE">
+            <Label layoutX="63.0" layoutY="156.0" prefHeight="20.0" prefWidth="112.0" text="New Password" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="Pass" layoutX="208.0" layoutY="155.0" prefHeight="25.0" prefWidth="245.0" />
-            <Label layoutX="63.0" layoutY="195.0" prefHeight="20.0" prefWidth="112.0" text="New Password" textFill="WHITE">
+            <Label layoutX="63.0" layoutY="192.0" prefHeight="20.0" prefWidth="145.0" text="Retype New Password" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="NewPass" layoutX="208.0" layoutY="192.0" prefHeight="25.0" prefWidth="245.0" />
-            <Label layoutX="63.0" layoutY="231.0" prefHeight="20.0" prefWidth="145.0" text="Retype New Password" textFill="WHITE">
+            <Label layoutX="63.0" layoutY="230.0" prefHeight="20.0" prefWidth="95.0" text="Status Pegawai" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="NewRepass" layoutX="208.0" layoutY="229.0" prefHeight="25.0" prefWidth="245.0" />
-            <Label layoutX="63.0" layoutY="269.0" prefHeight="20.0" prefWidth="95.0" text="Status Pegawai" textFill="WHITE">
+            <Label layoutX="63.0" layoutY="265.0" prefHeight="20.0" prefWidth="95.0" text="Jenis Kelamin" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="63.0" layoutY="304.0" prefHeight="20.0" prefWidth="95.0" text="Jenis Kelamin" textFill="WHITE">
+            <Label layoutX="63.0" layoutY="306.0" prefHeight="20.0" prefWidth="95.0" text="Tanggal Lahir" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="63.0" layoutY="345.0" prefHeight="20.0" prefWidth="95.0" text="Tanggal Lahir" textFill="WHITE">
+            <Label layoutX="63.0" layoutY="343.0" prefHeight="20.0" prefWidth="95.0" text="No Telepon" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="63.0" layoutY="382.0" prefHeight="20.0" prefWidth="95.0" text="No Telepon" textFill="WHITE">
+            <TextField fx:id="NoTelp" layoutX="208.0" layoutY="340.0" prefHeight="25.0" prefWidth="245.0" />
+            <Label layoutX="63.0" layoutY="380.0" prefHeight="20.0" prefWidth="95.0" text="Alamat" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="NoTelp" layoutX="208.0" layoutY="379.0" prefHeight="25.0" prefWidth="245.0" />
-            <Label layoutX="63.0" layoutY="419.0" prefHeight="20.0" prefWidth="95.0" text="Alamat" textFill="WHITE">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextArea fx:id="Alamat" layoutX="208.0" layoutY="417.0" prefHeight="80.0" prefWidth="245.0" />
-            <DatePicker fx:id="Tgl" layoutX="208.0" layoutY="341.0" prefHeight="25.0" prefWidth="245.0" />
+            <TextArea fx:id="Alamat" layoutX="208.0" layoutY="378.0" prefHeight="80.0" prefWidth="245.0" />
+            <DatePicker fx:id="Tgl" layoutX="208.0" layoutY="302.0" prefHeight="25.0" prefWidth="245.0" />
             <Label fx:id="NIK" layoutX="209.0" layoutY="47.0" prefHeight="20.0" prefWidth="245.0" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="Level" layoutX="208.0" layoutY="269.0" prefHeight="20.0" prefWidth="245.0" textFill="WHITE">
+            <Label fx:id="Level" layoutX="208.0" layoutY="230.0" prefHeight="20.0" prefWidth="245.0" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="Gender" layoutX="209.0" layoutY="302.0" prefHeight="25.0" prefWidth="245.0" />
+            <ComboBox fx:id="Gender" layoutX="209.0" layoutY="263.0" prefHeight="25.0" prefWidth="245.0" />
             <Separator layoutX="63.0" layoutY="29.0" prefHeight="9.0" prefWidth="392.0" />
-            <Button layoutX="290.0" layoutY="518.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" text="SAVE" textFill="WHITE" />
-            <Button layoutX="135.0" layoutY="518.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="81.0" text="CANCEL" textFill="WHITE" />
+            <Button fx:id="BtnSave" layoutX="290.0" layoutY="518.0" mnemonicParsing="false" onAction="#OnSave" prefHeight="35.0" prefWidth="81.0" text="SAVE" textFill="WHITE" />
+            <Button fx:id="BtnCancel" layoutX="135.0" layoutY="518.0" mnemonicParsing="false" onAction="#OnCancel" prefHeight="35.0" prefWidth="81.0" text="CANCEL" textFill="WHITE" />
+            <PasswordField fx:id="NewPass" layoutX="208.0" layoutY="154.0" prefHeight="25.0" prefWidth="245.0" />
+            <PasswordField fx:id="NewRepass" layoutX="209.0" layoutY="189.0" prefHeight="25.0" prefWidth="245.0" />
          </children>
       </Pane>
       <Label layoutX="179.0" layoutY="33.0" text="EDIT PROFILE" textFill="WHITE">
