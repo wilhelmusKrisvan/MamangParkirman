@@ -99,6 +99,7 @@ public class FXMLMainAppController implements Initializable {
     }
     
     
+
     
     public void SetDataFront(String NIK) throws SQLException{
         kw.getDBKaryawan(db.Profilequery(NIK));       
