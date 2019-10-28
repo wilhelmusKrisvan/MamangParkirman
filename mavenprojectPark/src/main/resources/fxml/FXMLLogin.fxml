@@ -14,17 +14,17 @@
         <URL value="@/styles/dark.css" />
     </stylesheets>
     <children>
-      <Label layoutX="81.0" layoutY="110.0" prefHeight="36.0" prefWidth="88.0" style="-fx-font-size: 15;" text="USERNAME" textFill="#ffa229">
+      <Label layoutX="81.0" layoutY="120.0" prefHeight="36.0" prefWidth="88.0" style="-fx-font-size: 15;" text="USERNAME" textFill="#ffa229">
       </Label>
-      <Label layoutX="81.0" layoutY="155.0" prefHeight="36.0" prefWidth="88.0" style="-fx-font-size: 15;" text="PASSWORD" textFill="#ffa229">
+      <Label layoutX="81.0" layoutY="165.0" prefHeight="36.0" prefWidth="88.0" style="-fx-font-size: 15;" text="PASSWORD" textFill="#ffa229">
       </Label>
-      <TextField id="Uname" fx:id="Uname" layoutX="185.0" layoutY="116.0" prefHeight="26.0" prefWidth="185.0" />
-      <PasswordField id="Pass" fx:id="Pass" layoutX="185.0" layoutY="161.0" prefHeight="26.0" prefWidth="186.0" />
-      <Button fx:id="LogButton" layoutX="181.0" layoutY="205.0" mnemonicParsing="false" onAction="#LogButton" prefHeight="36.0" prefWidth="88.0" style="-fx-font-size: 15; -fx-border-radius: 10;" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="LOGIN" textFill="#ffa229">
+      <TextField id="Uname" fx:id="Uname" layoutX="185.0" layoutY="126.0" prefHeight="26.0" prefWidth="185.0" />
+      <PasswordField id="Pass" fx:id="Pass" layoutX="185.0" layoutY="171.0" prefHeight="26.0" prefWidth="186.0" />
+      <Button fx:id="LogButton" layoutX="181.0" layoutY="215.0" mnemonicParsing="false" onAction="#LogButton" prefHeight="36.0" prefWidth="88.0" style="-fx-font-size: 15; -fx-border-radius: 10;" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="LOGIN" textFill="#ffa229">
       </Button>
-      <ImageView fitHeight="71.0" fitWidth="49.0" layoutX="201.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="58.0" fitWidth="58.0" layoutX="196.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../lock.png" />
+            <Image url="@../logo.png" />
          </image>
       </ImageView>
    </children>

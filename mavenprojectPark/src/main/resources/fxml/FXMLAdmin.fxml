@@ -2,7 +2,14 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,7 +17,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="446.0" prefWidth="663.0" style="-fx-background-color: #030307;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #030307;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -25,7 +32,7 @@
                         </ImageView>
                      </graphic>
                      <VBox.margin>
-                        <Insets top="65.0" />
+                        <Insets top="70.0" />
                      </VBox.margin>
                   </Button>
                   <Button fx:id="BtnLaporan" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="REPORT" textAlignment="CENTER" textFill="#ffa239">
@@ -59,7 +66,7 @@
                   <Label fx:id="Nik" layoutX="107.0" layoutY="23.0" text="NIK" textFill="#ffa229" />
                   <Label fx:id="Nama" layoutX="107.0" layoutY="41.0" text="NAME" textFill="#ffa229" />
                   <Label fx:id="Username" layoutX="106.0" layoutY="60.0" text="USERNAME" textFill="#ffa229" />
-                  <Button fx:id="BtnEdit" contentDisplay="TOP" layoutX="545.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Edit Profile" textAlignment="CENTER" textFill="#ffa229">
+                  <Button fx:id="BtnEdit" contentDisplay="TOP" layoutX="627.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Edit Profile" textAlignment="CENTER" textFill="#ffa229">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -68,15 +75,59 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Label fx:id="NIK" layoutX="201.0" layoutY="23.0" prefHeight="17.0" prefWidth="280.0" textFill="#ffa229" />
+                  <Label fx:id="Nama" layoutX="201.0" layoutY="41.0" prefHeight="17.0" prefWidth="280.0" textFill="#ffa229" />
+                  <Label fx:id="User" layoutX="201.0" layoutY="60.0" prefHeight="17.0" prefWidth="280.0" textFill="#ffa229" />
+                  <Button contentDisplay="TOP" layoutX="746.0" layoutY="23.0" mnemonicParsing="false" styleClass="button3" stylesheets="@../styles/darkkMain.css" textAlignment="CENTER" textFill="#ffa229" />
+                  <ImageView fitHeight="40.0" fitWidth="24.0" layoutX="734.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../logout.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </top>
          <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" visible="false" BorderPane.alignment="CENTER">
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="292.0" prefWidth="577.0" style="-fx-background-color: #131022;" />
-                  <Pane prefHeight="292.0" prefWidth="577.0" style="-fx-background-color: #131022;" />
-                  <Pane prefHeight="292.0" prefWidth="577.0" style="-fx-background-color: #131022;" />
+                  <Pane prefHeight="396.0" prefWidth="710.0" style="-fx-background-color: #131022;" visible="false">
+                     <children>
+                        <Separator layoutX="331.0" layoutY="42.0" orientation="VERTICAL" prefHeight="300.0" prefWidth="5.0" />
+                        <TableView layoutX="14.0" layoutY="101.0" prefHeight="210.0" prefWidth="303.0">
+                          <columns>
+                            <TableColumn prefWidth="28.00003147125244" text="W" />
+                            <TableColumn prefWidth="106.00000381469727" text="X" />
+                              <TableColumn prefWidth="92.66664123535156" text="Y" />
+                              <TableColumn prefWidth="75.0" text="Z" />
+                          </columns>
+                        </TableView>
+                        <TextField layoutX="14.0" layoutY="67.0" prefHeight="25.0" prefWidth="240.0" promptText="Pencarian.." />
+                        <Button id="btnSearch" fx:id="BtnSearch" layoutX="261.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="CARI" textFill="#ffa239" />
+                        <Label layoutX="348.0" layoutY="52.0" prefHeight="20.0" prefWidth="70.0" text="NIK" textFill="#ffa229" />
+                        <TextField fx:id="Nama" layoutX="482.0" layoutY="81.0" prefHeight="25.0" prefWidth="215.0" />
+                        <Label layoutX="481.0" layoutY="50.0" prefHeight="25.0" prefWidth="215.0" textFill="#ffa229" />
+                        <Label layoutX="348.0" layoutY="84.0" prefHeight="20.0" prefWidth="85.0" text="Nama Lengkap" textFill="#ffa229" />
+                        <TextField fx:id="User" layoutX="482.0" layoutY="110.0" prefHeight="25.0" prefWidth="215.0" />
+                        <Label layoutX="348.0" layoutY="113.0" prefHeight="20.0" prefWidth="85.0" text="Username" textFill="#ffa229" />
+                        <Label layoutX="348.0" layoutY="139.0" prefHeight="26.0" prefWidth="127.0" text="Status Karyawan" textFill="#ffa229" wrapText="true" />
+                        <Label fx:id="Level" layoutX="482.0" layoutY="140.0" prefHeight="25.0" prefWidth="215.0" textFill="#ffa229" />
+                        <Label layoutX="348.0" layoutY="165.0" prefHeight="26.0" prefWidth="127.0" text="Jenis Kelamin" textFill="#ffa229" wrapText="true" />
+                        <Label layoutX="348.0" layoutY="195.0" prefHeight="26.0" prefWidth="127.0" text="Tanggal Lahir" textFill="#ffa229" wrapText="true" />
+                        <TextField layoutX="482.0" layoutY="226.0" prefHeight="25.0" prefWidth="215.0" />
+                        <Label layoutX="348.0" layoutY="225.0" prefHeight="26.0" prefWidth="127.0" text="Nomor Telepon" textFill="#ffa229" wrapText="true" />
+                        <TextField fx:id="Alamat" layoutX="482.0" layoutY="255.0" prefHeight="51.0" prefWidth="215.0" />
+                        <Label layoutX="348.0" layoutY="254.0" prefHeight="26.0" prefWidth="127.0" text="Alamat" textFill="#ffa229" wrapText="true" />
+                        <ComboBox fx:id="Gender" layoutX="482.0" layoutY="166.0" prefHeight="25.0" prefWidth="215.0" />
+                        <DatePicker layoutX="482.0" layoutY="196.0" prefHeight="25.0" prefWidth="215.0" />
+                        <Button fx:id="BtnSave" layoutX="637.0" layoutY="311.0" mnemonicParsing="false" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="SIMPAN" textFill="#ffa229" />
+                     </children></Pane>
+                  <Pane prefHeight="396.0" prefWidth="710.0" style="-fx-background-color: #131022;">
+                     <children>
+                        <TextField layoutX="172.0" layoutY="43.0" prefHeight="33.0" prefWidth="293.0" promptText="Pencarian.." />
+                        <Button layoutX="477.0" layoutY="45.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Cari" textFill="#ffa229" />
+                        <ScrollPane layoutX="91.0" layoutY="92.0" prefHeight="261.0" prefWidth="528.0" />
+                     </children></Pane>
+                  <Pane prefHeight="397.0" prefWidth="715.0" style="-fx-background-color: #131022;" visible="false" />
                </children>
                <BorderPane.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="500.0" stylesheets="@../styles/darkMain.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="id.ac.ukdw.mamangparking.FXMLEditProfileController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="500.0" style="-fx-background-color: #000000;" stylesheets="@../styles/darkMain.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.FXMLRegistrasiController">
    <children>
       <Pane layoutY="68.0" prefHeight="582.0" prefWidth="500.0">
          <children>

@@ -48,7 +48,7 @@ public class FXMLEditProfileController implements Initializable {
     private TextField Nama, User, NoTelp;
     
     @FXML
-    private PasswordField NewPass, NewRepass;
+    private TextField NewPass, NewRepass;
     
     @FXML
     private TextArea Alamat;
@@ -63,14 +63,12 @@ public class FXMLEditProfileController implements Initializable {
     private ComboBox<String> Gender ;
     
     @FXML
-    private Button BtnSave, BtnCancel;
+    private TextField Pass;
 
-    @FXML
     void OnCancel(ActionEvent event) throws IOException, SQLException {
         this.BackToMain(event);
     }
 
-    @FXML
     void OnSave(ActionEvent event) throws IOException, SQLException {
         if(!Nama.getText().equals("") && !User.getText().equals("") && !NoTelp.getText().equals("") && !Alamat.getText().equals("") && !Tgl.getValue().equals("")){
             if(!NewPass.getText().equals("") && !NewRepass.getText().equals("")){
