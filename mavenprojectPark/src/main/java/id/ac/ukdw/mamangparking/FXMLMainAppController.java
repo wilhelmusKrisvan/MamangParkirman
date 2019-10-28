@@ -9,6 +9,7 @@ import id.ac.ukdw.mamangparking.model.Karyawan;
 import id.ac.ukdw.mamangparking.db.DBQuery;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,7 +56,7 @@ public class FXMLMainAppController implements Initializable {
      } 
     
     @FXML
-    private void EditProfile(ActionEvent event) throws IOException {
+    private void EditProfile(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/FXMLEditProfile.fxml"));
         Parent Edit = loader.load();
@@ -78,30 +79,30 @@ public class FXMLMainAppController implements Initializable {
             BtnParked.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
             BtnParkOut.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
             BtnParkIn.setStyle("-fx-background-color : #3b368a");
-            pnlParkIn.setStyle("-fx-background-color : #455bff");
+            //pnlParkIn.setStyle("-fx-background-color : #455bff");
             pnlParkIn.toFront();
         }
         else if (actionEvent.getSource() == BtnParked) {
             BtnParkIn.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
             BtnParkOut.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
             BtnParked.setStyle("-fx-background-color : #3b368a");
-            pnlParked.setStyle("-fx-background-color : #455bff");
+            //pnlParked.setStyle("-fx-background-color : #455bff");
             pnlParked.toFront();
         }
         else if (actionEvent.getSource() == BtnParkOut) {
             BtnParkIn.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
             BtnParked.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
             BtnParkOut.setStyle("-fx-background-color : #3b368a");
-            pnlParkOut.setStyle("-fx-background-color : #455bff");
+            //pnlParkOut.setStyle("-fx-background-color : #455bff");
             pnlParkOut.toFront();
         }
     }
     
     
     
-    public void SetDataFront(String user, String pass){
-        kw.getDBKaryawan(db.logquery(user, pass));       
-        Nik.setText(kw.getNIK());
+    public void SetDataFront(String NIK) throws SQLException{
+        kw.getDBKaryawan(db.Profilequery(NIK));       
+        Nik.setText(String.valueOf(kw.getNIK()));
         Nama.setText(kw.getNamaLengkap());
         Username.setText(kw.getUsername());
     }

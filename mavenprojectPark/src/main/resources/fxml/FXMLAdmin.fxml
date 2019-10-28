@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,9 +16,34 @@
          <left>
             <VBox prefHeight="290.0" prefWidth="80.0" style="-fx-background-color: #131022;" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="80.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Button" textFill="#ffa229">
+                  <Button fx:id="BtnUser" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="USER" textAlignment="CENTER" textFill="#ffa229">
                      <graphic>
-                        <ImageView fitHeight="43.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../regis.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets top="65.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="BtnLaporan" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="REPORT" textAlignment="CENTER" textFill="#ffa239">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../laporan.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="BtnKendaraan" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="VEHICLE" textAlignment="CENTER" textFill="#ffa229">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../kendaraan.png" />
+                           </image>
+                        </ImageView>
                      </graphic>
                   </Button>
                </children></VBox>
@@ -25,11 +51,23 @@
          <top>
             <Pane prefHeight="99.0" prefWidth="663.0" style="-fx-background-color: #131022;" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="78.0" fitWidth="73.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="77.0" fitWidth="70.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../logo.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="Nik" layoutX="107.0" layoutY="23.0" text="NIK" textFill="#ffa229" />
+                  <Label fx:id="Nama" layoutX="107.0" layoutY="41.0" text="NAME" textFill="#ffa229" />
+                  <Label fx:id="Username" layoutX="106.0" layoutY="60.0" text="USERNAME" textFill="#ffa229" />
+                  <Button fx:id="BtnEdit" contentDisplay="TOP" layoutX="545.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Edit Profile" textAlignment="CENTER" textFill="#ffa229">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../profile.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </Pane>
          </top>
