@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +40,7 @@ public class FXMLAdminController implements Initializable {
     
     @FXML
     private Button BtnEdit,BtnUser,BtnUser1,BtnLaporan,BtnKendaraan,BtnSearch,
-                   BtnSave;
+                   BtnSaveBtnInsert;
     
     @FXML
     private Label Nik,lblNama,User,edtNIK,edtLevel;
@@ -84,10 +86,20 @@ public class FXMLAdminController implements Initializable {
             pnlAdd.toFront();
         }
     }      
+    
+    
+    ObservableList<String> options = FXCollections.observableArrayList("Laki-Laki", "Perempuan");
+    
+    private void InsertNewData(){
+        
+        
+        
+    }
+    
+    
             
-            
-            
-            
+           
+    
     public void SetDataFront(String NIK) throws SQLException{
         kw.getDBKaryawan(db.Profilequery(NIK));       
         Nik.setText(String.valueOf(kw.getNIK()));

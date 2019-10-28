@@ -164,7 +164,7 @@
                               </Pane>
                            </content>
                         </ScrollPane>
-                        <Button layoutX="601.0" layoutY="346.0" mnemonicParsing="false" style="-fx-background-color: #131022;" text="INSERT" textAlignment="CENTER" textFill="#ffa229" />
+                        <Button fx:id="BtnInsert" layoutX="601.0" layoutY="346.0" mnemonicParsing="false" onAction="#InsertNewData" style="-fx-background-color: #131022;" text="INSERT" textAlignment="CENTER" textFill="#ffa229" />
                         <Text fill="#ffa229" layoutX="302.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD USER" textAlignment="CENTER" wrappingWidth="110.80343627929688">
                            <font>
                               <Font size="18.0" />

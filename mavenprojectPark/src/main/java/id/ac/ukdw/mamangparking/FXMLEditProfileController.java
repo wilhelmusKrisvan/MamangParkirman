@@ -9,6 +9,7 @@ import id.ac.ukdw.mamangparking.model.Karyawan;
 import id.ac.ukdw.mamangparking.db.DBQuery;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -65,11 +66,11 @@ public class FXMLEditProfileController implements Initializable {
     @FXML
     private TextField Pass;
 
-    void OnCancel(ActionEvent event) throws IOException, SQLException {
+    public void OnCancel(ActionEvent event) throws IOException, SQLException {
         this.BackToMain(event);
     }
 
-    void OnSave(ActionEvent event) throws IOException, SQLException {
+    public void OnSave(ActionEvent event) throws IOException, SQLException {
         if(!Nama.getText().equals("") && !User.getText().equals("") && !NoTelp.getText().equals("") && !Alamat.getText().equals("") && !Tgl.getValue().equals("")){
             if(!NewPass.getText().equals("") && !NewRepass.getText().equals("")){
                 if(NewPass.getText().equals(NewRepass.getText()) && !NewPass.getText().equals(kw.getPassword())){
@@ -104,15 +105,29 @@ public class FXMLEditProfileController implements Initializable {
     }
     
     public void BackToMain(ActionEvent event) throws IOException, SQLException{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/FXMLMainApp.fxml"));
-        Parent Main = loader.load();
-        FXMLMainAppController control = loader.getController();
-        control.SetDataFront(NIK.getText());
-        Scene scene = new Scene(Main);
-        Stage Primarystage = (Stage) ((Node)event.getSource()).getScene().getWindow();                    
-        Primarystage.setScene(scene);
-        Primarystage.show();
+        String level = kw.getLevel();
+        if(level.equals("staff")){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/FXMLMainApp.fxml"));
+            Parent Main = loader.load();
+            FXMLMainAppController control = loader.getController();
+            control.SetDataFront(NIK.getText());
+            Scene scene = new Scene(Main);
+            Stage Primarystage = (Stage) ((Node)event.getSource()).getScene().getWindow();                    
+            Primarystage.setScene(scene);
+            Primarystage.show();
+        }
+        if(level.equals("admin")){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/FXMLAdmin.fxml"));
+            Parent Main = loader.load();
+            FXMLAdminController control = loader.getController();
+            control.SetDataFront(NIK.getText());
+            Scene scene = new Scene(Main);
+            Stage Primarystage = (Stage) ((Node)event.getSource()).getScene().getWindow();                    
+            Primarystage.setScene(scene);
+            Primarystage.show();
+        }
     }
     
     public void SetData(String Nik) throws SQLException{
