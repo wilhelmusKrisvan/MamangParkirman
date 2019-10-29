@@ -1,36 +1,18 @@
   
 .button3
 {
-    -fx-background-color : #141124;
-    -fx-background-radius :  0 0 0 0;
+    -fx-background-color : #131022;
 }
 .button3:hover
 {
-    -fx-background-color : #524A7B ;
+    -fx-background-color : #7769A6 ;
 }
 .button3:pressed
 {
-    -fx-background-color : #2F2B43 ;
+    -fx-background-color : #42406D ;
 }
 
-.button4
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
-}
-.button4:hover
-{
-    -fx-background-color :linear-gradient(to top left, #D4CEE3, #41951C);
-    -fx-background-radius :  30 30 30 30;
-}
-.button4:pressed
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
-}
-
-
-.combo-box
+/*.combo-box
 {
     -fx-background-color : #141124;
     -fx-border-color:  #515658;
@@ -47,4 +29,4 @@
     -fx-background-color : #141124;
     -fx-border-color:  #FFFF;
     -fx-border-radius: 30;
-}
+}*/

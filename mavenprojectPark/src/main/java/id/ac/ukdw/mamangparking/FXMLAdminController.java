@@ -7,11 +7,14 @@ package id.ac.ukdw.mamangparking;
 
 import id.ac.ukdw.mamangparking.db.DBQuery;
 import id.ac.ukdw.mamangparking.model.Karyawan;
+import id.ac.ukdw.mamangparking.model.Kendaraan;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -41,15 +44,15 @@ public class FXMLAdminController implements Initializable {
     Karyawan kw = new Karyawan();
     
     @FXML
-    private Button BtnEdit,BtnUser,BtnUser1,BtnLaporan,BtnKendaraan,BtnSearch,
-                   BtnSaveBtnInsert,BtnInsert;
+    private Button BtnEdit,BtnUser,BtnAddUser,BtnLaporan,BtnKendaraan,BtnSearch,
+                   BtnSaveBtnInsert,BtnInsert, btnUbahMOBIL, btnUbahMOTOR, btnUbahBUS;
     
     @FXML
-    private Label Nik,lblNama,lblUser,edtNIK,edtLevel;
+    private Label Nik,lblNama,lblUser,edtNIK,edtLevel, trfawalMOTOR, trfawalMOBIL, trfawalBUS, trfjamMOTOR, trfjamMOBIL, trfjamBUS;
     
     @FXML
     private TextField edtNama,edtUser,edtNotelp,edtAlamat,NIK,Pass,Repass,Notelp,
-                      alamat,Nama,User;
+                      alamat,Nama,User, trfawalbaruMOBIL, trfawalbaruMOTOR, trfawalbaruBUS, trfjambaruMOBIL, trfjambaruMOTOR, trfjambaruBUS;
             
     @FXML
     private ComboBox<String> edtGender,Level,Gender;
@@ -58,7 +61,7 @@ public class FXMLAdminController implements Initializable {
     private DatePicker edtTgl,Tgl;
     
     @FXML
-    private Pane pnlAdd,pnlUser;
+    private Pane pnlAdd, pnlUser, pnlVehicle, pnlReport;
 
     @FXML
     private void EditProfile(ActionEvent event) throws IOException, SQLException {
@@ -76,16 +79,32 @@ public class FXMLAdminController implements Initializable {
     @FXML
     private void handleClicks(ActionEvent actionEvent) {
         if (actionEvent.getSource() == BtnUser) {
-            BtnUser.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
-            BtnUser.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
-            BtnUser.setStyle("-fx-background-color : #3b368a");
+            BtnAddUser.setStyle("-fx-background-color : #131022;");
+            BtnLaporan.setStyle("-fx-background-color : #131022;");
+            BtnKendaraan.setStyle("-fx-background-color : #131022;");
+            BtnUser.setStyle("-fx-background-color : #42406D");
             pnlUser.toFront();
         }
-        else if (actionEvent.getSource() == BtnUser1) {
-            BtnUser1.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
-            BtnUser1.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
-            BtnUser1.setStyle("-fx-background-color : #3b368a");
+        else if (actionEvent.getSource() == BtnAddUser) {
+            BtnUser.setStyle("-fx-background-color : #131022;");
+            BtnLaporan.setStyle("-fx-background-color : #131022;");
+            BtnKendaraan.setStyle("-fx-background-color : #131022;");
+            BtnAddUser.setStyle("-fx-background-color : #42406D");
             pnlAdd.toFront();
+        }
+        else if (actionEvent.getSource() == BtnLaporan) {
+            BtnUser.setStyle("-fx-background-color : #131022;");
+            BtnKendaraan.setStyle("-fx-background-color : #131022;");
+            BtnAddUser.setStyle("-fx-background-color : #131022;");
+            BtnLaporan.setStyle("-fx-background-color : #42406D");
+            pnlReport.toFront();
+        }
+        else if (actionEvent.getSource() == BtnKendaraan) {
+            BtnUser.setStyle("-fx-background-color : #131022;");
+            BtnAddUser.setStyle("-fx-background-color : #131022;");
+            BtnLaporan.setStyle("-fx-background-color : #131022;");
+            BtnKendaraan.setStyle("-fx-background-color : #42406D");
+            pnlVehicle.toFront();
         }
     }      
     
@@ -109,7 +128,34 @@ public class FXMLAdminController implements Initializable {
         }
        
     }
-            
+    
+    @FXML
+    private void handleUbah(ActionEvent action) throws SQLException {
+        Kendaraan kndrn = new Kendaraan();
+        if(action.getSource() == btnUbahMOBIL){
+            boolean x;
+            x = kndrn.UpdateHarga("Mobil", Integer.parseInt(trfawalbaruMOBIL.getText()), Integer.parseInt(trfjambaruMOBIL.getText()));
+            if(!x){
+                trfawalMOBIL.setText(trfawalbaruMOBIL.getText());
+                trfjamMOBIL.setText(trfjambaruMOBIL.getText());
+            }
+        }else if(action.getSource() == btnUbahMOTOR){
+            boolean x;
+            x = kndrn.UpdateHarga("Motor", Integer.parseInt(trfawalbaruMOTOR.getText()), Integer.parseInt(trfjambaruMOTOR.getText()));
+            if(!x){
+                trfawalMOTOR.setText(trfawalbaruMOTOR.getText());
+                trfjamMOTOR.setText(trfjambaruMOTOR.getText());
+            }
+        }else if(action.getSource() == btnUbahBUS){
+            boolean x;
+            x = kndrn.UpdateHarga("Bus", Integer.parseInt(trfawalbaruBUS.getText()), Integer.parseInt(trfjambaruBUS.getText()));
+            if(!x){
+                trfawalBUS.setText(trfawalbaruBUS.getText());
+                trfjamBUS.setText(trfjambaruBUS.getText());
+            }
+        }
+    }
+    
     public void setData() throws SQLException{
         Karyawan kr = new Karyawan();
         
@@ -141,10 +187,35 @@ public class FXMLAdminController implements Initializable {
         lblUser.setText(kw.getUsername());
     }
     
+    public void setHargaKendaraan(){
+        Kendaraan kr = new Kendaraan();
+        try {
+            ObservableList<Kendaraan> kendaraanList = kr.setKendaraanList();
+            for(int i=0; i<kendaraanList.size(); i++){
+                if(kendaraanList.get(i).getJenisKendaraan().equals("Mobil")){
+                    trfawalMOBIL.setText(String.valueOf(kendaraanList.get(i).getHargaAwal()));
+                    trfjamMOBIL.setText(String.valueOf(kendaraanList.get(i).getHargaPerjam()));
+                }else if(kendaraanList.get(i).getJenisKendaraan().equals("Motor")){
+                    trfawalMOTOR.setText(String.valueOf(kendaraanList.get(i).getHargaAwal()));
+                    trfjamMOTOR.setText(String.valueOf(kendaraanList.get(i).getHargaPerjam()));
+                }else if(kendaraanList.get(i).getJenisKendaraan().equals("Bus")){
+                    trfawalBUS.setText(String.valueOf(kendaraanList.get(i).getHargaAwal()));
+                    trfjamBUS.setText(String.valueOf(kendaraanList.get(i).getHargaPerjam()));
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLAdminController.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FXMLAdminController.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    }
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        this.setHargaKendaraan();
         Gender.getItems().addAll(cbGender);
         Level.getItems().addAll(cbStatus);
     }    
