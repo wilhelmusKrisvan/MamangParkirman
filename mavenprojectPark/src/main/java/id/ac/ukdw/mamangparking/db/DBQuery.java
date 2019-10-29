@@ -130,4 +130,33 @@ public class DBQuery extends DBConnect{
                 ps.close();
           }       
     }
+    
+    public ResultSet ResultKendaraan(){
+        try{
+            String query = "SELECT * from 'Jenis Kendaraan'";
+            ps=con.prepareStatement(query);
+            rs = ps.executeQuery();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "FAILED");
+        }
+        return rs;    
+    }
+    
+    public boolean UpdateKendaraan(String kendaraan, int awal, int perjam) throws SQLException {
+        boolean x = false;
+        try {
+            String query = "UPDATE 'Jenis Kendaraan' SET 'Harga Awal'=?, 'Harga per Jam'=? WHERE 'Jenis Kendaraan'=?";
+            ps=con.prepareStatement(query);
+            ps.setInt(1, awal);
+            ps.setInt(2, perjam);
+            ps.setString(3, kendaraan);
+            x = ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBQuery.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            ps.close();
+        }
+        return x;
+    }
 }

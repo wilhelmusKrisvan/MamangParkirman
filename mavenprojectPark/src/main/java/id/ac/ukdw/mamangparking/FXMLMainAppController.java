@@ -76,23 +76,23 @@ public class FXMLMainAppController implements Initializable {
     @FXML
     private void handleClicks(ActionEvent actionEvent) {
         if (actionEvent.getSource() == BtnParkIn) {
-            BtnParked.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
-            BtnParkOut.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
-            BtnParkIn.setStyle("-fx-background-color : #3b368a");
+            BtnParked.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
+            BtnParkOut.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
+            BtnParkIn.setStyle("-fx-background-color : #42406D");
             //pnlParkIn.setStyle("-fx-background-color : #455bff");
             pnlParkIn.toFront();
         }
         else if (actionEvent.getSource() == BtnParked) {
-            BtnParkIn.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
-            BtnParkOut.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
-            BtnParked.setStyle("-fx-background-color : #3b368a");
+            BtnParkIn.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
+            BtnParkOut.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
+            BtnParked.setStyle("-fx-background-color : #42406D");
             //pnlParked.setStyle("-fx-background-color : #455bff");
             pnlParked.toFront();
         }
         else if (actionEvent.getSource() == BtnParkOut) {
-            BtnParkIn.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
-            BtnParked.setStyle("-fx-background-color : #5749d1; -fx-font-size: 15;");
-            BtnParkOut.setStyle("-fx-background-color : #3b368a");
+            BtnParkIn.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
+            BtnParked.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
+            BtnParkOut.setStyle("-fx-background-color : #42406D");
             //pnlParkOut.setStyle("-fx-background-color : #455bff");
             pnlParkOut.toFront();
         }
