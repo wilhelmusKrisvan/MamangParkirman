@@ -57,7 +57,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="BtnHarga" contentDisplay="TOP" layoutX="10.0" layoutY="228.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PRICE" textAlignment="CENTER" textFill="#ffa239">
+                  <Button fx:id="BtnHarga" contentDisplay="TOP" layoutX="10.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PRICE" textAlignment="CENTER" textFill="#ffa239">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -85,7 +85,7 @@
                               <Image url="@../logo.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="BtnEdit" contentDisplay="TOP" layoutX="545.0" mnemonicParsing="false" onAction="#EditProfile" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Edit Profile" textAlignment="CENTER" textFill="#ffa239">
+                        <Button fx:id="BtnEdit" contentDisplay="TOP" layoutX="578.0" mnemonicParsing="false" onAction="#EditProfile" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Edit Profile" textAlignment="CENTER" textFill="#ffa239">
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -97,6 +97,15 @@
                         <Label fx:id="Username" layoutX="191.0" layoutY="59.0" prefHeight="17.0" prefWidth="99.0" textFill="#ffa239" />
                         <Label fx:id="Nama" layoutX="191.0" layoutY="41.0" prefHeight="17.0" prefWidth="99.0" textFill="#ffa239" />
                         <Label fx:id="Nik" layoutX="191.0" layoutY="23.0" prefHeight="17.0" prefWidth="99.0" textFill="#ffa239" />
+                        <Button contentDisplay="TOP" layoutX="682.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" textAlignment="CENTER" textFill="#ffa229">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../logout.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </Pane>
                </children></VBox>
@@ -107,7 +116,7 @@
                   <Insets left="5.0" right="5.0" top="5.0" />
                </BorderPane.margin>
                <children>
-                  <Pane fx:id="pnlParked" layoutY="8.0" prefHeight="365.0" prefWidth="715.0" style="-fx-background-color: #131022;" visible="false">
+                  <Pane fx:id="pnlParked" layoutY="8.0" prefHeight="365.0" prefWidth="715.0" style="-fx-background-color: #131022;">
                      <children>
                         <TextField id="txtSearch" layoutX="77.0" layoutY="39.0" prefHeight="25.0" prefWidth="372.0" promptText="Masukkan Pencarian.." />
                         <Button id="BtnSearch" fx:id="BtnSearch" layoutX="449.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="CARI" textFill="#ffa239" />
@@ -119,7 +128,7 @@
                         </TableView>
                      </children>
                   </Pane>
-                  <Pane fx:id="pnlParkOut" prefHeight="374.0" prefWidth="715.0" style="-fx-background-color: #131022;" visible="false" />
+                  <Pane fx:id="pnlParkOut" prefHeight="374.0" prefWidth="715.0" style="-fx-background-color: #131022;" />
                   <Pane fx:id="pnlParkIn" prefHeight="373.0" prefWidth="715.0" style="-fx-background-color: #131022;">
                      <children>
                         <ComboBox fx:id="cmbJenis" layoutX="152.0" layoutY="156.0" prefHeight="30.0" prefWidth="411.0" promptText="JENIS KENDARAAN" />
@@ -131,7 +140,47 @@
                         </TextField>
                      </children>
                   </Pane>
-                  <Pane fx:id="pnlStart" prefHeight="373.0" prefWidth="715.0" style="-fx-background-color: #131022;" visible="false" />
+                  <Pane fx:id="pnlStart" prefHeight="373.0" prefWidth="715.0" style="-fx-background-color: #131022;" />
+                  <Pane fx:id="pnlPrice" prefHeight="395.0" prefWidth="710.0" style="-fx-background-color: #131022;">
+                     <children>
+                        <ComboBox fx:id="cmbHrgJns" layoutX="146.0" layoutY="99.0" prefHeight="30.0" prefWidth="411.0" promptText="JENIS KENDARAAN" />
+                        <Label layoutX="153.0" layoutY="37.0" prefHeight="40.0" prefWidth="419.0" text="DETAIL HARGA KENDARAAN" textFill="#ffa239">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="153.0" layoutY="192.0" prefHeight="46.0" prefWidth="160.0" text="HARGA AWAL" textFill="#ffa239">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="152.0" layoutY="241.0" prefHeight="44.0" prefWidth="173.0" text="HARGA / JAM" textFill="#ffa239">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblHrgAwal" layoutX="407.0" layoutY="192.0" prefHeight="44.0" prefWidth="89.0" textFill="#ffa239">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblHrgPerJam" layoutX="407.0" layoutY="240.0" prefHeight="44.0" prefWidth="89.0" textFill="#ffa239">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="355.0" layoutY="192.0" prefHeight="44.0" prefWidth="89.0" text="Rp." textFill="#ffa239">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="356.0" layoutY="241.0" prefHeight="44.0" prefWidth="89.0" text="Rp." textFill="#ffa239">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </Pane>
          </center>
