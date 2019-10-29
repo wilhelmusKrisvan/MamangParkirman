@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -29,6 +30,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -52,7 +54,7 @@ public class FXMLAdminController implements Initializable {
     
     @FXML
     private Button BtnEdit,BtnUser,BtnAddUser,BtnLaporan,BtnKendaraan,BtnSearch,
-                   BtnSaveBtnInsert,BtnInsert, btnUbahMOBIL, btnUbahMOTOR, btnUbahBUS;
+                   BtnDelete,BtnInsert, btnUbahMOBIL, btnUbahMOTOR, btnUbahBUS;
     
     @FXML
     private Label Nik,lblNama,lblUser,edtNIK,edtLevel, trfawalMOTOR, trfawalMOBIL, trfawalBUS, trfjamMOTOR, trfjamMOBIL, trfjamBUS;
@@ -88,6 +90,26 @@ public class FXMLAdminController implements Initializable {
         Scene scene = new Scene(Edit);
         Editstage.setScene(scene);
         Editstage.show();       
+    }
+    
+    @FXML
+    private void onDelete (ActionEvent event) throws SQLException, ClassNotFoundException{
+        if(!edtNIK.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("DELETE USER");
+            alert.setContentText("ARE YOU SURE WANT TO DELETE?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.OK){
+               db.deleteKaryawan(edtNIK.getText());
+            }
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("DELETE ERROR");
+            alert.setHeaderText("DELETE USER IS FAILED");
+            alert.setContentText("DATA NEED TO BE CHOOSED!");
+            alert.showAndWait();
+        }
+        this.ShowTable();
     }
     
     @FXML

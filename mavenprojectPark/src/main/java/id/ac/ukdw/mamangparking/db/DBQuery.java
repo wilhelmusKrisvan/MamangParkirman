@@ -131,6 +131,18 @@ public class DBQuery extends DBConnect{
           }       
     }
     
+    public void deleteKaryawan(String nik) throws SQLException, ClassNotFoundException {
+        String query = "DELETE FROM Karyawan WHERE NIK='" + nik + "'";
+        try {
+            ps=con.prepareStatement(query);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally{
+            ps.close();
+        } 
+    }
+    
     public ResultSet ResultKendaraan(){
         try{
             String query = "SELECT * from `Kendaraan`";
