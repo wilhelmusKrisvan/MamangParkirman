@@ -10,6 +10,7 @@ import id.ac.ukdw.mamangparking.model.Karyawan;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -40,17 +42,17 @@ public class FXMLAdminController implements Initializable {
     
     @FXML
     private Button BtnEdit,BtnUser,BtnUser1,BtnLaporan,BtnKendaraan,BtnSearch,
-                   BtnSaveBtnInsert;
+                   BtnSaveBtnInsert,BtnInsert;
     
     @FXML
-    private Label Nik,lblNama,User,edtNIK,edtLevel;
+    private Label Nik,lblNama,lblUser,edtNIK,edtLevel;
     
     @FXML
     private TextField edtNama,edtUser,edtNotelp,edtAlamat,NIK,Pass,Repass,Notelp,
-                      alamat;
+                      alamat,Nama,User;
             
     @FXML
-    private ComboBox<?> edtGender,Level,Gender;
+    private ComboBox<String> edtGender,Level,Gender;
     
     @FXML
     private DatePicker edtTgl,Tgl;
@@ -88,29 +90,63 @@ public class FXMLAdminController implements Initializable {
     }      
     
     
-    ObservableList<String> options = FXCollections.observableArrayList("Laki-Laki", "Perempuan");
+    ObservableList<String> cbGender = FXCollections.observableArrayList("Laki-Laki", "Perempuan");
+    ObservableList<String> cbStatus = FXCollections.observableArrayList("staff", "admin");
     
-    private void InsertNewData(){
+    
+    @FXML
+    private void InsertNewData() throws SQLException{
+        if(Pass.getText().equals("") && NIK.getText().equals("") && Nama.getText().equals("")
+                && User.getText().equals("") && alamat.getText().equals("") && Notelp.getText().equals("")
+                && Level.getValue().equals("") && Gender.getValue().equals("") && Tgl.getValue().equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ADD USER");
+            alert.setHeaderText("ADD USER IS FAILED");
+            alert.setContentText("YOU MUST FILL ALL DATA");
+            alert.showAndWait();
+        }else{
+            this.setData();
+        }
+       
+    }
+            
+    public void setData() throws SQLException{
+        Karyawan kr = new Karyawan();
         
-        
+         if(Pass.getText().equals(Repass.getText())){
+            kr.setPassword(Pass.getText());
+            kr.setNIK(Integer.valueOf(NIK.getText()));
+            kr.setNamaLengkap(Nama.getText());
+            kr.setUsername(User.getText());
+            kr.setLevel(Level.getValue().toString());
+            kr.setGender(Gender.getValue().toString());
+            kr.setTglLahir(Tgl.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            kr.setNoTelp(Notelp.getText());
+            kr.setAlamat(alamat.getText());
+            kr.InsertDBKaryawan();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ADD USER");
+            alert.setHeaderText("ADD USER IS FAILED");
+            alert.setContentText("PLEASE RE-TYPE PASSWORD CORECTLY");
+            alert.showAndWait();
+         }
         
     }
-    
-    
-            
-           
-    
+
     public void SetDataFront(String NIK) throws SQLException{
         kw.getDBKaryawan(db.Profilequery(NIK));       
         Nik.setText(String.valueOf(kw.getNIK()));
         lblNama.setText(kw.getNamaLengkap());
-        User.setText(kw.getUsername());
+        lblUser.setText(kw.getUsername());
     }
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Gender.getItems().addAll(cbGender);
+        Level.getItems().addAll(cbStatus);
     }    
     
 }

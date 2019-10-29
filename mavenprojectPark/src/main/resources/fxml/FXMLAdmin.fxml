@@ -25,7 +25,7 @@
          <left>
             <VBox prefHeight="290.0" prefWidth="80.0" style="-fx-background-color: #131022;" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="BtnUser" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="LIST USER" textAlignment="CENTER" textFill="#ffa229">
+                  <Button fx:id="BtnUser" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="LIST USER" textAlignment="CENTER" textFill="#ffa229">
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -46,7 +46,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="BtnLaporan" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="REPORT" textAlignment="CENTER" textFill="#ffa239">
+                  <Button fx:id="BtnLaporan" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="REPORT" textAlignment="CENTER" textFill="#ffa239">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -55,7 +55,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="BtnKendaraan" contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="VEHICLE" textAlignment="CENTER" textFill="#ffa229">
+                  <Button fx:id="BtnKendaraan" contentDisplay="TOP" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="89.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="VEHICLE" textAlignment="CENTER" textFill="#ffa229">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -88,7 +88,7 @@
                   </Button>
                   <Label fx:id="Nik" layoutX="201.0" layoutY="23.0" prefHeight="17.0" prefWidth="280.0" textFill="#ffa229" />
                   <Label fx:id="lblNama" layoutX="201.0" layoutY="41.0" prefHeight="17.0" prefWidth="280.0" textFill="#ffa229" />
-                  <Label fx:id="User" layoutX="201.0" layoutY="60.0" prefHeight="17.0" prefWidth="280.0" textFill="#ffa229" />
+                  <Label fx:id="lblUser" layoutX="201.0" layoutY="60.0" prefHeight="17.0" prefWidth="280.0" textFill="#ffa229" />
                   <Button contentDisplay="TOP" layoutX="696.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" textAlignment="CENTER" textFill="#ffa229">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
@@ -103,7 +103,7 @@
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane fx:id="pnlUser" prefHeight="396.0" prefWidth="710.0" style="-fx-background-color: #131022;" visible="false">
+                  <Pane fx:id="pnlUser" prefHeight="396.0" prefWidth="710.0" style="-fx-background-color: #131022;">
                      <children>
                         <Separator layoutX="331.0" layoutY="42.0" orientation="VERTICAL" prefHeight="300.0" prefWidth="5.0" />
                         <TableView layoutX="14.0" layoutY="101.0" prefHeight="210.0" prefWidth="303.0">
@@ -145,7 +145,7 @@
                                     <Label layoutX="30.0" layoutY="41.0" text="Nama Lengkap" textFill="#ffa229" />
                                     <TextField fx:id="Nama" layoutX="148.0" layoutY="37.0" prefHeight="25.0" prefWidth="387.0" promptText="Nama Lengkap" />
                                     <Label layoutX="30.0" layoutY="71.0" text="Username" textFill="#ffa229" />
-                                    <TextField layoutX="148.0" layoutY="67.0" prefHeight="25.0" prefWidth="387.0" promptText="User" />
+                                    <TextField fx:id="User" layoutX="148.0" layoutY="67.0" prefHeight="25.0" prefWidth="387.0" promptText="User" />
                                     <Label layoutX="30.0" layoutY="101.0" text="Password" textFill="#ffa229" />
                                     <TextField fx:id="Pass" layoutX="148.0" layoutY="97.0" prefHeight="25.0" prefWidth="387.0" promptText="Password" />
                                     <Label layoutX="30.0" layoutY="131.0" text="Re-type Password" textFill="#ffa229" />
@@ -159,7 +159,7 @@
                                     <Label layoutX="29.0" layoutY="248.0" text="Nomor Telepon" textFill="#ffa229" />
                                     <TextField fx:id="Notelp" layoutX="147.0" layoutY="247.0" prefHeight="25.0" prefWidth="387.0" promptText="Nomor Telepon" />
                                     <Label layoutX="29.0" layoutY="277.0" text="Alamat" textFill="#ffa229" />
-                                    <TextField fx:id="Alamat" layoutX="147.0" layoutY="277.0" prefHeight="43.0" prefWidth="387.0" promptText="Alamat" />
+                                    <TextField fx:id="alamat" layoutX="147.0" layoutY="277.0" prefHeight="43.0" prefWidth="387.0" promptText="Alamat" />
                                  </children>
                               </Pane>
                            </content>
