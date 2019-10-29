@@ -39,16 +39,16 @@ public class FXMLMainAppController implements Initializable {
     private Button BtnParkIn, BtnParked, BtnParkOut, BtnInsert, BtnSearch, BtnLaporan, BtnEdit, BtnLogout, BtnHarga;
 
     @FXML
-    private Pane pnlParkOut, pnlParked, pnlParkIn, pnlStart;
+    private Pane pnlParkOut, pnlParked, pnlParkIn, pnlStart,pnlPrice;
     
     @FXML
-    private Label Nik, Username, Nama;
+    private Label Nik, Username, Nama, lblHrgAwal,lblHrgPerJam;
     
     @FXML
     private TextField txtPlat, txtSearch;
     
     @FXML
-    private ComboBox<?> cmbJenis;
+    private ComboBox<?> cmbJenis,cmbHrgJns;
     
      @FXML
      private void InsertPark(ActionEvent event){
