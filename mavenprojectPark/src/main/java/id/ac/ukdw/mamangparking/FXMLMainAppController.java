@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,7 +50,7 @@ public class FXMLMainAppController implements Initializable {
     private TextField txtPlat, txtSearch;
     
     @FXML
-    private ComboBox<?> cmbJenis,cmbHrgJns;
+    private ComboBox<String> cmbJenis,cmbHrgJns;
     
      @FXML
      private void InsertPark(ActionEvent event){
@@ -96,6 +98,13 @@ public class FXMLMainAppController implements Initializable {
             //pnlParkOut.setStyle("-fx-background-color : #455bff");
             pnlParkOut.toFront();
         }
+         else if (actionEvent.getSource() == BtnHarga) {
+            BtnParkIn.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
+            BtnParked.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
+            BtnParkOut.setStyle("-fx-background-color : #42406D");
+            //pnlParkOut.setStyle("-fx-background-color : #455bff");
+            pnlPrice.toFront();
+        }
     }
     
     
@@ -108,6 +117,7 @@ public class FXMLMainAppController implements Initializable {
         Username.setText(kw.getUsername());
     }
     
+    ObservableList<String> enumKendaraan = FXCollections.observableArrayList("Motor", "Mobil","Bus");
     
     /**
      * Initializes the controller class.
@@ -117,6 +127,7 @@ public class FXMLMainAppController implements Initializable {
         // TODO
         pnlStart.setStyle("-fx-background-color : #1a1a1a");
         pnlStart.toFront();
+        cmbHrgJns.getItems().addAll(enumKendaraan);
     }    
     
 }

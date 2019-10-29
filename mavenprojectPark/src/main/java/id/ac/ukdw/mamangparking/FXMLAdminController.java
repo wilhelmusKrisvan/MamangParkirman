@@ -107,12 +107,7 @@ public class FXMLAdminController implements Initializable {
             pnlVehicle.toFront();
         }
     }      
-    
-    
-    ObservableList<String> cbGender = FXCollections.observableArrayList("Laki-Laki", "Perempuan");
-    ObservableList<String> cbStatus = FXCollections.observableArrayList("staff", "admin");
-    
-    
+        
     @FXML
     private void InsertNewData() throws SQLException{
         if(Pass.getText().equals("") && NIK.getText().equals("") && Nama.getText().equals("")
@@ -211,7 +206,10 @@ public class FXMLAdminController implements Initializable {
     }
     
     
+    ObservableList<String> cbGender = FXCollections.observableArrayList("Laki-Laki", "Perempuan");
+    ObservableList<String> cbStatus = FXCollections.observableArrayList("staff", "admin");
     
+ 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
