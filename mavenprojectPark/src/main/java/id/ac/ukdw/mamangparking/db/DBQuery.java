@@ -133,7 +133,7 @@ public class DBQuery extends DBConnect{
     
     public ResultSet ResultKendaraan(){
         try{
-            String query = "SELECT * from 'Jenis Kendaraan'";
+            String query = "SELECT * from `Kendaraan`";
             ps=con.prepareStatement(query);
             rs = ps.executeQuery();
         }catch(SQLException e){
@@ -145,7 +145,7 @@ public class DBQuery extends DBConnect{
     public boolean UpdateKendaraan(String kendaraan, int awal, int perjam) throws SQLException {
         boolean x = false;
         try {
-            String query = "UPDATE 'Jenis Kendaraan' SET 'Harga Awal'=?, 'Harga per Jam'=? WHERE 'Jenis Kendaraan'=?";
+            String query = "UPDATE `Kendaraan` SET `Harga Awal`=?, `Harga per Jam`=? WHERE `Jenis Kendaraan`=?";
             ps=con.prepareStatement(query);
             ps.setInt(1, awal);
             ps.setInt(2, perjam);
@@ -153,8 +153,7 @@ public class DBQuery extends DBConnect{
             x = ps.execute();
         } catch (SQLException ex) {
             Logger.getLogger(DBQuery.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally{
+        }finally{
             ps.close();
         }
         return x;

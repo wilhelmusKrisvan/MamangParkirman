@@ -134,21 +134,21 @@ public class FXMLAdminController implements Initializable {
         Kendaraan kndrn = new Kendaraan();
         if(action.getSource() == btnUbahMOBIL){
             boolean x;
-            x = kndrn.UpdateHarga("Mobil", Integer.parseInt(trfawalbaruMOBIL.getText()), Integer.parseInt(trfjambaruMOBIL.getText()));
+            x = db.UpdateKendaraan("Mobil", Integer.parseInt(trfawalbaruMOBIL.getText()), Integer.parseInt(trfjambaruMOBIL.getText()));
             if(!x){
                 trfawalMOBIL.setText(trfawalbaruMOBIL.getText());
                 trfjamMOBIL.setText(trfjambaruMOBIL.getText());
             }
         }else if(action.getSource() == btnUbahMOTOR){
             boolean x;
-            x = kndrn.UpdateHarga("Motor", Integer.parseInt(trfawalbaruMOTOR.getText()), Integer.parseInt(trfjambaruMOTOR.getText()));
+            x = db.UpdateKendaraan("Motor", Integer.parseInt(trfawalbaruMOTOR.getText()), Integer.parseInt(trfjambaruMOTOR.getText()));
             if(!x){
                 trfawalMOTOR.setText(trfawalbaruMOTOR.getText());
                 trfjamMOTOR.setText(trfjambaruMOTOR.getText());
             }
         }else if(action.getSource() == btnUbahBUS){
             boolean x;
-            x = kndrn.UpdateHarga("Bus", Integer.parseInt(trfawalbaruBUS.getText()), Integer.parseInt(trfjambaruBUS.getText()));
+            x = db.UpdateKendaraan("Bus", Integer.parseInt(trfawalbaruBUS.getText()), Integer.parseInt(trfjambaruBUS.getText()));
             if(!x){
                 trfawalBUS.setText(trfawalbaruBUS.getText());
                 trfjamBUS.setText(trfjambaruBUS.getText());
