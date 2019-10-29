@@ -7,35 +7,111 @@ package id.ac.ukdw.mamangparking.model;
 import id.ac.ukdw.mamangparking.db.DBQuery;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 /**
  *
  * @author Wilhelmus Krisvan
  */
 public class Karyawan {
     DBQuery db = new DBQuery();
-    private int NIK;
-    private String NamaLengkap;
-    private String Username;
-    private String Password;
-    private String TglLahir;
-    private String Gender;
-    private String Alamat;
-    private String NoTelp;
-    private String Level;
+    private SimpleIntegerProperty NIK;
+    private SimpleStringProperty NamaLengkap;
+    private SimpleStringProperty Username;
+    private SimpleStringProperty Password;
+    private SimpleStringProperty TglLahir;
+    private SimpleStringProperty Gender;
+    private SimpleStringProperty Alamat;
+    private SimpleStringProperty NoTelp;
+    private SimpleStringProperty Level;
+
+    public void setNIK(int NIK) {
+        this.NIK = new SimpleIntegerProperty(NIK);
+    }
+
+    public void setLevel(String Level) {
+        this.Level = new SimpleStringProperty(Level);
+    }
+    
+    public void setNamaLengkap(String NamaLengkap) {
+        this.NamaLengkap = new SimpleStringProperty(NamaLengkap);
+    }
+
+    public void setUsername(String Username) {
+        this.Username = new SimpleStringProperty(Username);
+    }
+
+    public void setPassword(String Password) {
+        this.Password = new SimpleStringProperty(Password);
+    }
+
+    public void setTglLahir(String TglLahir) {
+        this.TglLahir = new SimpleStringProperty(TglLahir);
+    }
+
+    public void setGender(String Gender) {
+        this.Gender = new SimpleStringProperty(Gender);
+    }
+
+    public void setAlamat(String Alamat) {
+        this.Alamat = new SimpleStringProperty(Alamat);
+    }
+
+    public void setNoTelp(String NoTelp) {
+        this.NoTelp = new SimpleStringProperty(NoTelp);
+    }
+
+    public int getNIK() {
+        return NIK.get();
+    }
+
+    public String getLevel() {
+        return Level.get();
+    }
+    
+    public String getNamaLengkap() {
+        return NamaLengkap.get();
+    }
+
+    public String getUsername() {
+        return Username.get();
+    }
+
+    public String getPassword() {
+        return Password.get();
+    }
+
+    public String getTglLahir() {
+        return TglLahir.get();
+    }
+
+    public String getGender() {
+        return Gender.get();
+    }
+
+    public String getAlamat() {
+        return Alamat.get();
+    }
+
+    public String getNoTelp() {
+        return NoTelp.get();
+    }
 
     
     public void getDBKaryawan(ResultSet rs) throws SQLException{
         try{
             rs.next();
-            this.NIK = rs.getInt(1);
-            this.NamaLengkap=rs.getString(2);
-            this.Username = rs.getString(3);
-            this.Password = rs.getString(4);
-            this.TglLahir = rs.getString(5);
-            this.Gender = rs.getString(6);
-            this.Alamat = rs.getString(8);
-            this.NoTelp = rs.getString(7);
-            this.Level = rs.getString(9);
+            this.NIK = new SimpleIntegerProperty(rs.getInt(1));
+            this.NamaLengkap = new SimpleStringProperty(rs.getString(2));
+            this.Username= new SimpleStringProperty(rs.getString(3));
+            this.Password= new SimpleStringProperty(rs.getString(4));
+            this.TglLahir= new SimpleStringProperty(rs.getString(5));
+            this.Gender= new SimpleStringProperty(rs.getString(6));
+            this.Alamat= new SimpleStringProperty(rs.getString(7));
+            this.NoTelp= new SimpleStringProperty(rs.getString(8));
+            this.Level= new SimpleStringProperty(rs.getString(9));
             
         }catch(Exception e){
             e.printStackTrace();
@@ -44,84 +120,40 @@ public class Karyawan {
         }
     }
     
+    public ResultSet ListDBKaryawan() throws SQLException{
+        String query = "SELECT * from Karyawan";
+        ResultSet rs = db.queryResult(query);
+        return rs;
+    }
+    
+    public ObservableList<Karyawan> setKaryawanList() throws SQLException, ClassNotFoundException{
+        ResultSet rs = this.ListDBKaryawan();
+        ObservableList<Karyawan> karyawanList = FXCollections.observableArrayList();
+        while(rs.next()){
+            Karyawan kr = new Karyawan();
+            kr.setNIK(rs.getInt(1));
+            kr.setNamaLengkap(rs.getString(2));
+            kr.setUsername(rs.getString(3));
+            kr.setPassword(rs.getString(4));
+            kr.setTglLahir(rs.getString(5));
+            kr.setGender(rs.getString(6));
+            kr.setNoTelp(rs.getString(7));
+            kr.setAlamat(rs.getString(8));
+            kr.setLevel(rs.getString(9));
+            karyawanList.add(kr);
+        }
+        rs.close();
+        return karyawanList;
+    }
+    
     public void UpdateDBKaryawan() throws SQLException{
-        db.UpdateProfile(this.Username, this.Password, this.NoTelp, this.Alamat, this.NamaLengkap, this.TglLahir, this.Gender, this.NIK);
+        db.UpdateProfile(this.Username.get(), this.Password.get(), this.NoTelp.get(), this.Alamat.get(), this.NamaLengkap.get(), this.TglLahir.get(), this.Gender.get(), this.NIK.get());
     }
     
     public void InsertDBKaryawan() throws SQLException{
-        db.InsertKaryawan(this.Username, this.Password, this.NoTelp, this.Alamat, this.NamaLengkap, this.TglLahir, this.Gender, this.Level, this.NIK);
+        db.InsertKaryawan(this.Username.get(), this.Password.get(), this.NoTelp.get(), this.Alamat.get(), this.NamaLengkap.get(), this.TglLahir.get(), this.Gender.get(), this.Level.get(), this.NIK.get());
     }
     
-    public void setGender(String Gender) {
-        this.Gender = Gender;
-    }
     
-    public void setNIK(int NIK) {
-        this.NIK = NIK;
-    }
-
-    public void setNamaLengkap(String NamaLengkap) {
-        this.NamaLengkap = NamaLengkap;
-    }
-
-    public void setUsername(String Username) {
-        this.Username = Username;
-    }
-
-    public void setPassword(String Password) {
-        this.Password = Password;
-    }
-
-    public void setTglLahir(String TglLahir) {
-        this.TglLahir = TglLahir;
-    }
-
-    public void setAlamat(String Alamat) {
-        this.Alamat = Alamat;
-    }
-
-    public void setNoTelp(String NoTelp) {
-        this.NoTelp = NoTelp;
-    }
-
-    public void setLevel(String Level) {
-        this.Level = Level;
-    }
-
-    public String getGender() {
-        return Gender;
-    }
-    
-    public int getNIK() {
-        return NIK;
-    }
-    
-    public String getNamaLengkap() {
-        return NamaLengkap;
-    }
-
-    public String getUsername() {
-        return Username;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public String getTglLahir() {
-        return TglLahir;
-    }
-
-    public String getAlamat() {
-        return Alamat;
-    }
-
-    public String getNoTelp() {
-        return NoTelp;
-    }
-
-    public String getLevel() {
-        return Level;
-    }
 
 }
