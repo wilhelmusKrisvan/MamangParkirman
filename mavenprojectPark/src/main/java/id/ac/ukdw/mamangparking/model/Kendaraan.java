@@ -38,7 +38,7 @@ public class Kendaraan {
     }
 
     public boolean UpdateHarga(String jenis, int awal, int perjam) throws SQLException{
-        return db.UpdateKendaraan(this.JenisKendaraan, this.HargaAwal, this.HargaPerjam);
+        return db.UpdateKendaraan(jenis, awal, perjam);
     }
     
     public ObservableList<Kendaraan> setKendaraanList() throws SQLException, ClassNotFoundException{
@@ -52,6 +52,7 @@ public class Kendaraan {
             kd.setHargaPerjam(rs.getInt(4));
             kendaraanList.add(kd);
         }
+        rs.close();
         return kendaraanList;
     } 
 
