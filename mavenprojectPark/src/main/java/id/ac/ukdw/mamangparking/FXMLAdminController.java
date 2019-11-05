@@ -139,7 +139,7 @@ public class FXMLAdminController implements Initializable {
         else if (actionEvent.getSource() == BtnKendaraan) {
             BtnUser.setStyle("-fx-background-color : #131022;");
             BtnAddUser.setStyle("-fx-background-color : #131022;");
-            BtnLaporan.setStyle("-fx-background-color : #131022;");
+             BtnLaporan.setStyle("-fx-background-color : #131022;");
             BtnKendaraan.setStyle("-fx-background-color : #42406D");
             pnlVehicle.toFront();
         }
@@ -156,6 +156,11 @@ public class FXMLAdminController implements Initializable {
             alert.setContentText("YOU MUST FILL ALL DATA");
             alert.showAndWait();
         }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("ADD USER");
+            alert.setHeaderText("ADD USER SUCCES");
+            alert.setContentText("USER REGISTERED");
+            alert.showAndWait();
             this.setData();
         }
        
@@ -166,24 +171,60 @@ public class FXMLAdminController implements Initializable {
         Kendaraan kndrn = new Kendaraan();
         if(action.getSource() == btnUbahMOBIL){
             boolean x;
-            x = db.UpdateKendaraan("Mobil", Integer.parseInt(trfawalbaruMOBIL.getText()), Integer.parseInt(trfjambaruMOBIL.getText()));
+            if(trfawalbaruMOBIL.getText().equals("") && !trfjambaruMOBIL.getText().equals("")){
+                x = db.UpdateKendaraan("Mobil", Integer.parseInt(trfawalMOBIL.getText()), Integer.parseInt(trfjambaruMOBIL.getText()));
+                if(!x){
+                    trfjamMOBIL.setText(trfjambaruMOBIL.getText());
+                }
+            }else if(trfjambaruMOBIL.getText().equals("") && !trfawalbaruMOBIL.getText().equals("")){
+                x = db.UpdateKendaraan("Mobil", Integer.parseInt(trfjamMOBIL.getText()), Integer.parseInt(trfawalbaruMOBIL.getText()));
+                if(!x){
+                    trfawalMOBIL.setText(trfawalbaruMOBIL.getText());
+                }
+            }else if(!trfawalbaruMOBIL.getText().equals("") && !trfjambaruMOBIL.getText().equals("")){
+                x = db.UpdateKendaraan("Mobil", Integer.parseInt(trfawalbaruMOBIL.getText()), Integer.parseInt(trfjambaruMOBIL.getText()));
             if(!x){
                 trfawalMOBIL.setText(trfawalbaruMOBIL.getText());
-                trfjamMOBIL.setText(trfjambaruMOBIL.getText());
+                trfjamMOBIL.setText(trfjambaruMOBIL.getText()); 
+                }
             }
         }else if(action.getSource() == btnUbahMOTOR){
             boolean x;
-            x = db.UpdateKendaraan("Motor", Integer.parseInt(trfawalbaruMOTOR.getText()), Integer.parseInt(trfjambaruMOTOR.getText()));
+            if(trfawalbaruMOTOR.getText().equals("") && !trfjambaruMOTOR.getText().equals("")){
+                x = db.UpdateKendaraan("Motor", Integer.parseInt(trfawalMOTOR.getText()), Integer.parseInt(trfjambaruMOTOR.getText()));
+                if(!x){
+                    trfjamMOTOR.setText(trfjambaruMOTOR.getText());
+                }
+            }else if(trfjambaruMOTOR.getText().equals("") && !trfawalbaruMOTOR.getText().equals("")){
+                x = db.UpdateKendaraan("Motor", Integer.parseInt(trfjamMOTOR.getText()), Integer.parseInt(trfawalbaruMOTOR.getText()));
+                if(!x){
+                    trfawalMOTOR.setText(trfawalbaruMOTOR.getText());
+                }
+            }else if(!trfawalbaruMOTOR.getText().equals("") && !trfjambaruMOTOR.getText().equals("")){
+                x = db.UpdateKendaraan("Motor", Integer.parseInt(trfawalbaruMOTOR.getText()), Integer.parseInt(trfjambaruMOTOR.getText()));
             if(!x){
                 trfawalMOTOR.setText(trfawalbaruMOTOR.getText());
-                trfjamMOTOR.setText(trfjambaruMOTOR.getText());
+                trfjamMOTOR.setText(trfjambaruMOTOR.getText()); 
+                }
             }
         }else if(action.getSource() == btnUbahBUS){
             boolean x;
-            x = db.UpdateKendaraan("Bus", Integer.parseInt(trfawalbaruBUS.getText()), Integer.parseInt(trfjambaruBUS.getText()));
+            if(trfawalbaruBUS.getText().equals("") && !trfjambaruBUS.getText().equals("")){
+                x = db.UpdateKendaraan("Bus", Integer.parseInt(trfawalBUS.getText()), Integer.parseInt(trfjambaruBUS.getText()));
+                if(!x){
+                    trfjamBUS.setText(trfjambaruBUS.getText());
+                }
+            }else if(trfjambaruBUS.getText().equals("") && !trfawalbaruBUS.getText().equals("")){
+                x = db.UpdateKendaraan("Bus", Integer.parseInt(trfjamBUS.getText()), Integer.parseInt(trfawalbaruBUS.getText()));
+                if(!x){
+                    trfawalBUS.setText(trfawalbaruBUS.getText());
+                }
+            }else if(!trfawalbaruBUS.getText().equals("") && !trfjambaruBUS.getText().equals("")){
+                x = db.UpdateKendaraan("Bus", Integer.parseInt(trfawalbaruBUS.getText()), Integer.parseInt(trfjambaruBUS.getText()));
             if(!x){
                 trfawalBUS.setText(trfawalbaruBUS.getText());
-                trfjamBUS.setText(trfjambaruBUS.getText());
+                trfjamBUS.setText(trfjambaruBUS.getText()); 
+                }
             }
         }
     }
