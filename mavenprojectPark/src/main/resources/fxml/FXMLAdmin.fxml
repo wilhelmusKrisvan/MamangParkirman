@@ -109,12 +109,11 @@
                   <Pane fx:id="pnlUser" prefHeight="396.0" prefWidth="710.0" style="-fx-background-color: #131022;">
                      <children>
                         <Separator layoutX="331.0" layoutY="42.0" orientation="VERTICAL" prefHeight="300.0" prefWidth="5.0" />
-                        <TableView layoutX="14.0" layoutY="101.0" prefHeight="210.0" prefWidth="303.0">
+                        <TableView fx:id="tableUser" layoutX="14.0" layoutY="101.0" prefHeight="210.0" prefWidth="303.0">
                           <columns>
-                            <TableColumn prefWidth="28.00003147125244" text="W" />
-                            <TableColumn prefWidth="106.00000381469727" text="X" />
-                              <TableColumn prefWidth="92.66664123535156" text="Y" />
-                              <TableColumn prefWidth="75.0" text="Z" />
+                            <TableColumn fx:id="colNIK" prefWidth="106.00000381469727" text="X" />
+                              <TableColumn fx:id="colName" prefWidth="116.79998779296875" text="Y" />
+                              <TableColumn fx:id="colUser" prefWidth="79.20002746582031" text="Z" />
                           </columns>
                         </TableView>
                         <TextField layoutX="14.0" layoutY="67.0" prefHeight="25.0" prefWidth="240.0" promptText="Pencarian.." />
@@ -135,7 +134,7 @@
                         <Label layoutX="348.0" layoutY="254.0" prefHeight="26.0" prefWidth="127.0" text="Alamat" textFill="#ffa229" wrapText="true" />
                         <ComboBox fx:id="edtGender" layoutX="482.0" layoutY="166.0" prefHeight="25.0" prefWidth="215.0" promptText="Jenis Kelamin" />
                         <DatePicker fx:id="edtTgl" layoutX="482.0" layoutY="196.0" prefHeight="25.0" prefWidth="215.0" promptText="Tanggal Lahir" />
-                        <Button fx:id="BtnSave" layoutX="637.0" layoutY="311.0" mnemonicParsing="false" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="SIMPAN" textFill="#ffa229" />
+                        <Button fx:id="BtnDelete" layoutX="637.0" layoutY="311.0" mnemonicParsing="false" onAction="#onDelete" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="DELETE" textFill="#ffa229" />
                      </children></Pane>
                   <Pane fx:id="pnlAdd" prefHeight="395.0" prefWidth="714.0" style="-fx-background-color: #131022;">
                      <children>
