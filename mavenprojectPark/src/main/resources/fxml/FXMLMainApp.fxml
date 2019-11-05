@@ -36,7 +36,7 @@
                         </ImageView>
                      </graphic>
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets top="50.0" />
                      </VBox.margin>
                   </Button>
                   <Button id="BtnParked" fx:id="BtnParked" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="66.0" prefWidth="85.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="PARKED" textAlignment="CENTER" textFill="#ffa239">
@@ -116,20 +116,7 @@
                   <Insets left="5.0" right="5.0" top="5.0" />
                </BorderPane.margin>
                <children>
-                  <Pane fx:id="pnlParked" layoutY="8.0" prefHeight="365.0" prefWidth="715.0" style="-fx-background-color: #131022;">
-                     <children>
-                        <TextField id="txtSearch" layoutX="77.0" layoutY="39.0" prefHeight="25.0" prefWidth="372.0" promptText="Masukkan Pencarian.." />
-                        <Button id="BtnSearch" fx:id="BtnSearch" layoutX="449.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="CARI" textFill="#ffa239" />
-                        <TableView fx:id="tableKendaraan" layoutX="78.0" layoutY="78.0" prefHeight="176.0" prefWidth="417.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="pnlParkOut" prefHeight="374.0" prefWidth="715.0" style="-fx-background-color: #131022;" />
-                  <Pane fx:id="pnlParkIn" prefHeight="373.0" prefWidth="715.0" style="-fx-background-color: #131022;">
+                  <Pane fx:id="pnlParkIn" prefHeight="373.0" prefWidth="715.0" style="-fx-background-color: #131022;" visible="false">
                      <children>
                         <ComboBox fx:id="cmbJenis" layoutX="152.0" layoutY="156.0" prefHeight="30.0" prefWidth="411.0" promptText="JENIS KENDARAAN" />
                         <Button id="btnSearch" fx:id="BtnInsert" layoutX="330.0" layoutY="207.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="MASUK" textFill="#ffa239" />
@@ -140,8 +127,23 @@
                         </TextField>
                      </children>
                   </Pane>
-                  <Pane fx:id="pnlStart" prefHeight="373.0" prefWidth="715.0" style="-fx-background-color: #131022;" />
-                  <Pane fx:id="pnlPrice" prefHeight="395.0" prefWidth="710.0" style="-fx-background-color: #131022;">
+                  <Pane fx:id="pnlParked" layoutY="15.0" prefHeight="365.0" prefWidth="715.0" style="-fx-background-color: #131022;">
+                     <children>
+                        <TextField id="txtSearch" layoutX="225.0" layoutY="197.0" prefHeight="31.0" prefWidth="208.0" promptText="Masukkan Pencarian.." />
+                        <Button id="BtnSearch" fx:id="BtnSearch" layoutX="433.0" layoutY="196.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="CARI" textFill="#ffa239" />
+                        <TableView fx:id="tableKendaraan" layoutX="134.0" layoutY="235.0" prefHeight="102.0" prefWidth="448.0">
+                          <columns>
+                            <TableColumn prefWidth="32.6666259765625" text="No" />
+                            <TableColumn prefWidth="107.3333740234375" text="Plat Nomor" />
+                              <TableColumn prefWidth="80.66668701171875" text="Jam Masuk" />
+                              <TableColumn prefWidth="133.33328247070312" text="Jenis Kendaran" />
+                              <TableColumn minWidth="0.0" prefWidth="92.66671752929688" text="Harga Awal" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pnlParkOut" prefHeight="374.0" prefWidth="715.0" style="-fx-background-color: #131022;" visible="false" />
+                  <Pane fx:id="pnlPrice" prefHeight="395.0" prefWidth="710.0" style="-fx-background-color: #131022;" visible="false">
                      <children>
                         <ComboBox fx:id="cmbHrgJns" layoutX="146.0" layoutY="99.0" prefHeight="30.0" prefWidth="411.0" promptText="JENIS KENDARAAN" />
                         <Label layoutX="153.0" layoutY="37.0" prefHeight="40.0" prefWidth="419.0" text="DETAIL HARGA KENDARAAN" textFill="#ffa239">
