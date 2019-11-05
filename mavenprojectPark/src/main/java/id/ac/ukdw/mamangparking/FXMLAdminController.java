@@ -145,25 +145,24 @@ public class FXMLAdminController implements Initializable {
         }
     }      
         
-    @FXML
+ @FXML
     private void InsertNewData() throws SQLException{
-        if(Pass.getText().equals("") && NIK.getText().equals("") && Nama.getText().equals("")
-                && User.getText().equals("") && Alamat.getText().equals("") && Notelp.getText().equals("")
-                && Level.getValue().equals("") && Gender.getValue().equals("") && Tgl.getValue().equals("")){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ADD USER");
-            alert.setHeaderText("ADD USER IS FAILED");
-            alert.setContentText("YOU MUST FILL ALL DATA");
-            alert.showAndWait();
-        }else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("ADD USER");
-            alert.setHeaderText("ADD USER SUCCES");
-            alert.setContentText("USER REGISTERED");
-            alert.showAndWait();
-            this.setData();
-        }
+        if(!NIK.getText().equals("") && !Nama.getText().equals("") && !User.getText().equals("") &&
+           !Pass.getText().equals("") && !Repass.getText().equals("") && !Level.getValue().equals(null) &&
+           !Gender.getValue().equals(null) && !Tgl.getValue().equals(null) && !Notelp.getText().equals("")
+           && !Alamat.getText().equals("")){
        
+            if(!Pass.getText().equals(Repass.getText())){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ADD USER");
+                alert.setHeaderText("ADD USER FAILED");
+                alert.setContentText("PLEASE RE-TYPE PASSWORD CORRECTLY");
+                alert.showAndWait();
+            }
+            else{
+                setData();
+            }
+        }
     }
     
     @FXML
@@ -232,7 +231,6 @@ public class FXMLAdminController implements Initializable {
     public void setData() throws SQLException{
         Karyawan kr = new Karyawan();
         
-         if(Pass.getText().equals(Repass.getText())){
             kr.setPassword(Pass.getText());
             kr.setNIK(Integer.valueOf(NIK.getText()));
             kr.setNamaLengkap(Nama.getText());
@@ -242,15 +240,8 @@ public class FXMLAdminController implements Initializable {
             kr.setTglLahir(Tgl.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
             kr.setNoTelp(Notelp.getText());
             kr.setAlamat(Alamat.getText());
-            kr.InsertDBKaryawan();
-        }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ADD USER");
-            alert.setHeaderText("ADD USER IS FAILED");
-            alert.setContentText("PLEASE RE-TYPE PASSWORD CORECTLY");
-            alert.showAndWait();
-         }
-        
+            kr.InsertDBKaryawan();   
+            
     }
 
     public void SetDataFront(String NIK) throws SQLException{

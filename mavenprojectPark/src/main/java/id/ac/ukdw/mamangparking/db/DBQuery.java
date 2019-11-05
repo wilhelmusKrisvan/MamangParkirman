@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
 import javax.swing.JOptionPane;
 
 /**
@@ -107,7 +108,17 @@ public class DBQuery extends DBConnect{
     }
     
     public void InsertKaryawan(String User, String pass, String notelp, String alamat, String NamaLeng, String tgl, String gender, String lvl, int nik) throws SQLException{
-        try{
+        String query = "SELECT * FROM Karyawan WHERE Username ='" + User + "'";
+        ResultSet rs = this.queryResult(query);
+        if(rs.next()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ADD USER");
+            alert.setHeaderText("ADD USER FAILED");
+            alert.setContentText("USERNAME ALREADY EXSIST");
+            alert.showAndWait();
+            rs.close();
+        }else{
+            try{
               String queryAdmin = "INSERT INTO `Karyawan` (`Username`,`Password`,`Telepon`,`Alamat`,`Nama`,`Tanggal Lahir`, `Jenis Kelamin`, `Level`, `NIK`) VALUES (?,?,?,?,?,?,?,?,?)";
                 ps=con.prepareStatement(queryAdmin);
                 ps.setString(1, User);
@@ -121,14 +132,19 @@ public class DBQuery extends DBConnect{
                 ps.setInt(9, nik);
                 boolean x =ps.execute();
                 if(x==true){
-                    JOptionPane.showMessageDialog(null, "Admin Updated");
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("ADD USER");
+                    alert.setHeaderText("ADD USER SUCCES");
+                    alert.setContentText("USER REGISTERED");
+                    alert.showAndWait();
                 }
           }
           catch(SQLException e){
               e.printStackTrace();
           }finally{
                 ps.close();
-          }       
+          }
+        }
     }
     
     public void deleteKaryawan(String nik) throws SQLException, ClassNotFoundException {
