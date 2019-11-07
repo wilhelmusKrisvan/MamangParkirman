@@ -11,6 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -129,9 +130,9 @@
                   </Pane>
                   <Pane fx:id="pnlParked" layoutY="15.0" prefHeight="365.0" prefWidth="715.0" style="-fx-background-color: #131022;">
                      <children>
-                        <TextField id="txtSearch" layoutX="225.0" layoutY="197.0" prefHeight="31.0" prefWidth="208.0" promptText="Masukkan Pencarian.." />
-                        <Button id="BtnSearch" fx:id="BtnSearch" layoutX="433.0" layoutY="196.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="CARI" textFill="#ffa239" />
-                        <TableView fx:id="tableKendaraan" layoutX="134.0" layoutY="235.0" prefHeight="102.0" prefWidth="448.0">
+                        <TextField id="txtSearch" layoutX="225.0" layoutY="198.0" prefHeight="31.0" prefWidth="208.0" promptText="Masukkan Pencarian.." />
+                        <Button id="BtnSearch" fx:id="BtnSearch" layoutX="433.0" layoutY="197.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="CARI" textFill="#ffa239" />
+                        <TableView fx:id="tableKendaraan" layoutX="134.0" layoutY="236.0" prefHeight="115.0" prefWidth="448.0">
                           <columns>
                             <TableColumn prefWidth="32.6666259765625" text="No" />
                             <TableColumn prefWidth="107.3333740234375" text="Plat Nomor" />
@@ -140,6 +141,75 @@
                               <TableColumn minWidth="0.0" prefWidth="92.66671752929688" text="Harga Awal" />
                           </columns>
                         </TableView>
+                        <HBox layoutX="60.0" layoutY="8.0" prefHeight="158.0" prefWidth="595.0">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #262042#262042; -fx-border-color: #131022; -fx-border-radius: 20; -fx-background-radius: 20;">
+                                 <children>
+                                    <ImageView fitHeight="38.0" fitWidth="27.0" layoutX="59.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../kapmotor.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="37.0" layoutY="26.0" prefHeight="43.0" prefWidth="61.0" textFill="#ffa229">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="kapasitasMOTOR" layoutX="94.0" layoutY="109.0" prefHeight="38.0" prefWidth="45.0" textFill="#ffa229">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="isiMOTOR" layoutX="51.0" layoutY="26.0" prefHeight="67.0" prefWidth="87.0" textAlignment="CENTER" textFill="#ffa229" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="26.0">
+                                       <font>
+                                          <Font size="33.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #262042; -fx-border-color: #131022; -fx-border-radius: 20; -fx-background-radius: 20;">
+                                 <children>
+                                    <ImageView fitHeight="38.0" fitWidth="27.0" layoutX="60.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../kapmobil.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="kapasitasMOBIL" layoutX="95.0" layoutY="111.0" prefHeight="38.0" prefWidth="45.0" textFill="#ffa229">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="isiMOBIL" layoutX="55.0" layoutY="31.0" prefHeight="67.0" prefWidth="87.0" textAlignment="CENTER" textFill="#ffa229">
+                                       <font>
+                                          <Font size="33.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #262042; -fx-border-color: #131022; -fx-border-radius: 20; -fx-background-radius: 20;">
+                                 <children>
+                                    <ImageView fitHeight="38.0" fitWidth="27.0" layoutX="59.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../kapbus.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label fx:id="kapasitasBUS" layoutX="94.0" layoutY="110.0" prefHeight="38.0" prefWidth="45.0" textFill="#ffa229">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="isiBUS" layoutX="50.0" layoutY="31.0" prefHeight="67.0" prefWidth="87.0" textAlignment="CENTER" textFill="#ffa229">
+                                       <font>
+                                          <Font size="33.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
                      </children>
                   </Pane>
                   <Pane fx:id="pnlParkOut" prefHeight="374.0" prefWidth="715.0" style="-fx-background-color: #131022;" />

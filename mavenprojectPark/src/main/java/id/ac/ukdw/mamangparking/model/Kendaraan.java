@@ -20,21 +20,26 @@ public class Kendaraan {
     private String JenisKendaraan;
     private int HargaAwal;
     private int HargaPerjam;
+    private int Kapasitas; 
     private int id;
-
-
     
     public void getDBKendaraan(ResultSet rs) throws SQLException{
         try{
             rs.next();
-            this.JenisKendaraan = rs.getString(1);
-            this.HargaAwal = rs.getInt(2);
-            this.HargaPerjam = rs.getInt(3);            
+            this.id = rs.getInt(1);
+            this.JenisKendaraan = rs.getString(2);
+            this.HargaAwal = rs.getInt(3);
+            this.HargaPerjam = rs.getInt(4);
+            this.Kapasitas = rs.getInt(5);
         }catch(Exception e){
             e.printStackTrace();
         }finally{
             rs.close();
         }
+    }
+
+    public boolean UpdateKapasitas(String jenis, int kap) throws SQLException{
+        return db.UpdateKapasitas(jenis, kap);
     }
 
     public boolean UpdateHarga(String jenis, int awal, int perjam) throws SQLException{
@@ -50,6 +55,7 @@ public class Kendaraan {
             kd.setJenisKendaraan(rs.getString(2));
             kd.setHargaAwal(rs.getInt(3));
             kd.setHargaPerjam(rs.getInt(4));
+            kd.setKapasitas(rs.getInt(5));
             kendaraanList.add(kd);
         }
         rs.close();
@@ -74,6 +80,14 @@ public class Kendaraan {
 
     public int getHargaPerjam() {
         return HargaPerjam;
+    }
+
+    public int getKapasitas() {
+        return Kapasitas;
+    }
+    
+    public void setKapasitas(int Kapasitas) {
+        this.Kapasitas = Kapasitas;
     }
 
     public void setJenisKendaraan(String JenisKendaraan) {

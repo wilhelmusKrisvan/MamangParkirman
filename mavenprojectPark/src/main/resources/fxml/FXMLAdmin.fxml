@@ -182,108 +182,173 @@
                      </children></Pane>
                   <Pane fx:id="pnlVehicle" prefHeight="397.0" prefWidth="715.0" style="-fx-background-color: #131022;">
                      <children>
-                        <TabPane layoutX="92.0" layoutY="43.0" prefHeight="311.0" prefWidth="531.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane layoutX="92.0" layoutY="31.0" prefHeight="334.0" prefWidth="531.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab text="MOTOR">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
-                                          <Label layoutX="31.0" layoutY="55.0" prefHeight="27.0" prefWidth="101.0" text="Harga Awal :">
+                                          <Label layoutX="32.0" layoutY="13.0" prefHeight="27.0" prefWidth="101.0" text="Harga Awal :">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="45.0" layoutY="79.0" text="Rp">
+                                          <Label layoutX="46.0" layoutY="37.0" text="Rp">
                                              <font>
                                                 <Font size="13.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="trfawalMOTOR" layoutX="66.0" layoutY="89.0" prefHeight="29.0" prefWidth="149.0">
+                                          <Label fx:id="trfawalMOTOR" layoutX="67.0" layoutY="41.0" prefHeight="30.0" prefWidth="159.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="32.0" layoutY="70.0" prefHeight="27.0" prefWidth="101.0" text="Harga Per Jam :">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="31.0" layoutY="135.0" prefHeight="27.0" prefWidth="101.0" text="Harga Per Jam :">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label layoutX="45.0" layoutY="159.0" text="Rp">
+                                          <Label layoutX="46.0" layoutY="94.0" text="Rp">
                                              <font>
                                                 <Font size="13.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="trfjamMOTOR" layoutX="66.0" layoutY="169.0" prefHeight="29.0" prefWidth="149.0">
+                                          <Label fx:id="trfjamMOTOR" layoutX="67.0" layoutY="98.0" prefHeight="28.0" prefWidth="159.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator layoutX="263.0" layoutY="12.0" orientation="VERTICAL" prefHeight="281.0" prefWidth="0.0" />
+                                          <Label layoutX="28.0" layoutY="137.0" prefHeight="27.0" prefWidth="115.0" text="Harga Awal Baru :">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Separator layoutX="263.0" layoutY="41.0" orientation="VERTICAL" prefHeight="200.0" />
-                                          <Label layoutX="283.0" layoutY="56.0" prefHeight="27.0" prefWidth="115.0" text="Harga Awal Baru :">
+                                          <TextField fx:id="trfawalbaruMOTOR" layoutX="51.0" layoutY="163.0" prefHeight="14.0" prefWidth="187.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font></TextField>
+                                          <Label layoutX="28.0" layoutY="190.0" prefHeight="27.0" prefWidth="133.0" text="Harga Per Jam Baru :">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="trfawalbaruMOTOR" layoutX="306.0" layoutY="82.0" prefHeight="25.0" prefWidth="187.0" />
-                                          <Label layoutX="283.0" layoutY="133.0" prefHeight="27.0" prefWidth="133.0" text="Harga Per Jam Baru :">
+                                          <TextField fx:id="trfjambaruMOTOR" layoutX="51.0" layoutY="216.0" prefHeight="13.0" prefWidth="187.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font></TextField>
+                                          <Button fx:id="btnUbahMOTOR" layoutX="202.0" layoutY="258.0" mnemonicParsing="false" onAction="#handleUbah" style="-fx-background-color: #ffffff;" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="UBAH" />
+                                          <Separator layoutX="25.0" layoutY="133.0" prefHeight="0.0" prefWidth="216.0" />
+                                          <Label layoutX="288.0" layoutY="23.0" prefHeight="27.0" prefWidth="101.0" text="Kapasitas :">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="trfjambaruMOTOR" layoutX="306.0" layoutY="159.0" prefHeight="25.0" prefWidth="187.0" />
-                                          <Button fx:id="btnUbahMOTOR" layoutX="442.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleUbah" style="-fx-background-color: #ffffff;" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="UBAH" />
+                                          <Label fx:id="trfawalMOTOR1" layoutX="309.0" layoutY="47.0" prefHeight="30.0" prefWidth="159.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="kapasitasMOTOR" layoutX="350.0" layoutY="53.0" prefHeight="48.0" prefWidth="101.0">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator layoutX="293.0" layoutY="133.0" prefHeight="0.0" prefWidth="216.0" />
+                                          <Label layoutX="289.0" layoutY="137.0" prefHeight="27.0" prefWidth="115.0" text="Kapasitas Baru :">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="kapbaruMOTOR" layoutX="290.0" layoutY="163.0" prefHeight="14.0" prefWidth="187.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="btnKapasitasMOTOR" layoutX="453.0" layoutY="258.0" mnemonicParsing="false" onAction="#handlekapUbah" style="-fx-background-color: #ffffff;" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="UBAH" />
                                        </children>
                                     </AnchorPane>
                               </content>
                             </Tab>
                               <Tab text="MOBIL">
                                  <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="531.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
-                                          <Label layoutX="31.0" layoutY="55.0" prefHeight="27.0" prefWidth="101.0" text="Harga Awal :">
+                                          <Label layoutX="31.0" layoutY="12.0" prefHeight="27.0" prefWidth="101.0" text="Harga Awal :">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="45.0" layoutY="79.0" text="Rp">
+                                          <Label layoutX="45.0" layoutY="36.0" text="Rp">
                                              <font>
                                                 <Font size="13.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="trfawalMOBIL" layoutX="66.0" layoutY="89.0" prefHeight="29.0" prefWidth="149.0">
+                                          <Label fx:id="trfawalMOBIL" layoutX="66.0" layoutY="40.0" prefHeight="30.0" prefWidth="159.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="31.0" layoutY="69.0" prefHeight="27.0" prefWidth="101.0" text="Harga Per Jam :">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="31.0" layoutY="135.0" prefHeight="27.0" prefWidth="101.0" text="Harga Per Jam :">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label layoutX="45.0" layoutY="159.0" text="Rp">
+                                          <Label layoutX="45.0" layoutY="93.0" text="Rp">
                                              <font>
                                                 <Font size="13.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="trfjamMOBIL" layoutX="66.0" layoutY="169.0" prefHeight="29.0" prefWidth="149.0">
+                                          <Label fx:id="trfjamMOBIL" layoutX="66.0" layoutY="97.0" prefHeight="28.0" prefWidth="159.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator layoutX="262.0" layoutY="11.0" orientation="VERTICAL" prefHeight="281.0" prefWidth="0.0" />
+                                          <Label layoutX="27.0" layoutY="136.0" prefHeight="27.0" prefWidth="115.0" text="Harga Awal Baru :">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Separator layoutX="263.0" layoutY="41.0" orientation="VERTICAL" prefHeight="200.0" />
-                                          <Label layoutX="283.0" layoutY="56.0" prefHeight="27.0" prefWidth="115.0" text="Harga Awal Baru :">
+                                          <TextField fx:id="trfawalbaruMOBIL" layoutX="50.0" layoutY="162.0" prefHeight="14.0" prefWidth="187.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label layoutX="27.0" layoutY="189.0" prefHeight="27.0" prefWidth="133.0" text="Harga Per Jam Baru :">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="trfawalbaruMOBIL" layoutX="306.0" layoutY="82.0" prefHeight="25.0" prefWidth="187.0" />
-                                          <Label layoutX="283.0" layoutY="133.0" prefHeight="27.0" prefWidth="133.0" text="Harga Per Jam Baru :">
+                                          <TextField fx:id="trfjambaruMOBIL" layoutX="50.0" layoutY="215.0" prefHeight="13.0" prefWidth="187.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="btnUbahMOBIL" layoutX="201.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleUbah" style="-fx-background-color: #ffffff;" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="UBAH" />
+                                          <Separator layoutX="24.0" layoutY="132.0" prefHeight="0.0" prefWidth="216.0" />
+                                          <Label layoutX="287.0" layoutY="22.0" prefHeight="27.0" prefWidth="101.0" text="Kapasitas :">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="trfjambaruMOBIL" layoutX="306.0" layoutY="159.0" prefHeight="25.0" prefWidth="187.0" />
-                                          <Button fx:id="btnUbahMobil" layoutX="442.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleUbah" style="-fx-background-color: #ffffff;" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="UBAH" />
+                                          <Label fx:id="kapasitasMOBIL" layoutX="349.0" layoutY="52.0" prefHeight="48.0" prefWidth="101.0">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator layoutX="292.0" layoutY="132.0" prefHeight="0.0" prefWidth="216.0" />
+                                          <Label layoutX="288.0" layoutY="136.0" prefHeight="27.0" prefWidth="115.0" text="Kapasitas Baru :">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="kapbaruMOBIL" layoutX="289.0" layoutY="162.0" prefHeight="14.0" prefWidth="187.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="btnKapasitasMOBIL" layoutX="452.0" layoutY="257.0" mnemonicParsing="false" onAction="#handlekapUbah" style="-fx-background-color: #ffffff;" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="UBAH" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -292,50 +357,81 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
-                                          <Label layoutX="31.0" layoutY="55.0" prefHeight="27.0" prefWidth="101.0" text="Harga Awal :">
+                                          <Separator layoutX="262.0" layoutY="11.0" orientation="VERTICAL" prefHeight="281.0" prefWidth="0.0" />
+                                          <Label layoutX="27.0" layoutY="136.0" prefHeight="27.0" prefWidth="115.0" text="Harga Awal Baru :">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="45.0" layoutY="79.0" text="Rp">
+                                          <TextField fx:id="trfawalbaruBUS" layoutX="50.0" layoutY="162.0" prefHeight="14.0" prefWidth="187.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label layoutX="27.0" layoutY="189.0" prefHeight="27.0" prefWidth="133.0" text="Harga Per Jam Baru :">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="trfjambaruBUS" layoutX="50.0" layoutY="215.0" prefHeight="13.0" prefWidth="187.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="btnUbahBUS" layoutX="201.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleUbah" style="-fx-background-color: #ffffff;" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="UBAH" />
+                                          <Separator layoutX="24.0" layoutY="135.0" prefHeight="0.0" prefWidth="216.0" />
+                                          <Label layoutX="287.0" layoutY="22.0" prefHeight="27.0" prefWidth="101.0" text="Kapasitas :">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="kapasitasBUS" layoutX="349.0" layoutY="52.0" prefHeight="48.0" prefWidth="101.0">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Separator layoutX="292.0" layoutY="132.0" prefHeight="0.0" prefWidth="216.0" />
+                                          <Label layoutX="288.0" layoutY="136.0" prefHeight="27.0" prefWidth="115.0" text="Kapasitas Baru :">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="kapbaruBUS" layoutX="289.0" layoutY="162.0" prefHeight="14.0" prefWidth="187.0">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="btnKapasitasBUS" layoutX="452.0" layoutY="257.0" mnemonicParsing="false" onAction="#handlekapUbah" style="-fx-background-color: #ffffff;" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="UBAH" />
+                                          <Label layoutX="28.0" layoutY="15.0" prefHeight="27.0" prefWidth="101.0" text="Harga Awal :">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="42.0" layoutY="39.0" text="Rp">
                                              <font>
                                                 <Font size="13.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="trfawalBUS" layoutX="66.0" layoutY="89.0" prefHeight="29.0" prefWidth="149.0">
+                                          <Label fx:id="trfawalBUS" layoutX="63.0" layoutY="43.0" prefHeight="30.0" prefWidth="159.0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="28.0" layoutY="72.0" prefHeight="27.0" prefWidth="101.0" text="Harga Per Jam :">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="31.0" layoutY="135.0" prefHeight="27.0" prefWidth="101.0" text="Harga Per Jam :">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label layoutX="45.0" layoutY="159.0" text="Rp">
+                                          <Label layoutX="42.0" layoutY="96.0" text="Rp">
                                              <font>
                                                 <Font size="13.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="trfjamBUS" layoutX="66.0" layoutY="169.0" prefHeight="29.0" prefWidth="149.0">
+                                          <Label fx:id="trfjamBUS" layoutX="63.0" layoutY="100.0" prefHeight="28.0" prefWidth="159.0">
                                              <font>
-                                                <Font size="14.0" />
+                                                <Font size="18.0" />
                                              </font>
                                           </Label>
-                                          <Separator layoutX="263.0" layoutY="41.0" orientation="VERTICAL" prefHeight="200.0" />
-                                          <Label layoutX="283.0" layoutY="56.0" prefHeight="27.0" prefWidth="115.0" text="Harga Awal Baru :">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField fx:id="trfawalbaruBUS" layoutX="306.0" layoutY="82.0" prefHeight="25.0" prefWidth="187.0" />
-                                          <Label layoutX="283.0" layoutY="133.0" prefHeight="27.0" prefWidth="133.0" text="Harga Per Jam Baru :">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField fx:id="trfjambaruBUS" layoutX="306.0" layoutY="159.0" prefHeight="25.0" prefWidth="187.0" />
-                                          <Button fx:id="btnUbahBUS" layoutX="442.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleUbah" style="-fx-background-color: #ffffff;" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="UBAH" />
                                        </children>
                                     </AnchorPane>
                                  </content>
