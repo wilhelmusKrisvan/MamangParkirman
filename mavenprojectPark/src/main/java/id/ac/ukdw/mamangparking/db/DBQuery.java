@@ -186,4 +186,20 @@ public class DBQuery extends DBConnect{
         }
         return x;
     }
+    
+    public boolean UpdateKapasitas(String kendaraan, int kap) throws SQLException {
+        boolean x = false;
+        try {
+            String query = "UPDATE `Kendaraan` SET `Kapasitas`=? WHERE `Jenis Kendaraan`=?";
+            ps=con.prepareStatement(query);
+            ps.setInt(1, kap);
+            ps.setString(2, kendaraan);
+            x = ps.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBQuery.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            ps.close();
+        }
+        return x;
+    }
 }

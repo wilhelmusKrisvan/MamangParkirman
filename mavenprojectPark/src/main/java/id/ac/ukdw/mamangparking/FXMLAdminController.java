@@ -54,14 +54,17 @@ public class FXMLAdminController implements Initializable {
     
     @FXML
     private Button BtnEdit,BtnUser,BtnAddUser,BtnLaporan,BtnKendaraan,BtnSearch,
-                   BtnDelete,BtnInsert, btnUbahMOBIL, btnUbahMOTOR, btnUbahBUS;
+                   BtnDelete,BtnInsert, btnUbahMOBIL, btnUbahMOTOR, btnUbahBUS,
+            btnKapasitasMOTOR, btnKapasitasMOBIL, btnKapasitasBUS;
     
     @FXML
-    private Label Nik,lblNama,lblUser,edtNIK,edtLevel, trfawalMOTOR, trfawalMOBIL, trfawalBUS, trfjamMOTOR, trfjamMOBIL, trfjamBUS;
+    private Label Nik,lblNama,lblUser,edtNIK,edtLevel, trfawalMOTOR, trfawalMOBIL, trfawalBUS, trfjamMOTOR, trfjamMOBIL, trfjamBUS,
+            kapasitasMOTOR, kapasitasMOBIL, kapasitasBUS;
     
     @FXML
     private TextField edtNama,edtUser,edtNotelp,edtAlamat,NIK,Pass,Repass,Notelp,
-                      Alamat,Nama,User, trfawalbaruMOBIL, trfawalbaruMOTOR, trfawalbaruBUS, trfjambaruMOBIL, trfjambaruMOTOR, trfjambaruBUS;
+                      Alamat,Nama,User, trfawalbaruMOBIL, trfawalbaruMOTOR, trfawalbaruBUS, trfjambaruMOBIL, trfjambaruMOTOR, trfjambaruBUS,
+            kapbaruMOTOR, kapbaruMOBIL, kapbaruBUS;
             
     @FXML
     private ComboBox<String> edtGender,Level,Gender;
@@ -166,6 +169,54 @@ public class FXMLAdminController implements Initializable {
     }
     
     @FXML
+    private void handlekapUbah(ActionEvent action) throws SQLException {
+        Kendaraan kndrn = new Kendaraan();
+        if(action.getSource() == btnKapasitasMOTOR){
+            if(!kapbaruMOTOR.getText().equals("")){
+                boolean x;
+                x = db.UpdateKapasitas("Motor", Integer.parseInt(kapbaruMOTOR.getText()));
+               if(!x){
+                    kapasitasMOTOR.setText(kapbaruMOTOR.getText());
+               }
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ADD USER");
+                alert.setHeaderText("CHANGE MOTOR'S CAPACITY FAILED");
+                alert.setContentText("PLEASE INSERT NEW INPUT");
+                alert.showAndWait();
+            }
+        }else if(action.getSource() == btnKapasitasMOBIL){
+            if(!kapbaruMOBIL.getText().equals("")){
+                boolean x;
+                x = db.UpdateKapasitas("Mobil", Integer.parseInt(kapbaruMOBIL.getText()));
+               if(!x){
+                    kapasitasMOBIL.setText(kapbaruMOBIL.getText());
+               }
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ADD USER");
+                alert.setHeaderText("CHANGE CAR'S CAPACITY FAILED");
+                alert.setContentText("PLEASE INSERT NEW INPUT");
+                alert.showAndWait();
+            }
+        }else if(action.getSource() == btnKapasitasBUS){
+            if(!kapbaruBUS.getText().equals("")){
+                boolean x;
+                x = db.UpdateKapasitas("Bus", Integer.parseInt(kapbaruBUS.getText()));
+               if(!x){
+                    kapasitasBUS.setText(kapbaruBUS.getText());
+               }
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ADD USER");
+                alert.setHeaderText("CHANGE BUS'S CAPACITY FAILED");
+                alert.setContentText("PLEASE INSERT NEW INPUT");
+                alert.showAndWait();
+            }
+        }
+    }
+    
+    @FXML
     private void handleUbah(ActionEvent action) throws SQLException {
         Kendaraan kndrn = new Kendaraan();
         if(action.getSource() == btnUbahMOBIL){
@@ -250,7 +301,7 @@ public class FXMLAdminController implements Initializable {
         lblNama.setText(kw.getNamaLengkap());
         lblUser.setText(kw.getUsername());
     }
-    
+
     public void setHargaKendaraan(){
         Kendaraan kr = new Kendaraan();
         try {
@@ -259,12 +310,15 @@ public class FXMLAdminController implements Initializable {
                 if(kendaraanList.get(i).getJenisKendaraan().equals("Mobil")){
                     trfawalMOBIL.setText(String.valueOf(kendaraanList.get(i).getHargaAwal()));
                     trfjamMOBIL.setText(String.valueOf(kendaraanList.get(i).getHargaPerjam()));
+                    kapasitasMOBIL.setText(String.valueOf(kendaraanList.get(i).getKapasitas()));
                 }else if(kendaraanList.get(i).getJenisKendaraan().equals("Motor")){
                     trfawalMOTOR.setText(String.valueOf(kendaraanList.get(i).getHargaAwal()));
                     trfjamMOTOR.setText(String.valueOf(kendaraanList.get(i).getHargaPerjam()));
+                    kapasitasMOTOR.setText(String.valueOf(kendaraanList.get(i).getKapasitas()));
                 }else if(kendaraanList.get(i).getJenisKendaraan().equals("Bus")){
                     trfawalBUS.setText(String.valueOf(kendaraanList.get(i).getHargaAwal()));
                     trfjamBUS.setText(String.valueOf(kendaraanList.get(i).getHargaPerjam()));
+                    kapasitasBUS.setText(String.valueOf(kendaraanList.get(i).getKapasitas()));
                 }
             }
         } catch (SQLException ex) {
