@@ -124,9 +124,9 @@ public class FXMLMainAppController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        pnlStart.setStyle("-fx-background-color : #1a1a1a");
-        pnlStart.toFront();
+        
+      //  pnlStart.setStyle("-fx-background-color : #1a1a1a");
+//        pnlStart.toFront();
         cmbHrgJns.getItems().addAll(enumKendaraan);
     }    
     
