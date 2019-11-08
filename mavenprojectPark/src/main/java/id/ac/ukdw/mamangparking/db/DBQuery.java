@@ -109,38 +109,38 @@ public class DBQuery extends DBConnect{
     
     public void InsertKendaraan(String platNomor,String jenisKendaraan,int hargaAwal,int hargaPerJam) throws SQLException{
         try{
-            String query = "SELECT * FROM Parkir WHERE Platnomor ='" + platNomor + "'";
+            String query = "SELECT * FROM Parkir WHERE `Plat Nomor`='" + platNomor + "'";
             ResultSet rs = this.queryResult(query);
-        if(rs.next()){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("ADD VEHICLE");
-            alert.setHeaderText("ADD VEHICLE FAILED");
-            alert.setContentText("VEHICLE ALREADY EXSIST");
-            alert.showAndWait();
-            rs.close();  
-       
-         }else{
-                 String queryParkir = "INSERT INTO `Parkir` (`Plat Nomor`,`Jenis Kendaraan`,`Harga Awal`,`Jam Masuk`,`Tanggal Masuk`,`Harga Per Jam`) VALUES (?,?,?,strftime(`%H:%M`,`now`,`localtime`),date(`now`),?)";
-                 ps=con.prepareStatement(queryParkir);
-                 ps.setString(1, platNomor);
-                 ps.setString(2, jenisKendaraan);
-                 ps.setInt(3, hargaAwal);
-                 ps.setInt(6, hargaPerJam);
-                 boolean x =ps.execute();
-                 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            if(rs.next()){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ADD VEHICLE");
-                alert.setHeaderText("ADD VEHICLE SUCCES");
-                alert.setContentText("VEHICLE PARKED");
+                alert.setHeaderText("ADD VEHICLE FAILED");
+                alert.setContentText("VEHICLE ALREADY EXSIST");
                 alert.showAndWait();
-         }
+                rs.close();  
+
+            }else{
+                    String queryParkir = "INSERT INTO `Parkir` (`Plat Nomor`,`Jenis Kendaraan`,`Harga Awal`,`Jam Masuk`,`Tanggal Masuk`,`Harga Per Jam`) VALUES (?,?,?,strftime('%H:%M','now','localtime'),date('now'),?)";
+                    ps=con.prepareStatement(queryParkir);
+                    ps.setString(1, platNomor);
+                    ps.setString(2, jenisKendaraan);
+                    ps.setInt(3, hargaAwal);
+                    ps.setInt(4, hargaPerJam);
+                    boolean x =ps.execute();
+                    
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("ADD VEHICLE");
+                    alert.setHeaderText("ADD VEHICLE SUCCES");
+                    alert.setContentText("VEHICLE PARKED");
+                    alert.showAndWait();
+                    
+            }
         }
         catch(SQLException e){
             e.printStackTrace();
-          }finally{
+        }finally{
             ps.close();
         }
-       
     }
     
     public void InsertKaryawan(String User, String pass, String notelp, String alamat, String NamaLeng, String tgl, String gender, String lvl, int nik) throws SQLException{

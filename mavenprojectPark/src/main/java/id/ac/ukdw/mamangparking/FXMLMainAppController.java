@@ -40,7 +40,7 @@ import javafx.stage.Stage;
 public class FXMLMainAppController implements Initializable {
     DBQuery db = new DBQuery();
     Karyawan kw = new Karyawan();
-    Parkir pk = new Parkir();
+    
     
     @FXML
     private Button BtnParkIn, BtnParked, BtnParkOut, BtnInsert, BtnSearch, BtnLaporan, BtnEdit, BtnLogout, BtnHarga;
@@ -60,12 +60,13 @@ public class FXMLMainAppController implements Initializable {
      @FXML
      private void InsertPark(ActionEvent event) throws SQLException{
          if(!txtMasuk.getText().equals("") && !cmbJenis.getValue().equals("")){
-             Kendaraan kd = new Kendaraan();  
+             Parkir pk = new Parkir();
              ResultSet rs = db.ResultJenisKendaraan(cmbJenis.getValue());
              pk.setHargaAwal(rs.getInt(3));
-             pk.setHargaPerJam(rs.getInt(4));  
+             pk.setHargaPerJam(rs.getInt(4));
              pk.setJenisKendaraan(cmbJenis.getValue());
              pk.setPlatNomor(txtMasuk.getText());
+             rs.close();
              pk.InsertDBKendaraan();
          }else{
                 Alert alert = new Alert(Alert.AlertType.ERROR);
