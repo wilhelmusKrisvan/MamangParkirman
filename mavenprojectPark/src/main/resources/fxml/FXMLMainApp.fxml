@@ -120,15 +120,15 @@
                   <Pane fx:id="pnlParkIn" prefHeight="373.0" prefWidth="715.0" style="-fx-background-color: #131022;">
                      <children>
                         <ComboBox fx:id="cmbJenis" layoutX="152.0" layoutY="156.0" prefHeight="30.0" prefWidth="411.0" promptText="JENIS KENDARAAN" />
-                        <Button id="btnSearch" fx:id="BtnInsert" layoutX="330.0" layoutY="207.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="MASUK" textFill="#ffa239" />
-                        <TextField layoutX="152.0" layoutY="108.0" prefHeight="32.0" prefWidth="409.0" promptText="PLAT NOMOR">
+                        <Button id="btnSearch" fx:id="BtnInsert" layoutX="330.0" layoutY="207.0" mnemonicParsing="false" onAction="#InsertPark" prefHeight="25.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="MASUK" textFill="#ffa239" />
+                        <TextField fx:id="txtMasuk" layoutX="152.0" layoutY="108.0" prefHeight="32.0" prefWidth="409.0" promptText="PLAT NOMOR">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </TextField>
                      </children>
                   </Pane>
-                  <Pane fx:id="pnlParked" layoutY="15.0" prefHeight="365.0" prefWidth="715.0" style="-fx-background-color: #131022;">
+                  <Pane fx:id="pnlParked" layoutY="15.0" prefHeight="365.0" prefWidth="715.0" style="-fx-background-color: #131022;" visible="false">
                      <children>
                         <TextField id="txtSearch" layoutX="225.0" layoutY="198.0" prefHeight="31.0" prefWidth="208.0" promptText="Masukkan Pencarian.." />
                         <Button id="BtnSearch" fx:id="BtnSearch" layoutX="433.0" layoutY="197.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="CARI" textFill="#ffa239" />
@@ -212,8 +212,8 @@
                         </HBox>
                      </children>
                   </Pane>
-                  <Pane fx:id="pnlParkOut" prefHeight="374.0" prefWidth="715.0" style="-fx-background-color: #131022;" />
-                  <Pane fx:id="pnlPrice" prefHeight="395.0" prefWidth="710.0" style="-fx-background-color: #131022;">
+                  <Pane fx:id="pnlParkOut" prefHeight="374.0" prefWidth="715.0" style="-fx-background-color: #131022;" visible="false" />
+                  <Pane fx:id="pnlPrice" prefHeight="395.0" prefWidth="710.0" style="-fx-background-color: #131022;" visible="false">
                      <children>
                         <ComboBox fx:id="cmbHrgJns" layoutX="146.0" layoutY="99.0" prefHeight="30.0" prefWidth="411.0" promptText="JENIS KENDARAAN" />
                         <Label layoutX="153.0" layoutY="37.0" prefHeight="40.0" prefWidth="419.0" text="DETAIL HARGA KENDARAAN" textFill="#ffa239">

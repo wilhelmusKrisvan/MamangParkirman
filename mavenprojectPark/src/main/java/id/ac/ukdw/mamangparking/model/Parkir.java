@@ -6,6 +6,7 @@
 package id.ac.ukdw.mamangparking.model;
 
 import id.ac.ukdw.mamangparking.db.DBQuery;
+import java.sql.SQLException;
 import javafx.beans.property.SimpleIntegerProperty;
 
 /**
@@ -15,17 +16,20 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class Parkir {
     DBQuery db = new DBQuery();
     
-    public SimpleIntegerProperty platNomor;
-    public SimpleIntegerProperty jenisKendaraan;
+    public String platNomor;
+    public String jenisKendaraan;
+    public String tanggalMasuk;
+    public int hargaPerJam;
     public int hargaAwal;
     public int jamMasuk;
-    public SimpleIntegerProperty tanggalMasuk;
+    
+    
 
-    public SimpleIntegerProperty getPlatNomor() {
+    public String getPlatNomor() {
         return platNomor;
     }
 
-    public SimpleIntegerProperty getJenisKendaraan() {
+    public String getJenisKendaraan() {
         return jenisKendaraan;
     }
 
@@ -37,15 +41,15 @@ public class Parkir {
         return jamMasuk;
     }
 
-    public SimpleIntegerProperty getTanggalMasuk() {
+    public String getTanggalMasuk() {
         return tanggalMasuk;
     }
 
-    public void setPlatNomor(SimpleIntegerProperty platNomor) {
+    public void setPlatNomor(String platNomor) {
         this.platNomor = platNomor;
     }
 
-    public void seltJenisKendaraan(SimpleIntegerProperty jenisKendaraan) {
+    public void setJenisKendaraan(String jenisKendaraan) {
         this.jenisKendaraan = jenisKendaraan;
     }
 
@@ -57,12 +61,22 @@ public class Parkir {
         this.jamMasuk = jamMasuk;
     }
 
-    public void setTanggalMasuk(SimpleIntegerProperty tanggalMasuk) {
+    public void setTanggalMasuk(String tanggalMasuk) {
         this.tanggalMasuk = tanggalMasuk;
     }
+
+    public int getHargaPerJam() {
+        return hargaPerJam;
+    }
+
+    public void setHargaPerJam(int hargaPerJam) {
+        this.hargaPerJam = hargaPerJam;
+    }
     
-    public void InsertDBKendaraan(){
-        
+    
+    
+    public void InsertDBKendaraan() throws SQLException{
+        db.InsertKendaraan(this.platNomor, this.jenisKendaraan, this.hargaAwal, this.hargaPerJam);
     }
    
 }

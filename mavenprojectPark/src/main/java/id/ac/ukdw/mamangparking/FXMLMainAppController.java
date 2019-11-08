@@ -7,8 +7,11 @@ package id.ac.ukdw.mamangparking;
 
 import id.ac.ukdw.mamangparking.model.Karyawan;
 import id.ac.ukdw.mamangparking.db.DBQuery;
+import id.ac.ukdw.mamangparking.model.Kendaraan;
+import id.ac.ukdw.mamangparking.model.Parkir;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -20,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -36,6 +40,7 @@ import javafx.stage.Stage;
 public class FXMLMainAppController implements Initializable {
     DBQuery db = new DBQuery();
     Karyawan kw = new Karyawan();
+    Parkir pk = new Parkir();
     
     @FXML
     private Button BtnParkIn, BtnParked, BtnParkOut, BtnInsert, BtnSearch, BtnLaporan, BtnEdit, BtnLogout, BtnHarga;
@@ -47,16 +52,31 @@ public class FXMLMainAppController implements Initializable {
     private Label Nik, Username, Nama, lblHrgAwal,lblHrgPerJam;
     
     @FXML
-    private TextField txtPlat, txtSearch;
+    private TextField txtPlat, txtSearch, txtMasuk;
     
     @FXML
     private ComboBox<String> cmbJenis,cmbHrgJns;
     
      @FXML
-     private void InsertPark(ActionEvent event){
-         
+     private void InsertPark(ActionEvent event) throws SQLException{
+         if(!txtMasuk.getText().equals("") && !cmbJenis.getValue().equals("")){
+             Kendaraan kd = new Kendaraan();  
+             ResultSet rs = db.ResultJenisKendaraan(cmbJenis.getValue());
+             pk.setHargaAwal(rs.getInt(3));
+             pk.setHargaPerJam(rs.getInt(4));  
+             pk.setJenisKendaraan(cmbJenis.getValue());
+             pk.setPlatNomor(txtMasuk.getText());
+             pk.InsertDBKendaraan();
+         }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ADD VEHICLE");
+                alert.setHeaderText("ADD VEHICLE FAILED");
+                alert.setContentText("PLEASE FILL ALL DATA");
+                alert.showAndWait();
+         }
+      
      } 
-    
+          
     @FXML
     private void EditProfile(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader();
@@ -128,6 +148,7 @@ public class FXMLMainAppController implements Initializable {
       //  pnlStart.setStyle("-fx-background-color : #1a1a1a");
 //        pnlStart.toFront();
         cmbHrgJns.getItems().addAll(enumKendaraan);
+        cmbJenis.getItems().addAll(enumKendaraan);
     }    
     
 }
