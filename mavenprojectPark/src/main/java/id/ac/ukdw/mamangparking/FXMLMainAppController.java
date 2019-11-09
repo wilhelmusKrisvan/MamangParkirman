@@ -225,6 +225,12 @@ public class FXMLMainAppController implements Initializable {
         Username.setText(kw.getUsername());
     }
     
+    public void setLabelHarga() throws SQLException{
+        ResultSet rs = db.ResultJenisKendaraan(cmbHrgJns.getValue());
+        lblHrgAwal.setText(String.valueOf(rs.getInt(3)));
+        lblHrgPerJam.setText(String.valueOf(rs.getInt(4)));
+    }
+    
     ObservableList<String> enumKendaraan = FXCollections.observableArrayList("Motor", "Mobil","Bus");
     
     /**

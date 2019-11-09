@@ -319,7 +319,7 @@
                      </children></Pane>
                   <Pane fx:id="pnlPrice" prefHeight="395.0" prefWidth="710.0" style="-fx-background-color: #131022;">
                      <children>
-                        <ComboBox fx:id="cmbHrgJns" layoutX="146.0" layoutY="99.0" prefHeight="30.0" prefWidth="411.0" promptText="JENIS KENDARAAN" />
+                        <ComboBox fx:id="cmbHrgJns" layoutX="146.0" layoutY="99.0" onAction="#setLabelHarga" prefHeight="30.0" prefWidth="411.0" promptText="JENIS KENDARAAN" />
                         <Label layoutX="153.0" layoutY="37.0" prefHeight="40.0" prefWidth="419.0" text="DETAIL HARGA KENDARAAN" textFill="#ffa239">
                            <font>
                               <Font size="31.0" />
