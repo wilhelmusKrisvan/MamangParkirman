@@ -21,7 +21,7 @@ public class Parkir {
     public String tanggalMasuk;
     public int hargaPerJam;
     public int hargaAwal;
-    public int jamMasuk;
+    public String jamMasuk;
     
     
 
@@ -37,7 +37,7 @@ public class Parkir {
         return hargaAwal;
     }
 
-    public int getJamMasuk() {
+    public String getJamMasuk() {
         return jamMasuk;
     }
 
@@ -57,7 +57,7 @@ public class Parkir {
         this.hargaAwal = hargaAwal;
     }
 
-    public void setJamMasuk(int jamMasuk) {
+    public void setJamMasuk(String jamMasuk) {
         this.jamMasuk = jamMasuk;
     }
 
@@ -73,10 +73,7 @@ public class Parkir {
         this.hargaPerJam = hargaPerJam;
     }
     
-    
-    
-    public void InsertDBKendaraan() throws SQLException{
-        db.InsertKendaraan(this.platNomor, this.jenisKendaraan, this.hargaAwal, this.hargaPerJam);
-    }
-   
+    public void InsertDBParkir() throws SQLException{
+        db.InsertParkir(this.platNomor, this.jenisKendaraan, this.hargaAwal, this.hargaPerJam);
+    }   
 }

@@ -92,7 +92,7 @@
                   <Label fx:id="Nik" layoutX="201.0" layoutY="23.0" prefHeight="17.0" prefWidth="280.0" textFill="#ffa229" />
                   <Label fx:id="lblNama" layoutX="201.0" layoutY="41.0" prefHeight="17.0" prefWidth="280.0" textFill="#ffa229" />
                   <Label fx:id="lblUser" layoutX="201.0" layoutY="60.0" prefHeight="17.0" prefWidth="280.0" textFill="#ffa229" />
-                  <Button contentDisplay="TOP" layoutX="696.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" textAlignment="CENTER" textFill="#ffa229">
+                  <Button contentDisplay="TOP" layoutX="696.0" mnemonicParsing="false" onAction="#OnLogout" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" textAlignment="CENTER" textFill="#ffa229">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>

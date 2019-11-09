@@ -107,7 +107,37 @@ public class DBQuery extends DBConnect{
           }       
     }
     
-    public void InsertKendaraan(String platNomor,String jenisKendaraan,int hargaAwal,int hargaPerJam) throws SQLException{
+    public void InsertLaporan(String Plat, String jns, int hargaAwl, String jam, String tgl, int hargaJam, String bdgjam, String bdgtgl, int total) throws SQLException{      
+        try{
+            String queryParkir = "INSERT INTO `Laporan` (`Plat Nomor`,`Jenis Kendaraan`,`Harga Awal`,`Harga Per Jam`, `Tanggal Masuk`, `Jam Masuk`, `Tanggal Keluar`, `Jam Keluar`, `Harga Total`) VALUES (?,?,?,?,?,?,?,?,?)";
+            ps=con.prepareStatement(queryParkir);
+            ps.setString(1, Plat);
+            ps.setString(2, jns);
+            ps.setInt(3, hargaAwl);
+            ps.setInt(4, hargaJam);
+            ps.setString(5, tgl);
+            ps.setString(6, jam);
+            ps.setString(7, bdgtgl);
+            ps.setString(8, bdgjam);
+            ps.setInt(9, total);
+            boolean x =ps.execute();
+            
+            this.deleteParkir(Plat);
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("VEHICLE");
+            alert.setHeaderText("VEHICLE SUCCESS to LEAVE");
+            alert.setContentText("VEHICLE LEAVE");
+            alert.showAndWait();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            ps.close();
+        }            
+    }
+    
+    public void InsertParkir(String platNomor,String jenisKendaraan,int hargaAwal,int hargaPerJam) throws SQLException{
         try{
             String query = "SELECT * FROM Parkir WHERE `Plat Nomor`='" + platNomor + "'";
             ResultSet rs = this.queryResult(query);
@@ -183,6 +213,18 @@ public class DBQuery extends DBConnect{
         }
     }
     
+    public void deleteParkir(String Plat) throws SQLException{
+        String query = "DELETE FROM Parkir WHERE `Plat Nomor`='"+Plat+"'";
+        try {
+            ps=con.prepareStatement(query);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw e;
+        } finally{
+            ps.close();
+        } 
+    }
+    
     public void deleteKaryawan(String nik) throws SQLException, ClassNotFoundException {
         String query = "DELETE FROM Karyawan WHERE NIK='" + nik + "'";
         try {
@@ -206,7 +248,7 @@ public class DBQuery extends DBConnect{
         return rs;    
     }
     
-        public ResultSet ResultJenisKendaraan(String jenisKendaraan){
+    public ResultSet ResultJenisKendaraan(String jenisKendaraan){
         try{
             String query = "SELECT * from `Kendaraan` WHERE `Jenis Kendaraan` = ? ";
             ps=con.prepareStatement(query);

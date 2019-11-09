@@ -217,6 +217,11 @@ public class FXMLAdminController implements Initializable {
     }
     
     @FXML
+    private void OnLogout(ActionEvent event) {
+        System.exit(0);
+    }
+    
+    @FXML
     private void handleUbah(ActionEvent action) throws SQLException {
         Kendaraan kndrn = new Kendaraan();
         if(action.getSource() == btnUbahMOBIL){

@@ -8,11 +8,13 @@ package id.ac.ukdw.mamangparking;
 import id.ac.ukdw.mamangparking.model.Karyawan;
 import id.ac.ukdw.mamangparking.db.DBQuery;
 import id.ac.ukdw.mamangparking.model.Kendaraan;
+import id.ac.ukdw.mamangparking.model.Laporan;
 import id.ac.ukdw.mamangparking.model.Parkir;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +27,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -43,41 +46,78 @@ public class FXMLMainAppController implements Initializable {
     
     
     @FXML
-    private Button BtnParkIn, BtnParked, BtnParkOut, BtnInsert, BtnSearch, BtnLaporan, BtnEdit, BtnLogout, BtnHarga;
+    private Button BtnParkIn, BtnParked, BtnParkOut, BtnInsert, BtnSearch, BtnLaporan, BtnEdit, BtnLogout, BtnHarga,
+            btnKeluarkan, btnCariOut;
 
     @FXML
-    private Pane pnlParkOut, pnlParked, pnlParkIn, pnlStart,pnlPrice;
+    private Pane pnlParkOut, pnlParked, pnlParkIn, pnlStart,pnlPrice, pnlDetailOut;
     
     @FXML
-    private Label Nik, Username, Nama, lblHrgAwal,lblHrgPerJam;
+    private Label Nik, Username, Nama, lblHrgAwal,lblHrgPerJam, lblPlat, lblJenis, 
+            lblHrgAwl, lblHrgJam, lblJamMsk, lblTglMsk, lblJamKlr, lblTglKlr, lblTotal;
     
     @FXML
-    private TextField txtPlat, txtSearch, txtMasuk;
+    private TextField txtPlat, txtSearch, txtMasuk, txtKeluar;
     
     @FXML
     private ComboBox<String> cmbJenis,cmbHrgJns;
     
-     @FXML
-     private void InsertPark(ActionEvent event) throws SQLException{
-         if(!txtMasuk.getText().equals("") && !cmbJenis.getValue().equals("")){
-             Parkir pk = new Parkir();
-             ResultSet rs = db.ResultJenisKendaraan(cmbJenis.getValue());
-             pk.setHargaAwal(rs.getInt(3));
-             pk.setHargaPerJam(rs.getInt(4));
-             pk.setJenisKendaraan(cmbJenis.getValue());
-             pk.setPlatNomor(txtMasuk.getText());
-             rs.close();
-             pk.InsertDBKendaraan();
-         }else{
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("ADD VEHICLE");
-                alert.setHeaderText("ADD VEHICLE FAILED");
-                alert.setContentText("PLEASE FILL ALL DATA");
-                alert.showAndWait();
-         }
+    @FXML
+    private void InsertPark(ActionEvent event) throws SQLException{
+        if(!txtMasuk.getText().equals("") && !cmbJenis.getValue().equals("")){
+            Parkir pk = new Parkir();
+            ResultSet rs = db.ResultJenisKendaraan(cmbJenis.getValue());
+            pk.setHargaAwal(rs.getInt(3));
+            pk.setHargaPerJam(rs.getInt(4));
+            pk.setJenisKendaraan(cmbJenis.getValue());
+            pk.setPlatNomor(txtMasuk.getText());
+            rs.close();
+            pk.InsertDBParkir();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ADD VEHICLE");
+            alert.setHeaderText("ADD VEHICLE FAILED");
+            alert.setContentText("PLEASE FILL ALL DATA");
+            alert.showAndWait();
+        }
       
-     } 
-          
+    }  
+    
+    @FXML
+    void onOutSearch(ActionEvent event) throws SQLException {
+        ResultSet rs = db.queryResult("SELECT * FROM Parkir WHERE `Plat Nomor`='"+txtKeluar.getText()+"'");
+        if(rs.next()){
+            String plat = rs.getString(1);
+            String jns = rs.getString(2);
+            int hargaAwl = rs.getInt(3);
+            String jam = rs.getString(4);
+            String tgl = rs.getString(5);
+            int hargaJam = rs.getInt(6);
+            rs.close();
+            pnlDetailOut.setVisible(true);
+            Hitung(plat, jns, hargaAwl, jam, tgl, hargaJam);
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("VEHICLE");
+            alert.setHeaderText("SEARCH FAILED");
+            alert.setContentText("VEHICLE NOT EXSIST");
+            alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    void onOutPark(ActionEvent event) throws SQLException {
+        Laporan lp = new Laporan();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("OUT VEHICLE");
+            alert.setContentText("ARE YOU SURE WANT TO EJECT VEHICLE?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if(result.get() == ButtonType.OK){
+                lp.InserDBLaporan(lblPlat.getText(), lblJenis.getText(), Integer.parseInt(lblHrgAwl.getText()), lblJamMsk.getText(), lblTglMsk.getText(), Integer.parseInt(lblHrgJam.getText()), lblJamKlr.getText(), lblTglKlr.getText(), Integer.parseInt(lblTotal.getText()));
+            }
+    }
+    
     @FXML
     private void EditProfile(ActionEvent event) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader();
@@ -127,10 +167,57 @@ public class FXMLMainAppController implements Initializable {
             pnlPrice.toFront();
         }
     }
-    
-    
 
-    
+    public void Hitung(String Plat, String jns, int hargaAwl, String jam, String tgl, int hargaJam) throws SQLException{
+        ResultSet rs = db.queryResult("SELECT strftime('%H:%M','now','localtime'),date('now')");
+        String bdgjam = rs.getString(1);
+        String bdgtgl = rs.getString(2);
+        rs.close();
+        int total = 0;
+        if(!jam.equals(bdgjam) && tgl.equals(bdgtgl)){
+            rs=db.queryResult("SELECT time('"+bdgjam+"','-"+jam+"')");
+            String selisih = rs.getString(1);
+            rs.close();
+            int count = Integer.parseInt(getSelisihJam(selisih));
+            if(count>2 && count<=6){
+                total = hargaAwl + (hargaJam*(count-2));
+            }
+            else if(count>6){
+                total = hargaAwl + (hargaJam*(6-2));
+            }
+            else{
+                total = hargaAwl;
+            }
+        }
+        else{
+            total = hargaAwl + (hargaJam*(6-2));
+        }
+        setLabel(Plat, jns, hargaAwl, jam, tgl, hargaJam, bdgjam, bdgtgl, total);
+    }
+
+    public void setLabel(String Plat, String jns, int hargaAwl, String jam, String tgl, int hargaJam, String bdgjam, String bdgtgl, int total){
+        lblPlat.setText(Plat);
+        lblJenis.setText(jns);
+        lblHrgAwl.setText(String.valueOf(hargaAwl));
+        lblHrgJam.setText(String.valueOf(hargaJam));
+        lblJamMsk.setText(jam);
+        lblTglMsk.setText(tgl);
+        lblJamKlr.setText(bdgjam);
+        lblTglKlr.setText(bdgtgl);
+        lblTotal.setText(String.valueOf(total));
+    }
+
+    public String getSelisihJam(String selisih){
+        String jam="";
+        for(int i=0; i<selisih.length(); i++){
+            if(selisih.charAt(i) != ':'){
+                jam += selisih.charAt(i);
+            }
+            break;
+        }
+        return jam;
+    }
+
     public void SetDataFront(String NIK) throws SQLException{
         kw.getDBKaryawan(db.Profilequery(NIK));       
         Nik.setText(String.valueOf(kw.getNIK()));
