@@ -133,13 +133,14 @@
                      <children>
                         <TextField id="txtSearch" layoutX="225.0" layoutY="198.0" prefHeight="31.0" prefWidth="208.0" promptText="Masukkan Pencarian.." />
                         <Button id="BtnSearch" fx:id="BtnSearch" layoutX="433.0" layoutY="197.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="CARI" textFill="#ffa239" />
-                        <TableView fx:id="tableKendaraan" layoutX="134.0" layoutY="236.0" prefHeight="115.0" prefWidth="448.0">
+                        <TableView fx:id="tableKendaraan" layoutX="60.0" layoutY="236.0" prefHeight="115.0" prefWidth="594.0">
                           <columns>
-                            <TableColumn prefWidth="32.6666259765625" text="No" />
-                            <TableColumn prefWidth="107.3333740234375" text="Plat Nomor" />
-                              <TableColumn prefWidth="80.66668701171875" text="Jam Masuk" />
-                              <TableColumn prefWidth="133.33328247070312" text="Jenis Kendaran" />
-                              <TableColumn minWidth="0.0" prefWidth="92.66671752929688" text="Harga Awal" />
+                            <TableColumn fx:id="colPlat" prefWidth="106.0" text="Plat Nomor" />
+                              <TableColumn fx:id="colKendaraan" prefWidth="113.0" text="Jenis Kendaran" />
+                              <TableColumn fx:id="colJam" minWidth="0.0" prefWidth="91.0" text="Jam Masuk" />
+                              <TableColumn fx:id="colTanggal" minWidth="0.0" prefWidth="129.0" text="Tanggal" />
+                              <TableColumn fx:id="colHargaAwal" minWidth="0.0" prefWidth="81.0" text="Harga Awal" />
+                              <TableColumn fx:id="colHargaPerJam" prefWidth="73.0" text="Harga/Jam" />
                           </columns>
                         </TableView>
                         <HBox layoutX="60.0" layoutY="8.0" prefHeight="158.0" prefWidth="595.0">
@@ -164,9 +165,15 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="isiMOTOR" layoutX="51.0" layoutY="26.0" prefHeight="67.0" prefWidth="87.0" textAlignment="CENTER" textFill="#ffa229" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="26.0">
+                                    <Label fx:id="isiMOTOR" layoutX="78.0" layoutY="30.0" prefHeight="55.0" prefWidth="63.0" textAlignment="CENTER" textFill="#ffa229" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="29.0">
                                        <font>
                                           <Font size="33.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="62.0" layoutY="91.0" prefHeight="20.0" prefWidth="79.0" text="Max Capacity " textFill="#ffa239" />
+                                    <Label layoutX="74.0" layoutY="4.0" text="PARKED" textFill="#ffa239">
+                                       <font>
+                                          <Font size="15.0" />
                                        </font>
                                     </Label>
                                  </children>
@@ -183,11 +190,17 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="isiMOBIL" layoutX="55.0" layoutY="31.0" prefHeight="67.0" prefWidth="87.0" textAlignment="CENTER" textFill="#ffa229">
+                                    <Label fx:id="isiMOBIL" layoutX="70.0" layoutY="25.0" prefHeight="67.0" prefWidth="58.0" textAlignment="CENTER" textFill="#ffa229">
                                        <font>
                                           <Font size="33.0" />
                                        </font>
                                     </Label>
+                                    <Label layoutX="72.0" layoutY="4.0" text="PARKED" textFill="#ffa239">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="59.0" layoutY="94.0" prefHeight="20.0" prefWidth="79.0" text="Max Capacity " textFill="#ffa239" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #262042; -fx-border-color: #131022; -fx-border-radius: 20; -fx-background-radius: 20;">
@@ -202,18 +215,24 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="isiBUS" layoutX="50.0" layoutY="31.0" prefHeight="67.0" prefWidth="87.0" textAlignment="CENTER" textFill="#ffa229">
+                                    <Label fx:id="isiBUS" layoutX="70.0" layoutY="25.0" prefHeight="67.0" prefWidth="56.0" textAlignment="CENTER" textFill="#ffa229">
                                        <font>
                                           <Font size="33.0" />
                                        </font>
                                     </Label>
+                                    <Label layoutX="71.0" layoutY="4.0" text="PARKED" textFill="#ffa239">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="59.0" layoutY="93.0" prefHeight="20.0" prefWidth="79.0" text="Max Capacity " textFill="#ffa239" />
                                  </children>
                               </AnchorPane>
                            </children>
                         </HBox>
                      </children>
                   </Pane>
-                  <Pane fx:id="pnlParkOut" prefHeight="397.0" prefWidth="715.0" style="-fx-background-color: #131022;">
+                  <Pane fx:id="pnlParkOut" prefHeight="397.0" prefWidth="715.0" style="-fx-background-color: #131022;" visible="false">
                      <children>
                         <TextField fx:id="txtKeluar" layoutX="63.0" layoutY="58.0" prefHeight="49.0" prefWidth="443.0" promptText="Masukkan Plat">
                            <font>
@@ -317,7 +336,7 @@
                            </children>
                         </Pane>
                      </children></Pane>
-                  <Pane fx:id="pnlPrice" prefHeight="395.0" prefWidth="710.0" style="-fx-background-color: #131022;">
+                  <Pane fx:id="pnlPrice" prefHeight="395.0" prefWidth="710.0" style="-fx-background-color: #131022;" visible="false">
                      <children>
                         <ComboBox fx:id="cmbHrgJns" layoutX="146.0" layoutY="99.0" onAction="#setLabelHarga" prefHeight="30.0" prefWidth="411.0" promptText="JENIS KENDARAAN" />
                         <Label layoutX="153.0" layoutY="37.0" prefHeight="40.0" prefWidth="419.0" text="DETAIL HARGA KENDARAAN" textFill="#ffa239">

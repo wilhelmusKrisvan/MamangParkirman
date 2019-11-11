@@ -260,6 +260,18 @@ public class DBQuery extends DBConnect{
         return rs;    
     }
     
+        public ResultSet hitungKapasitasKendaraan(String jenisKendaraan){
+        try{
+            String query = "SELECT count() from `Parkir` WHERE `Jenis Kendaraan` = ? ";
+            ps=con.prepareStatement(query);
+            ps.setString(1, jenisKendaraan);
+            rs = ps.executeQuery();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "FAILED");
+        }
+        return rs;    
+    }
+    
     public boolean UpdateKendaraan(String kendaraan, int awal, int perjam) throws SQLException {
         boolean x = false;
         try {

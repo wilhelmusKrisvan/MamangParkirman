@@ -30,6 +30,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
@@ -54,13 +56,21 @@ public class FXMLMainAppController implements Initializable {
     
     @FXML
     private Label Nik, Username, Nama, lblHrgAwal,lblHrgPerJam, lblPlat, lblJenis, 
-            lblHrgAwl, lblHrgJam, lblJamMsk, lblTglMsk, lblJamKlr, lblTglKlr, lblTotal;
+            lblHrgAwl, lblHrgJam, lblJamMsk, lblTglMsk, lblJamKlr, lblTglKlr, lblTotal,kapasitasMOTOR
+            ,kapasitasMOBIL,kapasitasBUS,isiMOTOR,isiMOBIL,isiBUS;
     
     @FXML
     private TextField txtPlat, txtSearch, txtMasuk, txtKeluar;
     
     @FXML
     private ComboBox<String> cmbJenis,cmbHrgJns;
+    
+    @FXML
+    private TableView<Parkir> tableKendaraan;
+    @FXML
+    private TableColumn<Parkir, Integer> colHargaAwal,colHargaPerJam;
+    @FXML
+    private TableColumn<Parkir, String> colPlat,colKendaraan,colTanggal,colJam;
     
     @FXML
     private void InsertPark(ActionEvent event) throws SQLException{
@@ -137,7 +147,7 @@ public class FXMLMainAppController implements Initializable {
     }
     
     @FXML
-    private void handleClicks(ActionEvent actionEvent) {
+    private void handleClicks(ActionEvent actionEvent) throws SQLException {
         if (actionEvent.getSource() == BtnParkIn) {
             BtnParked.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
             BtnParkOut.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
@@ -150,6 +160,7 @@ public class FXMLMainAppController implements Initializable {
             BtnParkOut.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
             BtnParked.setStyle("-fx-background-color : #42406D");
             //pnlParked.setStyle("-fx-background-color : #455bff");
+            setLabelKapasitas();
             pnlParked.toFront();
         }
         else if (actionEvent.getSource() == BtnParkOut) {
@@ -229,6 +240,44 @@ public class FXMLMainAppController implements Initializable {
         ResultSet rs = db.ResultJenisKendaraan(cmbHrgJns.getValue());
         lblHrgAwal.setText(String.valueOf(rs.getInt(3)));
         lblHrgPerJam.setText(String.valueOf(rs.getInt(4)));
+    }
+    
+    public void setLabelKapasitas() throws SQLException{
+        ResultSet rs = db.ResultKendaraan();
+        
+        while(rs.next()){
+            if(rs.getString(2).equals("Motor")){
+                
+              ResultSet kapasitas = db.hitungKapasitasKendaraan(rs.getString(2));
+              isiMOTOR.setText(String.valueOf(kapasitas.getInt(1)));
+              kapasitasMOTOR.setText(String.valueOf(rs.getInt(5))); 
+              kapasitas.close();
+           
+            }
+
+            if(rs.getString(2).equals("Mobil")){
+                
+              ResultSet kapasitas = db.hitungKapasitasKendaraan(rs.getString(2));
+              isiMOBIL.setText(String.valueOf(kapasitas.getInt(1)));
+              kapasitasMOBIL.setText(String.valueOf(rs.getInt(5)));  
+              kapasitas.close();
+            }
+
+            if(rs.getString(2).equals("Bus")){
+                
+              ResultSet kapasitas = db.hitungKapasitasKendaraan(rs.getString(2));
+              isiBUS.setText(String.valueOf(kapasitas.getInt(1)));
+              kapasitasBUS.setText(String.valueOf(rs.getInt(5)));  
+              kapasitas.close();
+            }
+        }
+        
+        rs.close();      
+    }
+    
+    public void showTableKendaraan(){
+        
+        
     }
     
     ObservableList<String> enumKendaraan = FXCollections.observableArrayList("Motor", "Mobil","Bus");
