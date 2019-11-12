@@ -78,14 +78,30 @@ public class FXMLMainAppController implements Initializable {
     @FXML
     private void InsertPark(ActionEvent event) throws SQLException{
         if(!txtMasuk.getText().equals("") && !cmbJenis.getValue().equals("")){
-            Parkir pk = new Parkir();
-            ResultSet rs = db.ResultJenisKendaraan(cmbJenis.getValue());
-            pk.setHargaAwal(rs.getInt(3));
-            pk.setHargaPerJam(rs.getInt(4));
-            pk.setJenisKendaraan(cmbJenis.getValue());
-            pk.setPlatNomor(txtMasuk.getText());
-            rs.close();
-            pk.InsertDBParkir();
+            String query = "SELECT kapasitas FROM Kendaraan WHERE `Jenis Kendaraan` = '"+cmbJenis.getValue()+"'";
+            ResultSet rskap = db.queryResult(query);
+            int kap = rskap.getInt(1);
+            rskap.close();
+            String query1 = "SELECT count() FROM Parkir WHERE `Jenis Kendaraan` = '"+cmbJenis.getValue()+"'";
+            ResultSet rsbdg = db.queryResult(query1);
+            int bdg = rsbdg.getInt(1);
+            rsbdg.close();
+            if(bdg<kap){
+                Parkir pk = new Parkir();
+                ResultSet rs = db.ResultJenisKendaraan(cmbJenis.getValue());
+                pk.setHargaAwal(rs.getInt(3));
+                pk.setHargaPerJam(rs.getInt(4));
+                pk.setJenisKendaraan(cmbJenis.getValue());
+                pk.setPlatNomor(txtMasuk.getText());
+                rs.close();
+                pk.InsertDBParkir();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ADD VEHICLE");
+                alert.setHeaderText("ADD VEHICLE FAILED");
+                alert.setContentText("PARK ALREADY FULL");
+                alert.showAndWait();
+            }
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("ADD VEHICLE");

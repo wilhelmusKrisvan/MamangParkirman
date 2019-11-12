@@ -150,7 +150,8 @@ public class DBQuery extends DBConnect{
                 rs.close();  
 
             }else{
-                    String queryParkir = "INSERT INTO `Parkir` (`Plat Nomor`,`Jenis Kendaraan`,`Harga Awal`,`Jam Masuk`,`Tanggal Masuk`,`Harga Per Jam`) VALUES (?,?,?,strftime('%H:%M','now','localtime'),date('now'),?)";
+                    String queryParkir = "INSERT INTO `Parkir` (`Plat Nomor`,`Jenis Kendaraan`,`Harga Awal`,`Jam Masuk`,`Tanggal Masuk`,`Harga Per Jam`) VALUES "
+                            + "(?,?,?,strftime('%H:%M','now','localtime'),date('now'),?)";
                     ps=con.prepareStatement(queryParkir);
                     ps.setString(1, platNomor);
                     ps.setString(2, jenisKendaraan);
