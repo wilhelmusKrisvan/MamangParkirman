@@ -131,8 +131,8 @@
                   </Pane>
                   <Pane fx:id="pnlParked" layoutY="15.0" prefHeight="365.0" prefWidth="715.0" style="-fx-background-color: #131022;">
                      <children>
-                        <TextField id="txtSearch" layoutX="225.0" layoutY="198.0" prefHeight="31.0" prefWidth="208.0" promptText="Masukkan Pencarian.." />
-                        <Button id="BtnSearch" fx:id="BtnSearch" layoutX="433.0" layoutY="197.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="CARI" textFill="#ffa239" />
+                        <TextField id="txtSearch" fx:id="txtSearch" layoutX="225.0" layoutY="198.0" onInputMethodTextChanged="#showSearchTable" onKeyPressed="#showSearchTable" onKeyReleased="#showSearchTable" onKeyTyped="#showSearchTable" prefHeight="31.0" prefWidth="208.0" promptText="Masukkan Pencarian.." />
+                        <Button id="BtnSearch" fx:id="BtnSearch" layoutX="433.0" layoutY="197.0" mnemonicParsing="false" onAction="#showSearchTable" prefHeight="32.0" prefWidth="59.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="CARI" textFill="#ffa239" />
                         <TableView fx:id="tableKendaraan" layoutX="60.0" layoutY="236.0" prefHeight="115.0" prefWidth="594.0">
                           <columns>
                             <TableColumn fx:id="colPlat" prefWidth="106.0" text="Plat Nomor" />
@@ -232,7 +232,7 @@
                         </HBox>
                      </children>
                   </Pane>
-                  <Pane fx:id="pnlParkOut" prefHeight="397.0" prefWidth="715.0" style="-fx-background-color: #131022;" visible="false">
+                  <Pane fx:id="pnlParkOut" prefHeight="397.0" prefWidth="715.0" style="-fx-background-color: #131022;">
                      <children>
                         <TextField fx:id="txtKeluar" layoutX="63.0" layoutY="58.0" prefHeight="49.0" prefWidth="443.0" promptText="Masukkan Plat">
                            <font>
@@ -336,7 +336,7 @@
                            </children>
                         </Pane>
                      </children></Pane>
-                  <Pane fx:id="pnlPrice" prefHeight="395.0" prefWidth="710.0" style="-fx-background-color: #131022;" visible="false">
+                  <Pane fx:id="pnlPrice" prefHeight="395.0" prefWidth="710.0" style="-fx-background-color: #131022;">
                      <children>
                         <ComboBox fx:id="cmbHrgJns" layoutX="146.0" layoutY="99.0" onAction="#setLabelHarga" prefHeight="30.0" prefWidth="411.0" promptText="JENIS KENDARAAN" />
                         <Label layoutX="153.0" layoutY="37.0" prefHeight="40.0" prefWidth="419.0" text="DETAIL HARGA KENDARAAN" textFill="#ffa239">

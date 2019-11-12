@@ -280,6 +280,32 @@ public class FXMLMainAppController implements Initializable {
     }
     
     @FXML
+    public void showSearchTable() throws SQLException, ClassNotFoundException{
+        colPlat.setCellValueFactory(new PropertyValueFactory("platNomor"));
+        colKendaraan.setCellValueFactory(new PropertyValueFactory("jenisKendaraan"));
+        colHargaAwal.setCellValueFactory(new PropertyValueFactory("hargaAwal"));
+        colHargaPerJam.setCellValueFactory(new PropertyValueFactory("hargaPerJam"));
+        colJam.setCellValueFactory(new PropertyValueFactory("jamMasuk"));
+        colTanggal.setCellValueFactory(new PropertyValueFactory("tanggalMasuk"));
+        ObservableList<Parkir> setList = FXCollections.observableArrayList();
+        String search = txtSearch.getText();
+        String query = "SELECT * FROM `Parkir` WHERE `Plat Nomor` LIKE '" + search + "%'";
+        ResultSet rs = db.queryResult(query);
+        while(rs.next()){
+            Parkir pk = new Parkir();
+            pk.setPlatNomor(rs.getString(1));
+            pk.setJenisKendaraan(rs.getString(2));
+            pk.setHargaAwal(rs.getInt(3));
+            pk.setJamMasuk(rs.getString(4));
+            pk.setTanggalMasuk(rs.getString(5));
+            pk.setHargaPerJam(rs.getInt(6));
+            setList.add(pk);
+        }
+        tableKendaraan.setItems(setList);
+        rs.close();    
+    }
+    
+    @FXML
     public void showTableKendaraan() throws SQLException, ClassNotFoundException{
         colPlat.setCellValueFactory(new PropertyValueFactory("platNomor"));
         colKendaraan.setCellValueFactory(new PropertyValueFactory("jenisKendaraan"));
