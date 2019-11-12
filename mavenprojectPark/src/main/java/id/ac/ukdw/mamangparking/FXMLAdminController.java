@@ -9,6 +9,7 @@ import static id.ac.ukdw.mamangparking.FXMLEditProfileController.LOCAL_DATE;
 import id.ac.ukdw.mamangparking.db.DBQuery;
 import id.ac.ukdw.mamangparking.model.Karyawan;
 import id.ac.ukdw.mamangparking.model.Kendaraan;
+import id.ac.ukdw.mamangparking.model.Parkir;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -64,7 +65,7 @@ public class FXMLAdminController implements Initializable {
     @FXML
     private TextField edtNama,edtUser,edtNotelp,edtAlamat,NIK,Pass,Repass,Notelp,
                       Alamat,Nama,User, trfawalbaruMOBIL, trfawalbaruMOTOR, trfawalbaruBUS, trfjambaruMOBIL, trfjambaruMOTOR, trfjambaruBUS,
-            kapbaruMOTOR, kapbaruMOBIL, kapbaruBUS;
+            kapbaruMOTOR, kapbaruMOBIL, kapbaruBUS,txtSearch;
             
     @FXML
     private ComboBox<String> edtGender,Level,Gender;
@@ -166,6 +167,26 @@ public class FXMLAdminController implements Initializable {
                 setData();
             }
         }
+    }
+    
+        @FXML
+    public void showSearchKaryawan() throws SQLException, ClassNotFoundException{
+        colNIK.setCellValueFactory(new PropertyValueFactory("NIK"));
+        colName.setCellValueFactory(new PropertyValueFactory("NamaLengkap"));
+        colUser.setCellValueFactory(new PropertyValueFactory("Username"));
+        ObservableList<Karyawan> setList = FXCollections.observableArrayList();
+        String search = txtSearch.getText();
+        String query = "SELECT * FROM `Karyawan` WHERE `Nama` LIKE '" + search + "%'";
+        ResultSet rs = db.queryResult(query);
+        while(rs.next()){
+            Karyawan kr = new Karyawan();
+            kr.setNIK(rs.getInt(1));
+            kr.setNamaLengkap(rs.getString(2));
+            kr.setUsername(rs.getString(3));
+            setList.add(kr);
+        }
+        tableUser.setItems(setList);
+        rs.close();    
     }
     
     @FXML
