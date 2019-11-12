@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,6 +35,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -147,7 +150,7 @@ public class FXMLMainAppController implements Initializable {
     }
     
     @FXML
-    private void handleClicks(ActionEvent actionEvent) throws SQLException {
+    private void handleClicks(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         if (actionEvent.getSource() == BtnParkIn) {
             BtnParked.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
             BtnParkOut.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
@@ -160,6 +163,7 @@ public class FXMLMainAppController implements Initializable {
             BtnParkOut.setStyle("-fx-background-color : #131022; -fx-font-size: 15;");
             BtnParked.setStyle("-fx-background-color : #42406D");
             //pnlParked.setStyle("-fx-background-color : #455bff");
+            showTableKendaraan();
             setLabelKapasitas();
             pnlParked.toFront();
         }
@@ -275,9 +279,29 @@ public class FXMLMainAppController implements Initializable {
         rs.close();      
     }
     
-    public void showTableKendaraan(){
-        
-        
+    @FXML
+    public void showTableKendaraan() throws SQLException, ClassNotFoundException{
+        colPlat.setCellValueFactory(new PropertyValueFactory("platNomor"));
+        colKendaraan.setCellValueFactory(new PropertyValueFactory("jenisKendaraan"));
+        colHargaAwal.setCellValueFactory(new PropertyValueFactory("hargaAwal"));
+        colHargaPerJam.setCellValueFactory(new PropertyValueFactory("hargaPerJam"));
+        colJam.setCellValueFactory(new PropertyValueFactory("jamMasuk"));
+        colTanggal.setCellValueFactory(new PropertyValueFactory("tanggalMasuk"));
+        ObservableList<Parkir> setList = FXCollections.observableArrayList();
+        String query = "SELECT * from Parkir";
+        ResultSet rs = db.queryResult(query);
+        while(rs.next()){
+            Parkir pk = new Parkir();
+            pk.setPlatNomor(rs.getString(1));
+            pk.setJenisKendaraan(rs.getString(2));
+            pk.setHargaAwal(rs.getInt(3));
+            pk.setJamMasuk(rs.getString(4));
+            pk.setTanggalMasuk(rs.getString(5));
+            pk.setHargaPerJam(rs.getInt(6));
+            setList.add(pk);
+        }
+        tableKendaraan.setItems(setList);
+        rs.close();    
     }
     
     ObservableList<String> enumKendaraan = FXCollections.observableArrayList("Motor", "Mobil","Bus");
@@ -292,6 +316,15 @@ public class FXMLMainAppController implements Initializable {
 //        pnlStart.toFront();
         cmbHrgJns.getItems().addAll(enumKendaraan);
         cmbJenis.getItems().addAll(enumKendaraan);
+        try {
+            showTableKendaraan();
+            setLabelKapasitas();
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLMainAppController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(FXMLMainAppController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
     }    
     
 }

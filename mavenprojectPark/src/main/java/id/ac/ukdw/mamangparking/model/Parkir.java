@@ -8,6 +8,7 @@ package id.ac.ukdw.mamangparking.model;
 import id.ac.ukdw.mamangparking.db.DBQuery;
 import java.sql.SQLException;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
 /**
  *
@@ -16,21 +17,21 @@ import javafx.beans.property.SimpleIntegerProperty;
 public class Parkir {
     DBQuery db = new DBQuery();
     
-    public String platNomor;
-    public String jenisKendaraan;
-    public String tanggalMasuk;
+    public SimpleStringProperty platNomor;
+    public SimpleStringProperty jenisKendaraan;
+    public SimpleStringProperty tanggalMasuk;
     public int hargaPerJam;
     public int hargaAwal;
-    public String jamMasuk;
+    public SimpleStringProperty jamMasuk;
     
     
 
     public String getPlatNomor() {
-        return platNomor;
+        return platNomor.get();
     }
 
     public String getJenisKendaraan() {
-        return jenisKendaraan;
+        return jenisKendaraan.get();
     }
 
     public int getHargaAwal() {
@@ -38,19 +39,19 @@ public class Parkir {
     }
 
     public String getJamMasuk() {
-        return jamMasuk;
+        return jamMasuk.get();
     }
 
     public String getTanggalMasuk() {
-        return tanggalMasuk;
+        return tanggalMasuk.get();
     }
 
     public void setPlatNomor(String platNomor) {
-        this.platNomor = platNomor;
+        this.platNomor = new SimpleStringProperty(platNomor);
     }
 
     public void setJenisKendaraan(String jenisKendaraan) {
-        this.jenisKendaraan = jenisKendaraan;
+        this.jenisKendaraan = new SimpleStringProperty(jenisKendaraan);
     }
 
     public void setHargaAwal(int hargaAwal) {
@@ -58,11 +59,11 @@ public class Parkir {
     }
 
     public void setJamMasuk(String jamMasuk) {
-        this.jamMasuk = jamMasuk;
+        this.jamMasuk = new SimpleStringProperty(jamMasuk);
     }
 
     public void setTanggalMasuk(String tanggalMasuk) {
-        this.tanggalMasuk = tanggalMasuk;
+        this.tanggalMasuk = new SimpleStringProperty(tanggalMasuk);
     }
 
     public int getHargaPerJam() {
@@ -74,6 +75,6 @@ public class Parkir {
     }
     
     public void InsertDBParkir() throws SQLException{
-        db.InsertParkir(this.platNomor, this.jenisKendaraan, this.hargaAwal, this.hargaPerJam);
+        db.InsertParkir(this.platNomor.get(), this.jenisKendaraan.get(), this.hargaAwal, this.hargaPerJam);
     }   
 }

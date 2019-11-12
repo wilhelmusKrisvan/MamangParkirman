@@ -332,7 +332,7 @@ public class FXMLAdminController implements Initializable {
             Logger.getLogger(FXMLAdminController.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
-    
+        
     public void ShowTable() throws SQLException, ClassNotFoundException{
         colNIK.setCellValueFactory(new PropertyValueFactory("NIK"));
         colName.setCellValueFactory(new PropertyValueFactory("NamaLengkap"));
@@ -359,6 +359,7 @@ public class FXMLAdminController implements Initializable {
                 }
             }
         });
+        rs.close();
     }
     
     public void ShowDetail(String nik) throws SQLException{
