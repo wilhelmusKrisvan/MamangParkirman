@@ -60,15 +60,15 @@ public class FXMLAdminController implements Initializable {
     
     @FXML
     private Label Nik,lblNama,lblUser,edtNIK,edtLevel, trfawalMOTOR, trfawalMOBIL, trfawalBUS, trfjamMOTOR, trfjamMOBIL, trfjamBUS,
-            kapasitasMOTOR, kapasitasMOBIL, kapasitasBUS;
+            kapasitasMOTOR, kapasitasMOBIL, kapasitasBUS,edtGender,edtUser,edtTgl,edtNotelp,edtAlamat,edtNama;
     
     @FXML
-    private TextField edtNama,edtUser,edtNotelp,edtAlamat,NIK,Pass,Repass,Notelp,
+    private TextField NIK,Pass,Repass,Notelp,
                       Alamat,Nama,User, trfawalbaruMOBIL, trfawalbaruMOTOR, trfawalbaruBUS, trfjambaruMOBIL, trfjambaruMOTOR, trfjambaruBUS,
             kapbaruMOTOR, kapbaruMOBIL, kapbaruBUS,txtSearch;
             
     @FXML
-    private ComboBox<String> edtGender,Level,Gender;
+    private ComboBox<String> Level,Gender;
     
     @FXML
     private TableView<Karyawan> tableUser;
@@ -78,7 +78,7 @@ public class FXMLAdminController implements Initializable {
     private TableColumn<Karyawan, String> colUser,colName;
     
     @FXML
-    private DatePicker edtTgl,Tgl;
+    private DatePicker Tgl;
     
     @FXML
     private Pane pnlAdd, pnlUser, pnlVehicle, pnlReport;
@@ -390,8 +390,8 @@ public class FXMLAdminController implements Initializable {
         edtNama.setText(kr.getNamaLengkap());
         edtUser.setText(kr.getUsername());
         edtLevel.setText(kr.getLevel());
-        edtGender.setValue(kr.getGender());
-        edtTgl.setValue(LOCAL_DATE(kr.getTglLahir()));
+        edtGender.setText(kr.getGender());
+        edtTgl.setText(kr.getTglLahir());
         edtNotelp.setText(kr.getNoTelp());
         edtAlamat.setText(kr.getAlamat());
     }
