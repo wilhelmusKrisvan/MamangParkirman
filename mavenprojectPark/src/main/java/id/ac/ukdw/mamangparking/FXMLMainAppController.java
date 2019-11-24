@@ -305,7 +305,7 @@ public class FXMLMainAppController implements Initializable {
         colTanggal.setCellValueFactory(new PropertyValueFactory("tanggalMasuk"));
         ObservableList<Parkir> setList = FXCollections.observableArrayList();
         String search = txtSearch.getText();
-        String query = "SELECT * FROM `Parkir` WHERE `Plat Nomor` LIKE '" + search + "%'";
+        String query = "SELECT * FROM `Parkir` WHERE `Plat Nomor` LIKE '%" + search + "%'";
         ResultSet rs = db.queryResult(query);
         while(rs.next()){
             Parkir pk = new Parkir();

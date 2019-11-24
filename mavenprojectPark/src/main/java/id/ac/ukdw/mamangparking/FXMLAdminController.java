@@ -176,7 +176,7 @@ public class FXMLAdminController implements Initializable {
         colUser.setCellValueFactory(new PropertyValueFactory("Username"));
         ObservableList<Karyawan> setList = FXCollections.observableArrayList();
         String search = txtSearch.getText();
-        String query = "SELECT * FROM `Karyawan` WHERE `Nama` LIKE '" + search + "%'";
+        String query = "SELECT * FROM `Karyawan` WHERE `Nama` LIKE '%" + search + "%'";
         ResultSet rs = db.queryResult(query);
         while(rs.next()){
             Karyawan kr = new Karyawan();
