@@ -29,6 +29,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -74,6 +78,16 @@ public class FXMLAdminController implements Initializable {
     private TableView<Karyawan> tableUser;
     @FXML
     private TableColumn<Karyawan, Integer> colNIK;
+    
+    @FXML
+    private LineChart<?,?> graftPendapatan;
+    
+    @FXML
+    private NumberAxis graftPendapatanY;
+    
+     @FXML
+    private CategoryAxis graftPendapatanX;
+    
     @FXML
     private TableColumn<Karyawan, String> colUser,colName;
     
@@ -95,6 +109,19 @@ public class FXMLAdminController implements Initializable {
         Editstage.setScene(scene);
         Editstage.show();       
     }
+    
+    @FXML
+    private void showChartPendapatan(){
+       XYChart.Series series = new XYChart.Series();
+        
+        series.getData().add(new XYChart.Data("1",23));
+        series.getData().add(new XYChart.Data("2",13));
+        series.getData().add(new XYChart.Data("3",53));
+        series.getData().add(new XYChart.Data("4",83));
+        
+        graftPendapatan.getData().addAll(series);
+    }
+    
     
     @FXML
     private void onDelete (ActionEvent event) throws SQLException, ClassNotFoundException{

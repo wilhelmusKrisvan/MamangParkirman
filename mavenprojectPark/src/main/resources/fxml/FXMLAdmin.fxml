@@ -190,16 +190,16 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab text="Grafik Pendapatan">
+                              <Tab onSelectionChanged="#showChartPendapatan" text="Grafik Pendapatan">
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
-                                          <LineChart layoutX="32.0" layoutY="46.0" prefHeight="242.0" prefWidth="582.0">
+                                          <LineChart fx:id="graftPendapatan" layoutX="37.0" layoutY="12.0" prefHeight="242.0" prefWidth="582.0">
                                             <xAxis>
-                                              <CategoryAxis side="BOTTOM" />
+                                              <CategoryAxis fx:id="graftPendapatanX" side="BOTTOM" />
                                             </xAxis>
                                             <yAxis>
-                                              <NumberAxis side="LEFT" />
+                                              <NumberAxis fx:id="graftPendapatanY" side="LEFT" />
                                             </yAxis>
                                           </LineChart>
                                           <TextField layoutX="229.0" layoutY="14.0" />
