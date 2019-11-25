@@ -150,15 +150,13 @@
                   </Pane>
                   <Pane fx:id="pnlReport" prefHeight="396.0" prefWidth="710.0" style="-fx-background-color: #131022;">
                      <children>
-                        <Button layoutX="399.0" layoutY="29.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Cari" textFill="#ffa229" />
-                        <DatePicker layoutX="210.0" layoutY="29.0" prefHeight="28.0" prefWidth="189.0" />
-                        <TabPane layoutX="33.0" layoutY="71.0" prefHeight="296.0" prefWidth="645.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane layoutX="33.0" layoutY="42.0" prefHeight="325.0" prefWidth="645.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab text="Tabel">
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
-                                          <TableView layoutX="67.0" layoutY="33.0" prefHeight="200.0" prefWidth="511.0">
+                                          <TableView layoutX="67.0" layoutY="82.0" prefHeight="200.0" prefWidth="511.0">
                                             <columns>
                                               <TableColumn prefWidth="32.666656494140625" text="No" />
                                               <TableColumn prefWidth="87.99999237060547" text="Plat Nomor" />
@@ -168,6 +166,8 @@
                                                 <TableColumn prefWidth="99.33330281575519" text="Biaya" />
                                             </columns>
                                           </TableView>
+                                          <Button layoutX="377.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" text="Cari" textFill="#111110" />
+                                          <DatePicker layoutX="185.0" layoutY="36.0" prefHeight="28.0" prefWidth="189.0" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -176,7 +176,7 @@
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
-                                          <BarChart layoutX="32.0" layoutY="12.0" prefHeight="242.0" prefWidth="582.0">
+                                          <BarChart layoutX="32.0" layoutY="44.0" prefHeight="242.0" prefWidth="582.0">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -184,6 +184,8 @@
                                               <NumberAxis side="LEFT" />
                                             </yAxis>
                                           </BarChart>
+                                          <Button layoutX="388.0" layoutY="16.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" text="Cari" textFill="#111110" />
+                                          <DatePicker layoutX="196.0" layoutY="17.0" prefHeight="28.0" prefWidth="189.0" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -192,7 +194,7 @@
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
-                                          <LineChart layoutX="37.0" layoutY="12.0" prefHeight="242.0" prefWidth="582.0">
+                                          <LineChart layoutX="32.0" layoutY="46.0" prefHeight="242.0" prefWidth="582.0">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -200,6 +202,8 @@
                                               <NumberAxis side="LEFT" />
                                             </yAxis>
                                           </LineChart>
+                                          <TextField layoutX="229.0" layoutY="14.0" />
+                                          <Button layoutX="381.0" layoutY="14.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="62.0" text="Cari" textFill="#111110" />
                                        </children>
                                     </AnchorPane>
                                  </content>
