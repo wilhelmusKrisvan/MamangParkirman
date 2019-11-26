@@ -69,7 +69,7 @@ public class FXMLAdminController implements Initializable {
     @FXML
     private TextField NIK,Pass,Repass,Notelp,
                       Alamat,Nama,User, trfawalbaruMOBIL, trfawalbaruMOTOR, trfawalbaruBUS, trfjambaruMOBIL, trfjambaruMOTOR, trfjambaruBUS,
-            kapbaruMOTOR, kapbaruMOBIL, kapbaruBUS,txtSearch;
+            kapbaruMOTOR, kapbaruMOBIL, kapbaruBUS,txtSearch,txtTahun;
             
     @FXML
     private ComboBox<String> Level,Gender;
@@ -111,15 +111,29 @@ public class FXMLAdminController implements Initializable {
     }
     
     @FXML
-    private void showChartPendapatan(){
-       XYChart.Series series = new XYChart.Series();
+    private void showChartPendapatan() throws SQLException{
+        XYChart.Series series = new XYChart.Series();
+        graftPendapatan.getData().clear();
+       // String tahun = txtTahun.getText();
+        ObservableList<Integer> pendapatan = db.hitungPendapatanTahunan("2019");
         
-        series.getData().add(new XYChart.Data("1",23));
-        series.getData().add(new XYChart.Data("2",13));
-        series.getData().add(new XYChart.Data("3",53));
-        series.getData().add(new XYChart.Data("4",83));
+        
+        series.getData().add(new XYChart.Data("January",pendapatan.get(0)));
+        series.getData().add(new XYChart.Data("February",pendapatan.get(1)));
+        series.getData().add(new XYChart.Data("Maret",pendapatan.get(2)));
+        series.getData().add(new XYChart.Data("April",pendapatan.get(3)));
+        series.getData().add(new XYChart.Data("Mei",pendapatan.get(4)));
+        series.getData().add(new XYChart.Data("Juni",pendapatan.get(5)));
+        series.getData().add(new XYChart.Data("Juli",pendapatan.get(6)));
+        series.getData().add(new XYChart.Data("Agustus",pendapatan.get(7)));
+        series.getData().add(new XYChart.Data("September",pendapatan.get(8)));
+        series.getData().add(new XYChart.Data("Oktober",pendapatan.get(9)));
+        series.getData().add(new XYChart.Data("November",pendapatan.get(10)));
+        series.getData().add(new XYChart.Data("December",pendapatan.get(11)));
+        
         
         graftPendapatan.getData().addAll(series);
+              
     }
     
     

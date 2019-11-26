@@ -190,11 +190,11 @@
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab onSelectionChanged="#showChartPendapatan" text="Grafik Pendapatan">
+                              <Tab text="Grafik Pendapatan">
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
-                                          <LineChart fx:id="graftPendapatan" layoutX="37.0" layoutY="12.0" prefHeight="242.0" prefWidth="582.0">
+                                          <LineChart fx:id="graftPendapatan" layoutX="31.0" layoutY="40.0" prefHeight="246.0" prefWidth="582.0">
                                             <xAxis>
                                               <CategoryAxis fx:id="graftPendapatanX" side="BOTTOM" />
                                             </xAxis>
@@ -202,8 +202,8 @@
                                               <NumberAxis fx:id="graftPendapatanY" side="LEFT" />
                                             </yAxis>
                                           </LineChart>
-                                          <TextField layoutX="229.0" layoutY="14.0" />
-                                          <Button layoutX="381.0" layoutY="14.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="62.0" text="Cari" textFill="#111110" />
+                                          <TextField layoutX="204.0" layoutY="14.0" text="Tahun" />
+                                          <Button layoutX="366.0" layoutY="14.0" mnemonicParsing="false" onAction="#showChartPendapatan" prefHeight="21.0" prefWidth="62.0" text="Cari" textFill="#111110" />
                                        </children>
                                     </AnchorPane>
                                  </content>

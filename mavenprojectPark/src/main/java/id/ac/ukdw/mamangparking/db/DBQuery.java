@@ -5,11 +5,14 @@
  */
 package id.ac.ukdw.mamangparking.db;
 
+import id.ac.ukdw.mamangparking.model.Karyawan;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javax.swing.JOptionPane;
 
@@ -301,5 +304,21 @@ public class DBQuery extends DBConnect {
             ps.close();
         }
         return x;
+    }
+    
+    
+    public ObservableList hitungPendapatanTahunan(String tahun) throws SQLException{
+        ObservableList<Integer> pendapatan = FXCollections.observableArrayList();
+        
+        for(int i = 1; i<13;i++){
+            
+            String query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '"+ tahun +"' AND strftime('%m', `Tanggal Keluar`) = '"+ i + "')";
+             ps = con.prepareStatement(query);
+             rs = ps.executeQuery();
+             pendapatan.add(rs.getInt(1));
+              
+        }
+        
+        return pendapatan;
     }
 }
