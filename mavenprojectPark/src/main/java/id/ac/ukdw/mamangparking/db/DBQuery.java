@@ -311,8 +311,13 @@ public class DBQuery extends DBConnect {
         ObservableList<Integer> pendapatan = FXCollections.observableArrayList();
         
         for(int i = 1; i<13;i++){
+            String query;
+            if(i < 10){
+             query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '"+ tahun +"' AND strftime('%m', `Tanggal Keluar`) = '0"+i+"')";   
+            }else{
+             query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '"+ tahun +"' AND strftime('%m', `Tanggal Keluar`) = '"+ i +"')";  
+            }
             
-            String query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '"+ tahun +"' AND strftime('%m', `Tanggal Keluar`) = '"+ i + "')";
              ps = con.prepareStatement(query);
              rs = ps.executeQuery();
              pendapatan.add(rs.getInt(1));

@@ -114,8 +114,8 @@ public class FXMLAdminController implements Initializable {
     private void showChartPendapatan() throws SQLException{
         XYChart.Series series = new XYChart.Series();
         graftPendapatan.getData().clear();
-       // String tahun = txtTahun.getText();
-        ObservableList<Integer> pendapatan = db.hitungPendapatanTahunan("2019");
+        String tahun = txtTahun.getText();
+        ObservableList<Integer> pendapatan = db.hitungPendapatanTahunan(tahun);
         
         
         series.getData().add(new XYChart.Data("January",pendapatan.get(0)));

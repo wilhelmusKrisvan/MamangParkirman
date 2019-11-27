@@ -202,7 +202,7 @@
                                               <NumberAxis fx:id="graftPendapatanY" side="LEFT" />
                                             </yAxis>
                                           </LineChart>
-                                          <TextField layoutX="204.0" layoutY="14.0" text="Tahun" />
+                                          <TextField fx:id="txtTahun" layoutX="204.0" layoutY="14.0" promptText="Tahun" />
                                           <Button layoutX="366.0" layoutY="14.0" mnemonicParsing="false" onAction="#showChartPendapatan" prefHeight="21.0" prefWidth="62.0" text="Cari" textFill="#111110" />
                                        </children>
                                     </AnchorPane>
