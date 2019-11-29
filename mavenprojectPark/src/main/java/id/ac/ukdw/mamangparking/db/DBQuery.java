@@ -301,8 +301,7 @@ public class DBQuery extends DBConnect {
             ps.close();
         }
         return x;
-    }
-    
+    } 
     
     public ObservableList hitungPendapatanTahunan(String tahun) throws SQLException{
         ObservableList<Integer> pendapatan = FXCollections.observableArrayList();
@@ -314,13 +313,10 @@ public class DBQuery extends DBConnect {
             }else{
              query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '"+ tahun +"' AND strftime('%m', `Tanggal Keluar`) = '"+ i +"')";  
             }
-            
              ps = con.prepareStatement(query);
              rs = ps.executeQuery();
              pendapatan.add(rs.getInt(1));
-              
         }
-        
         return pendapatan;
     }
     
@@ -342,5 +338,15 @@ public class DBQuery extends DBConnect {
         }
         return kendaraan;
     }
-            
+    
+    public ResultSet ResultPendapatan(String tglFrom, String tglTo) {
+        try {
+            String query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (`Tanggal Keluar` BETWEEN '"+tglFrom+"' AND '"+tglTo+"')";
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "FAILED");
+        }
+        return rs;
+    } 
 }

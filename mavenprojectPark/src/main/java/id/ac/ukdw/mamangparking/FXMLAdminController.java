@@ -9,6 +9,7 @@ import static id.ac.ukdw.mamangparking.FXMLEditProfileController.LOCAL_DATE;
 import id.ac.ukdw.mamangparking.db.DBQuery;
 import id.ac.ukdw.mamangparking.model.Karyawan;
 import id.ac.ukdw.mamangparking.model.Kendaraan;
+import id.ac.ukdw.mamangparking.model.Laporan;
 import id.ac.ukdw.mamangparking.model.Parkir;
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +38,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -59,13 +61,16 @@ public class FXMLAdminController implements Initializable {
     Karyawan kw = new Karyawan();
     
     @FXML
+    private ChoiceBox<String> cbcb;
+    
+    @FXML
     private Button BtnEdit,BtnUser,BtnAddUser,BtnLaporan,BtnKendaraan,BtnSearch,
                    BtnDelete,BtnInsert, btnUbahMOBIL, btnUbahMOTOR, btnUbahBUS,
-            btnKapasitasMOTOR, btnKapasitasMOBIL, btnKapasitasBUS, btnGrafKendaraan;
+            btnKapasitasMOTOR, btnKapasitasMOBIL, btnKapasitasBUS, btnGrafKendaraan, btnTabelReport;
     
     @FXML
     private Label Nik,lblNama,lblUser,edtNIK,edtLevel, trfawalMOTOR, trfawalMOBIL, trfawalBUS, trfjamMOTOR, trfjamMOBIL, trfjamBUS,
-            kapasitasMOTOR, kapasitasMOBIL, kapasitasBUS,edtGender,edtUser,edtTgl,edtNotelp,edtAlamat,edtNama;
+            kapasitasMOTOR, kapasitasMOBIL, kapasitasBUS,edtGender,edtUser,edtTgl,edtNotelp,edtAlamat, edtNama, totalLaporan;
     
     @FXML
     private TextField NIK,Pass,Repass,Notelp,
@@ -76,10 +81,22 @@ public class FXMLAdminController implements Initializable {
     private ComboBox<String> Level,Gender;
     
     @FXML
-    private TableView<Karyawan> tableUser, tblReport;
+    private ComboBox<String> rptJenisKendaraan;
+    
+    @FXML
+    private TableView<Karyawan> tableUser;
+    
+    @FXML
+    private TableView<Laporan> tblReport;
     
     @FXML
     private TableColumn<Karyawan, Integer> colNIK;
+    
+    @FXML
+    private TableColumn<Parkir,String> rptPlat, rptJenis, rptMasuk, rptKeluar, rptTglIn, rptTglOut;
+    
+    @FXML
+    private TableColumn<Parkir, Integer> rptBiaya, rptNo;
     
     @FXML
     private LineChart<?,?> graftPendapatan;
@@ -97,7 +114,7 @@ public class FXMLAdminController implements Initializable {
     private TableColumn<Karyawan, String> colUser,colName;
     
     @FXML
-    private DatePicker Tgl, tglGrafKendaraan;;
+    private DatePicker Tgl, tglGrafKendaraan,tglReportFrom, tglReportTo ;
     
     @FXML
     private Pane pnlAdd, pnlUser, pnlVehicle, pnlReport;
@@ -139,7 +156,6 @@ public class FXMLAdminController implements Initializable {
     }
     
     @FXML
-    
     private void showChartKendaraan() throws SQLException{
         XYChart.Series series = new XYChart.Series();
         bcGrafKendaraan.getData().clear();
@@ -153,6 +169,44 @@ public class FXMLAdminController implements Initializable {
         bcGrafKendaraan.getData().addAll(series);
     }
     
+    @FXML
+    public void showReportTable() throws SQLException, ClassNotFoundException{
+        rptNo.setCellValueFactory(new PropertyValueFactory("id"));
+        rptPlat.setCellValueFactory(new PropertyValueFactory("platNomor"));
+        rptJenis.setCellValueFactory(new PropertyValueFactory("jenisKendaraan"));
+        rptTglIn.setCellValueFactory(new PropertyValueFactory("tanggalMasuk"));
+        rptMasuk.setCellValueFactory(new PropertyValueFactory("jamMasuk"));
+        rptTglOut.setCellValueFactory(new PropertyValueFactory("tanggalKeluar"));
+        rptKeluar.setCellValueFactory(new PropertyValueFactory("jamKeluar"));
+        rptBiaya.setCellValueFactory(new PropertyValueFactory("total"));
+        ObservableList<Laporan> setList = FXCollections.observableArrayList();
+        String tglFrom = tglReportFrom.getValue().toString();
+        String tglTo = tglReportTo.getValue().toString();
+        String query;
+        if(!rptJenisKendaraan.getValue().toString().equals("")){
+            query = "SELECT * FROM `Laporan` WHERE (`Tanggal Keluar` BETWEEN '"+tglFrom+"' AND '"+tglTo+"') AND `Jenis Kendaraan`='"+rptJenisKendaraan.getValue().toString()+"'";
+        }else{
+            query = "SELECT * FROM `Laporan` WHERE (`Tanggal Keluar` BETWEEN '"+tglFrom+"' AND '"+tglTo+"')";
+        } 
+        ResultSet rs = db.queryResult(query);
+        while(rs.next()){
+            Laporan lp = new Laporan();
+            lp.setId(rs.getInt(1));
+            lp.setPlatNomor(rs.getString(2));
+            lp.setJenisKendaraan(rs.getString(3));
+            lp.setTanggalMasuk(rs.getString(6));
+            lp.setJamMasuk(rs.getString(7));
+            lp.setTanggalKeluar(rs.getString(8));
+            lp.setJamKeluar(rs.getString(9));
+            lp.setTotal(rs.getInt(10));
+            setList.add(lp);
+        }
+        tblReport.setItems(setList);
+        ResultSet r= db.ResultPendapatan(tglFrom, tglTo);
+        r.next();
+        totalLaporan.setText(String.valueOf(r.getInt(1)));
+        rs.close();    
+    }
     
     @FXML
     private void onDelete (ActionEvent event) throws SQLException, ClassNotFoundException{
@@ -456,7 +510,7 @@ public class FXMLAdminController implements Initializable {
     
     ObservableList<String> cbGender = FXCollections.observableArrayList("Laki-Laki", "Perempuan");
     ObservableList<String> cbStatus = FXCollections.observableArrayList("staff", "admin");
-    
+    ObservableList<String> cbKendaraan = FXCollections.observableArrayList("Motor", "Mobil", "Bus", "");
  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -466,6 +520,8 @@ public class FXMLAdminController implements Initializable {
             this.setHargaKendaraan();
             Gender.getItems().addAll(cbGender);
             Level.getItems().addAll(cbStatus);
+            rptJenisKendaraan.getItems().addAll(cbKendaraan);
+            rptJenisKendaraan.setValue("");
         } catch (SQLException ex) {
             Logger.getLogger(FXMLAdminController.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

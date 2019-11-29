@@ -291,7 +291,6 @@ public class FXMLMainAppController implements Initializable {
               kapasitas.close();
             }
         }
-        
         rs.close();      
     }
     

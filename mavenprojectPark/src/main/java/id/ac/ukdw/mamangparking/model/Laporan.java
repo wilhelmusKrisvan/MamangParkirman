@@ -13,7 +13,22 @@ import java.sql.SQLException;
  * @author Wilhelmus Krisvan
  */
 public class Laporan {
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
     DBQuery db = new DBQuery();
+    private int id;
     private String platNomor;
     private String jenisKendaraan;
     private String tanggalMasuk;
