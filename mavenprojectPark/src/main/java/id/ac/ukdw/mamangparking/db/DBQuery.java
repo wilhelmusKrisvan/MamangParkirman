@@ -16,10 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Wilhelmus Krisvan
- */
+
 public class DBQuery extends DBConnect {
 
     public DBQuery() {
@@ -326,4 +323,24 @@ public class DBQuery extends DBConnect {
         
         return pendapatan;
     }
+    
+    public ObservableList hitungKendaraanHarian(String tanggal) throws SQLException{
+        ObservableList<Integer> kendaraan = FXCollections.observableArrayList();
+        
+        String query;
+        for(int i=0; i<3;i++){
+            if(i==0){
+                query="SELECT count(`Jenis Kendaraan`) FROM Laporan WHERE `Tanggal Keluar`='"+tanggal+"' AND `Jenis Kendaraan`='Motor'";
+            } else if(i==1){
+                query="SELECT count(`Jenis Kendaraan`) FROM Laporan WHERE `Tanggal Keluar`='"+tanggal+"' AND `Jenis Kendaraan`='Mobil'";
+            } else{
+                query="SELECT count(`Jenis Kendaraan`) FROM Laporan WHERE `Tanggal Keluar`='"+tanggal+"' AND `Jenis Kendaraan`='Bus'";
+            }
+             ps = con.prepareStatement(query);
+             rs = ps.executeQuery();
+             kendaraan.add(rs.getInt(1));
+        }
+        return kendaraan;
+    }
+            
 }

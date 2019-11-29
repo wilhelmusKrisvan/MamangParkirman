@@ -87,7 +87,7 @@
                               <Image url="@../logo.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="BtnEdit" contentDisplay="TOP" layoutX="578.0" mnemonicParsing="false" onAction="#EditProfile" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Edit Profile" textAlignment="CENTER" textFill="#ffa239">
+                        <Button fx:id="BtnEdit" contentDisplay="TOP" layoutX="578.0" mnemonicParsing="false" onAction="#EditProfile" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" textAlignment="CENTER" textFill="#ffa239">
                            <graphic>
                               <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

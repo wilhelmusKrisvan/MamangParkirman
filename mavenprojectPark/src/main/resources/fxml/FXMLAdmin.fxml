@@ -84,7 +84,7 @@
                   <Label layoutX="107.0" layoutY="23.0" text="NIK" textFill="#ffa229" />
                   <Label layoutX="107.0" layoutY="41.0" text="NAME" textFill="#ffa229" />
                   <Label layoutX="106.0" layoutY="60.0" text="USERNAME" textFill="#ffa229" />
-                  <Button fx:id="BtnEdit" contentDisplay="TOP" layoutX="592.0" mnemonicParsing="false" onAction="#EditProfile" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" text="Edit Profile" textAlignment="CENTER" textFill="#ffa229">
+                  <Button fx:id="BtnEdit" contentDisplay="TOP" layoutX="592.0" mnemonicParsing="false" onAction="#EditProfile" prefHeight="99.0" prefWidth="104.0" styleClass="button3" stylesheets="@../styles/darkkMain.css" textAlignment="CENTER" textFill="#ffa229">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -150,13 +150,13 @@
                   </Pane>
                   <Pane fx:id="pnlReport" prefHeight="396.0" prefWidth="710.0" style="-fx-background-color: #131022;">
                      <children>
-                        <TabPane layoutX="33.0" layoutY="42.0" prefHeight="325.0" prefWidth="645.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane layoutX="33.0" layoutY="20.0" prefHeight="358.0" prefWidth="645.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab text="Tabel">
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
-                                          <TableView layoutX="67.0" layoutY="82.0" prefHeight="200.0" prefWidth="511.0">
+                                          <TableView fx:id="tblReport" layoutX="36.0" layoutY="70.0" prefHeight="212.0" prefWidth="574.0">
                                             <columns>
                                               <TableColumn prefWidth="32.666656494140625" text="No" />
                                               <TableColumn prefWidth="87.99999237060547" text="Plat Nomor" />
@@ -166,8 +166,8 @@
                                                 <TableColumn prefWidth="99.33330281575519" text="Biaya" />
                                             </columns>
                                           </TableView>
-                                          <Button layoutX="377.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" text="Cari" textFill="#111110" />
-                                          <DatePicker layoutX="185.0" layoutY="36.0" prefHeight="28.0" prefWidth="189.0" />
+                                          <Button fx:id="btnTabelReport" layoutX="377.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" text="Cari" textFill="#111110" />
+                                          <DatePicker fx:id="tglTabelReport" layoutX="185.0" layoutY="36.0" prefHeight="28.0" prefWidth="189.0" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -176,16 +176,16 @@
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;">
                                        <children>
-                                          <BarChart layoutX="32.0" layoutY="44.0" prefHeight="242.0" prefWidth="582.0">
+                                          <BarChart fx:id="bcGrafKendaraan" layoutX="16.0" layoutY="42.0" prefHeight="278.0" prefWidth="613.0">
                                             <xAxis>
-                                              <CategoryAxis side="BOTTOM" />
+                                              <CategoryAxis label="Jenis Kendaraan" prefHeight="38.0" prefWidth="536.0" side="BOTTOM" startMargin="0.0" />
                                             </xAxis>
                                             <yAxis>
-                                              <NumberAxis side="LEFT" />
+                                              <NumberAxis label="Jumlah" side="LEFT" />
                                             </yAxis>
                                           </BarChart>
-                                          <Button layoutX="388.0" layoutY="16.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" text="Cari" textFill="#111110" />
-                                          <DatePicker layoutX="196.0" layoutY="17.0" prefHeight="28.0" prefWidth="189.0" />
+                                          <Button fx:id="btnGrafKendaraan" layoutX="403.0" layoutY="8.0" mnemonicParsing="false" onAction="#showChartKendaraan" prefHeight="30.0" prefWidth="62.0" text="Cari" textFill="#111110" />
+                                          <DatePicker fx:id="tglGrafKendaraan" layoutX="211.0" layoutY="9.0" prefHeight="28.0" prefWidth="189.0" promptText="Cari Tanggal ..." />
                                        </children>
                                     </AnchorPane>
                                  </content>

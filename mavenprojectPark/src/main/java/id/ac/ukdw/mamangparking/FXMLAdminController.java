@@ -29,6 +29,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -60,7 +61,7 @@ public class FXMLAdminController implements Initializable {
     @FXML
     private Button BtnEdit,BtnUser,BtnAddUser,BtnLaporan,BtnKendaraan,BtnSearch,
                    BtnDelete,BtnInsert, btnUbahMOBIL, btnUbahMOTOR, btnUbahBUS,
-            btnKapasitasMOTOR, btnKapasitasMOBIL, btnKapasitasBUS;
+            btnKapasitasMOTOR, btnKapasitasMOBIL, btnKapasitasBUS, btnGrafKendaraan;
     
     @FXML
     private Label Nik,lblNama,lblUser,edtNIK,edtLevel, trfawalMOTOR, trfawalMOBIL, trfawalBUS, trfjamMOTOR, trfjamMOBIL, trfjamBUS,
@@ -75,7 +76,8 @@ public class FXMLAdminController implements Initializable {
     private ComboBox<String> Level,Gender;
     
     @FXML
-    private TableView<Karyawan> tableUser;
+    private TableView<Karyawan> tableUser, tblReport;
+    
     @FXML
     private TableColumn<Karyawan, Integer> colNIK;
     
@@ -83,16 +85,19 @@ public class FXMLAdminController implements Initializable {
     private LineChart<?,?> graftPendapatan;
     
     @FXML
+    private BarChart<String, Integer> bcGrafKendaraan;
+    
+    @FXML
     private NumberAxis graftPendapatanY;
     
-     @FXML
+    @FXML
     private CategoryAxis graftPendapatanX;
     
     @FXML
     private TableColumn<Karyawan, String> colUser,colName;
     
     @FXML
-    private DatePicker Tgl;
+    private DatePicker Tgl, tglGrafKendaraan;;
     
     @FXML
     private Pane pnlAdd, pnlUser, pnlVehicle, pnlReport;
@@ -117,7 +122,6 @@ public class FXMLAdminController implements Initializable {
         String tahun = txtTahun.getText();
         ObservableList<Integer> pendapatan = db.hitungPendapatanTahunan(tahun);
         
-        
         series.getData().add(new XYChart.Data("January",pendapatan.get(0)));
         series.getData().add(new XYChart.Data("February",pendapatan.get(1)));
         series.getData().add(new XYChart.Data("Maret",pendapatan.get(2)));
@@ -131,9 +135,22 @@ public class FXMLAdminController implements Initializable {
         series.getData().add(new XYChart.Data("November",pendapatan.get(10)));
         series.getData().add(new XYChart.Data("December",pendapatan.get(11)));
         
+        graftPendapatan.getData().addAll(series);       
+    }
+    
+    @FXML
+    
+    private void showChartKendaraan() throws SQLException{
+        XYChart.Series series = new XYChart.Series();
+        bcGrafKendaraan.getData().clear();
+        String tanggal = tglGrafKendaraan.getValue().toString();
+        ObservableList<Integer> kendaraan = db.hitungKendaraanHarian(tanggal);
         
-        graftPendapatan.getData().addAll(series);
-              
+        series.getData().add(new XYChart.Data("Motor", kendaraan.get(0)));
+        series.getData().add(new XYChart.Data("Mobil", kendaraan.get(1)));
+        series.getData().add(new XYChart.Data("Bus", kendaraan.get(2)));
+        
+        bcGrafKendaraan.getData().addAll(series);
     }
     
     
