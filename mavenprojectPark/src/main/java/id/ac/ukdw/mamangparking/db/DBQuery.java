@@ -17,7 +17,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javax.swing.JOptionPane;
 
-
 public class DBQuery extends DBConnect {
 
     public DBQuery() {
@@ -302,51 +301,102 @@ public class DBQuery extends DBConnect {
             ps.close();
         }
         return x;
-    } 
-    
-    public ObservableList hitungPendapatanTahunan(String tahun) throws SQLException{
+    }
+
+    public ObservableList hitungPendapatanTahunan(String tahun) throws SQLException {
         ObservableList<Integer> pendapatan = FXCollections.observableArrayList();
-        
-        for(int i = 1; i<13;i++){
+
+        for (int i = 1; i < 13; i++) {
             String query;
-            if(i < 10){
-             query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '"+ tahun +"' AND strftime('%m', `Tanggal Keluar`) = '0"+i+"')";   
-            }else{
-             query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '"+ tahun +"' AND strftime('%m', `Tanggal Keluar`) = '"+ i +"')";  
+            if (i < 10) {
+                query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '" + tahun + "' AND strftime('%m', `Tanggal Keluar`) = '0" + i + "')";
+            } else {
+                query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '" + tahun + "' AND strftime('%m', `Tanggal Keluar`) = '" + i + "')";
             }
-             ps = con.prepareStatement(query);
-             rs = ps.executeQuery();
-             pendapatan.add(rs.getInt(1));
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            pendapatan.add(rs.getInt(1));
         }
         return pendapatan;
     }
-    
-    public ObservableList hitungKendaraanHarian(String tanggal) throws SQLException{
-        ObservableList<Integer> kendaraan = FXCollections.observableArrayList();
-        
-        String query;
-        for(int i=0; i<3;i++){
-            if(i==0){
-                query="SELECT count(`Jenis Kendaraan`) FROM Laporan WHERE `Tanggal Keluar`='"+tanggal+"' AND `Jenis Kendaraan`='Motor'";
-            } else if(i==1){
-                query="SELECT count(`Jenis Kendaraan`) FROM Laporan WHERE `Tanggal Keluar`='"+tanggal+"' AND `Jenis Kendaraan`='Mobil'";
-            } else{
-                query="SELECT count(`Jenis Kendaraan`) FROM Laporan WHERE `Tanggal Keluar`='"+tanggal+"' AND `Jenis Kendaraan`='Bus'";
+
+    public ObservableList hitungPendapatanMotor(String tahun) throws SQLException {
+        ObservableList<Integer> pendapatanMotor = FXCollections.observableArrayList();
+
+        for (int i = 1; i < 13; i++) {
+            String query;
+            if (i < 10) {
+                query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '" + tahun + "' AND strftime('%m', `Tanggal Keluar`) = '0" + i + "') AND `Jenis Kendaraan` = 'Motor'";
+            } else {
+                query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '" + tahun + "' AND strftime('%m', `Tanggal Keluar`) = '" + i + "')  AND `Jenis Kendaraan` = 'Motor'";
             }
-             ps = con.prepareStatement(query);
-             rs = ps.executeQuery();
-             kendaraan.add(rs.getInt(1));
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            pendapatanMotor.add(rs.getInt(1));
+        }
+        return pendapatanMotor;
+    }
+
+    public ObservableList hitungPendapatanMobil(String tahun) throws SQLException {
+        ObservableList<Integer> pendapatanMobil = FXCollections.observableArrayList();
+
+        for (int i = 1; i < 13; i++) {
+            String query;
+            if (i < 10) {
+                query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '" + tahun + "' AND strftime('%m', `Tanggal Keluar`) = '0" + i + "') AND `Jenis Kendaraan` = 'Mobil'";
+            } else {
+                query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '" + tahun + "' AND strftime('%m', `Tanggal Keluar`) = '" + i + "')  AND `Jenis Kendaraan` = 'Mobil'";
+            }
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            pendapatanMobil.add(rs.getInt(1));
+        }
+        return pendapatanMobil;
+    }
+
+    public ObservableList hitungPendapatanBus(String tahun) throws SQLException {
+        ObservableList<Integer> pendapatanBus = FXCollections.observableArrayList();
+
+        for (int i = 1; i < 13; i++) {
+            String query;
+            if (i < 10) {
+                query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '" + tahun + "' AND strftime('%m', `Tanggal Keluar`) = '0" + i + "') AND `Jenis Kendaraan` = 'Bus'";
+            } else {
+                query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (strftime('%Y', `Tanggal Keluar`) = '" + tahun + "' AND strftime('%m', `Tanggal Keluar`) = '" + i + "')  AND `Jenis Kendaraan` = 'Bus'";
+            }
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            pendapatanBus.add(rs.getInt(1));
+        }
+        return pendapatanBus;
+    }
+
+    public ObservableList hitungKendaraanHarian(String tanggal) throws SQLException {
+        ObservableList<Integer> kendaraan = FXCollections.observableArrayList();
+
+        String query;
+        for (int i = 0; i < 3; i++) {
+            if (i == 0) {
+                query = "SELECT count(`Jenis Kendaraan`) FROM Laporan WHERE `Tanggal Keluar`='" + tanggal + "' AND `Jenis Kendaraan`='Motor'";
+            } else if (i == 1) {
+                query = "SELECT count(`Jenis Kendaraan`) FROM Laporan WHERE `Tanggal Keluar`='" + tanggal + "' AND `Jenis Kendaraan`='Mobil'";
+            } else {
+                query = "SELECT count(`Jenis Kendaraan`) FROM Laporan WHERE `Tanggal Keluar`='" + tanggal + "' AND `Jenis Kendaraan`='Bus'";
+            }
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+            kendaraan.add(rs.getInt(1));
         }
         return kendaraan;
     }
-    
-    public ObservableList showTable() throws SQLException{
+
+    public ObservableList showTable() throws SQLException {
         ObservableList<Laporan> tabel = FXCollections.observableArrayList();
         String query = "SELECT * FROM `Laporan`";
         ps = con.prepareStatement(query);
         rs = ps.executeQuery();
-        while(rs.next()){
-           Laporan lp = new Laporan();
+        while (rs.next()) {
+            Laporan lp = new Laporan();
             lp.setId(rs.getInt(1));
             lp.setPlatNomor(rs.getString(2));
             lp.setJenisKendaraan(rs.getString(3));
@@ -355,19 +405,19 @@ public class DBQuery extends DBConnect {
             lp.setTanggalKeluar(rs.getString(8));
             lp.setJamKeluar(rs.getString(9));
             lp.setTotal(rs.getInt(10));
-            tabel.add(lp); 
+            tabel.add(lp);
         }
         rs.close();
         return tabel;
     }
-    
-    public ObservableList showTableSearch(String tglFrom, String tglTo, String JenisKendaraan) throws SQLException{
+
+    public ObservableList showTableSearch(String tglFrom, String tglTo, String JenisKendaraan) throws SQLException {
         ObservableList<Laporan> tabel = FXCollections.observableArrayList();
-        String query = "SELECT * FROM `Laporan` WHERE (`Tanggal Keluar` BETWEEN '"+tglFrom+"' AND '"+tglTo+"') AND `Jenis Kendaraan`='"+JenisKendaraan+"'";
+        String query = "SELECT * FROM `Laporan` WHERE (`Tanggal Keluar` BETWEEN '" + tglFrom + "' AND '" + tglTo + "') AND `Jenis Kendaraan`='" + JenisKendaraan + "'";
         ps = con.prepareStatement(query);
         rs = ps.executeQuery();
-        while(rs.next()){
-           Laporan lp = new Laporan();
+        while (rs.next()) {
+            Laporan lp = new Laporan();
             lp.setId(rs.getInt(1));
             lp.setPlatNomor(rs.getString(2));
             lp.setJenisKendaraan(rs.getString(3));
@@ -376,12 +426,12 @@ public class DBQuery extends DBConnect {
             lp.setTanggalKeluar(rs.getString(8));
             lp.setJamKeluar(rs.getString(9));
             lp.setTotal(rs.getInt(10));
-            tabel.add(lp); 
+            tabel.add(lp);
         }
         rs.close();
         return tabel;
     }
-    
+
     public ResultSet ResultPendapatanDefault() {
         try {
             String query = "SELECT SUM(`Harga Total`)FROM Laporan";
@@ -391,16 +441,16 @@ public class DBQuery extends DBConnect {
             JOptionPane.showMessageDialog(null, "FAILED");
         }
         return rs;
-    } 
-    
+    }
+
     public ResultSet ResultPendapatan(String tglFrom, String tglTo, String JenisKendaraan) {
         try {
-            String query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (`Tanggal Keluar` BETWEEN '"+tglFrom+"' AND '"+tglTo+"') AND `Jenis Kendaraan` = '"+JenisKendaraan+"'";
+            String query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (`Tanggal Keluar` BETWEEN '" + tglFrom + "' AND '" + tglTo + "') AND `Jenis Kendaraan` = '" + JenisKendaraan + "'";
             ps = con.prepareStatement(query);
             rs = ps.executeQuery();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "FAILED");
         }
         return rs;
-    } 
+    }
 }

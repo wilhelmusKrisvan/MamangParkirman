@@ -136,9 +136,15 @@ public class FXMLAdminController implements Initializable {
     @FXML
     private void showChartPendapatan() throws SQLException {
         XYChart.Series series = new XYChart.Series();
+        XYChart.Series series1 = new XYChart.Series();
+        XYChart.Series series2 = new XYChart.Series();
+        XYChart.Series series3 = new XYChart.Series();
         graftPendapatan.getData().clear();
         String tahun = txtTahun.getText();
         ObservableList<Integer> pendapatan = db.hitungPendapatanTahunan(tahun);
+        ObservableList<Integer> pendapatanMotor = db.hitungPendapatanMotor(tahun);
+        ObservableList<Integer> pendapatanMobil = db.hitungPendapatanMobil(tahun);
+        ObservableList<Integer> pendapatanBus = db.hitungPendapatanBus(tahun);
 
         series.getData().add(new XYChart.Data("January", pendapatan.get(0)));
         series.getData().add(new XYChart.Data("February", pendapatan.get(1)));
@@ -152,8 +158,54 @@ public class FXMLAdminController implements Initializable {
         series.getData().add(new XYChart.Data("Oktober", pendapatan.get(9)));
         series.getData().add(new XYChart.Data("November", pendapatan.get(10)));
         series.getData().add(new XYChart.Data("December", pendapatan.get(11)));
+        series.setName("Total");
+
+        series1.getData().add(new XYChart.Data("January", pendapatanMotor.get(0)));
+        series1.getData().add(new XYChart.Data("February", pendapatanMotor.get(1)));
+        series1.getData().add(new XYChart.Data("Maret", pendapatanMotor.get(2)));
+        series1.getData().add(new XYChart.Data("April", pendapatanMotor.get(3)));
+        series1.getData().add(new XYChart.Data("Mei", pendapatanMotor.get(4)));
+        series1.getData().add(new XYChart.Data("Juni", pendapatanMotor.get(5)));
+        series1.getData().add(new XYChart.Data("Juli", pendapatanMotor.get(6)));
+        series1.getData().add(new XYChart.Data("Agustus", pendapatanMotor.get(7)));
+        series1.getData().add(new XYChart.Data("September", pendapatanMotor.get(8)));
+        series1.getData().add(new XYChart.Data("Oktober", pendapatanMotor.get(9)));
+        series1.getData().add(new XYChart.Data("November", pendapatanMotor.get(10)));
+        series1.getData().add(new XYChart.Data("December", pendapatanMotor.get(11)));
+        series1.setName("Motor");
+
+        series2.getData().add(new XYChart.Data("January", pendapatanMobil.get(0)));
+        series2.getData().add(new XYChart.Data("February", pendapatanMobil.get(1)));
+        series2.getData().add(new XYChart.Data("Maret", pendapatanMobil.get(2)));
+        series2.getData().add(new XYChart.Data("April", pendapatanMobil.get(3)));
+        series2.getData().add(new XYChart.Data("Mei", pendapatanMobil.get(4)));
+        series2.getData().add(new XYChart.Data("Juni", pendapatanMobil.get(5)));
+        series2.getData().add(new XYChart.Data("Juli", pendapatanMobil.get(6)));
+        series2.getData().add(new XYChart.Data("Agustus", pendapatanMobil.get(7)));
+        series2.getData().add(new XYChart.Data("September", pendapatanMobil.get(8)));
+        series2.getData().add(new XYChart.Data("Oktober", pendapatanMobil.get(9)));
+        series2.getData().add(new XYChart.Data("November", pendapatanMobil.get(10)));
+        series2.getData().add(new XYChart.Data("December", pendapatanMobil.get(11)));
+        series2.setName("Mobil");
+
+        series3.getData().add(new XYChart.Data("January", pendapatanBus.get(0)));
+        series3.getData().add(new XYChart.Data("February", pendapatanBus.get(1)));
+        series3.getData().add(new XYChart.Data("Maret", pendapatanBus.get(2)));
+        series3.getData().add(new XYChart.Data("April", pendapatanBus.get(3)));
+        series3.getData().add(new XYChart.Data("Mei", pendapatanBus.get(4)));
+        series3.getData().add(new XYChart.Data("Juni", pendapatanBus.get(5)));
+        series3.getData().add(new XYChart.Data("Juli", pendapatanBus.get(6)));
+        series3.getData().add(new XYChart.Data("Agustus", pendapatanBus.get(7)));
+        series3.getData().add(new XYChart.Data("September", pendapatanBus.get(8)));
+        series3.getData().add(new XYChart.Data("Oktober", pendapatanBus.get(9)));
+        series3.getData().add(new XYChart.Data("November", pendapatanBus.get(10)));
+        series3.getData().add(new XYChart.Data("December", pendapatanBus.get(11)));
+        series3.setName("Bus");
 
         graftPendapatan.getData().addAll(series);
+        graftPendapatan.getData().addAll(series1);
+        graftPendapatan.getData().addAll(series2);
+        graftPendapatan.getData().addAll(series3);
     }
 
     @FXML
@@ -182,13 +234,13 @@ public class FXMLAdminController implements Initializable {
         rptBiaya.setCellValueFactory(new PropertyValueFactory("total"));
         String tglFrom = tglReportFrom.getValue().toString();
         String tglTo = tglReportTo.getValue().toString();
-        if(!rptJenisKendaraan.getValue().toString().equals(" ")){
+        if (!rptJenisKendaraan.getValue().toString().equals(" ")) {
             ObservableList<Laporan> setList = db.showTableSearch(tglFrom, tglTo, rptJenisKendaraan.getValue().toString());
             tblReport.setItems(setList);
             ResultSet r = db.ResultPendapatan(tglFrom, tglTo, rptJenisKendaraan.getValue().toString());
             r.next();
             totalLaporan.setText(String.valueOf(r.getInt(1)));
-            r.close();            
+            r.close();
         } else {
             this.ShowLaporan();
         }
