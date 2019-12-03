@@ -431,7 +431,28 @@ public class DBQuery extends DBConnect {
         rs.close();
         return tabel;
     }
-
+    
+    public ObservableList showTableSearchBlank(String tglFrom, String tglTo) throws SQLException{
+        ObservableList<Laporan> tabel = FXCollections.observableArrayList();
+        String query = "SELECT * FROM `Laporan` WHERE (`Tanggal Keluar` BETWEEN '"+tglFrom+"' AND '"+tglTo+"')";
+        ps = con.prepareStatement(query);
+        rs = ps.executeQuery();
+        while(rs.next()){
+           Laporan lp = new Laporan();
+            lp.setId(rs.getInt(1));
+            lp.setPlatNomor(rs.getString(2));
+            lp.setJenisKendaraan(rs.getString(3));
+            lp.setTanggalMasuk(rs.getString(6));
+            lp.setJamMasuk(rs.getString(7));
+            lp.setTanggalKeluar(rs.getString(8));
+            lp.setJamKeluar(rs.getString(9));
+            lp.setTotal(rs.getInt(10));
+            tabel.add(lp); 
+        }
+        rs.close();
+        return tabel;
+    }
+    
     public ResultSet ResultPendapatanDefault() {
         try {
             String query = "SELECT SUM(`Harga Total`)FROM Laporan";
@@ -453,4 +474,14 @@ public class DBQuery extends DBConnect {
         }
         return rs;
     }
+    public ResultSet ResultPendapatanBlank(String tglFrom, String tglTo) {
+        try {
+            String query = "SELECT SUM(`Harga Total`)FROM Laporan  WHERE (`Tanggal Keluar` BETWEEN '"+tglFrom+"' AND '"+tglTo+"')";
+            ps = con.prepareStatement(query);
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "FAILED");
+        }
+        return rs;
+    } 
 }

@@ -50,6 +50,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 /**
  * FXML Controller class
@@ -224,25 +225,85 @@ public class FXMLAdminController implements Initializable {
 
     @FXML
     public void showReportTable() throws SQLException, ClassNotFoundException {
-        rptNo.setCellValueFactory(new PropertyValueFactory("id"));
-        rptPlat.setCellValueFactory(new PropertyValueFactory("platNomor"));
-        rptJenis.setCellValueFactory(new PropertyValueFactory("jenisKendaraan"));
-        rptTglIn.setCellValueFactory(new PropertyValueFactory("tanggalMasuk"));
-        rptMasuk.setCellValueFactory(new PropertyValueFactory("jamMasuk"));
-        rptTglOut.setCellValueFactory(new PropertyValueFactory("tanggalKeluar"));
-        rptKeluar.setCellValueFactory(new PropertyValueFactory("jamKeluar"));
-        rptBiaya.setCellValueFactory(new PropertyValueFactory("total"));
-        String tglFrom = tglReportFrom.getValue().toString();
-        String tglTo = tglReportTo.getValue().toString();
-        if (!rptJenisKendaraan.getValue().toString().equals(" ")) {
-            ObservableList<Laporan> setList = db.showTableSearch(tglFrom, tglTo, rptJenisKendaraan.getValue().toString());
-            tblReport.setItems(setList);
-            ResultSet r = db.ResultPendapatan(tglFrom, tglTo, rptJenisKendaraan.getValue().toString());
-            r.next();
-            totalLaporan.setText(String.valueOf(r.getInt(1)));
-            r.close();
+        if (tglReportFrom.getValue()!=null && tglReportTo.getValue()!=null) {
+            rptNo.setCellValueFactory(new PropertyValueFactory("id"));
+            rptPlat.setCellValueFactory(new PropertyValueFactory("platNomor"));
+            rptJenis.setCellValueFactory(new PropertyValueFactory("jenisKendaraan"));
+            rptTglIn.setCellValueFactory(new PropertyValueFactory("tanggalMasuk"));
+            rptMasuk.setCellValueFactory(new PropertyValueFactory("jamMasuk"));
+            rptTglOut.setCellValueFactory(new PropertyValueFactory("tanggalKeluar"));
+            rptKeluar.setCellValueFactory(new PropertyValueFactory("jamKeluar"));
+            rptBiaya.setCellValueFactory(new PropertyValueFactory("total"));
+            tglReportFrom.setConverter(new StringConverter<LocalDate>() {
+                String pattern = "yyyy-MM-dd";
+                DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+                {
+                    tglReportFrom.setPromptText(pattern.toLowerCase());
+                }
+
+                @Override
+                public String toString(LocalDate date) {
+                    if (date != null) {
+                        return dateFormatter.format(date);
+                    } else {
+                        return "";
+                    }
+                }
+
+                @Override
+                public LocalDate fromString(String string) {
+                    if (string != null && !string.isEmpty()) {
+                        return LocalDate.parse(string, dateFormatter);
+                    } else {
+                        return null;
+                    }
+                }
+            });
+            tglReportTo.setConverter(new StringConverter<LocalDate>() {
+                String pattern = "yyyy-MM-dd";
+                DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+                {
+                    tglReportTo.setPromptText(pattern.toLowerCase());
+                }
+
+                @Override
+                public String toString(LocalDate date) {
+                    if (date != null) {
+                        return dateFormatter.format(date);
+                    } else {
+                        return "";
+                    }
+                }
+
+                @Override
+                public LocalDate fromString(String string) {
+                    if (string != null && !string.isEmpty()) {
+                        return LocalDate.parse(string, dateFormatter);
+                    } else {
+                        return null;
+                    }
+                }
+            });
+            String tglFrom = tglReportFrom.getValue().toString();
+            String tglTo = tglReportTo.getValue().toString();
+            if (!rptJenisKendaraan.getValue().toString().equals(" ")) {
+                ObservableList<Laporan> setList = db.showTableSearch(tglFrom, tglTo, rptJenisKendaraan.getValue().toString());
+                tblReport.setItems(setList);
+                ResultSet r = db.ResultPendapatan(tglFrom, tglTo, rptJenisKendaraan.getValue().toString());
+                r.next();
+                totalLaporan.setText(String.valueOf(r.getInt(1)));
+                r.close();
+            } else {
+                this.ShowLaporanSearch(tglFrom, tglTo);
+            }
         } else {
-            this.ShowLaporan();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("SEARCH ERROR");
+            alert.setHeaderText("SEARCH IS FAILED");
+            alert.setContentText("DATE NEED TO BE CHOOSED!");
+            alert.showAndWait();
         }
     }
 
@@ -449,6 +510,23 @@ public class FXMLAdminController implements Initializable {
                 }
             }
         }
+    }
+
+    public void ShowLaporanSearch(String tglFrom, String tglTo) throws SQLException {
+        rptNo.setCellValueFactory(new PropertyValueFactory("id"));
+        rptPlat.setCellValueFactory(new PropertyValueFactory("platNomor"));
+        rptJenis.setCellValueFactory(new PropertyValueFactory("jenisKendaraan"));
+        rptTglIn.setCellValueFactory(new PropertyValueFactory("tanggalMasuk"));
+        rptMasuk.setCellValueFactory(new PropertyValueFactory("jamMasuk"));
+        rptTglOut.setCellValueFactory(new PropertyValueFactory("tanggalKeluar"));
+        rptKeluar.setCellValueFactory(new PropertyValueFactory("jamKeluar"));
+        rptBiaya.setCellValueFactory(new PropertyValueFactory("total"));
+        ObservableList<Laporan> setList = db.showTableSearchBlank(tglFrom, tglTo);
+        tblReport.setItems(setList);
+        ResultSet r = db.ResultPendapatanBlank(tglFrom, tglTo);
+        r.next();
+        totalLaporan.setText(String.valueOf(r.getInt(1)));
+        r.close();
     }
 
     public void ShowLaporan() throws SQLException {
